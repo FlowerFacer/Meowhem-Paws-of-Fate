@@ -1,0 +1,156 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: SpiderBody
+    m_Hash: 815928152
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Blue
+      m_Hash: 1040475530
+      m_Sprite: {fileID: -7849829912379381962, guid: cc753156212208c40b59a15ab60825db, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -7849829912379381962, guid: cc753156212208c40b59a15ab60825db, type: 3}
+    - m_Name: Pink
+      m_Hash: 206692072
+      m_Sprite: {fileID: 5490695544414718157, guid: cc753156212208c40b59a15ab60825db, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 5490695544414718157, guid: cc753156212208c40b59a15ab60825db, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 2
+  - m_Name: SpiderHead
+    m_Hash: 217706102
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Blue
+      m_Hash: 1040475530
+      m_Sprite: {fileID: 6565275474479618322, guid: cc753156212208c40b59a15ab60825db, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 6565275474479618322, guid: cc753156212208c40b59a15ab60825db, type: 3}
+    - m_Name: Pink
+      m_Hash: 206692072
+      m_Sprite: {fileID: -2025019003610831931, guid: cc753156212208c40b59a15ab60825db, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -2025019003610831931, guid: cc753156212208c40b59a15ab60825db, type: 3}
+    - m_Name: BlueHostile
+      m_Hash: 733525999
+      m_Sprite: {fileID: -6203867446482137869, guid: cc753156212208c40b59a15ab60825db, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -6203867446482137869, guid: cc753156212208c40b59a15ab60825db, type: 3}
+    - m_Name: PinkHostile
+      m_Hash: 1363775
+      m_Sprite: {fileID: 2945657412443386459, guid: cc753156212208c40b59a15ab60825db, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 2945657412443386459, guid: cc753156212208c40b59a15ab60825db, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 4
+  - m_Name: SpiderLeg1
+    m_Hash: 247495644
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Blue
+      m_Hash: 1040475530
+      m_Sprite: {fileID: 5415290800609033748, guid: cc753156212208c40b59a15ab60825db, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 5415290800609033748, guid: cc753156212208c40b59a15ab60825db, type: 3}
+    - m_Name: New Label
+      m_Hash: 259326342
+      m_Sprite: {fileID: 541899099210836328, guid: cc753156212208c40b59a15ab60825db, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 541899099210836328, guid: cc753156212208c40b59a15ab60825db, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 2
+  - m_Name: SpiderLeg2
+    m_Hash: 399059558
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Blue
+      m_Hash: 1040475530
+      m_Sprite: {fileID: 7681458141332773151, guid: cc753156212208c40b59a15ab60825db, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 7681458141332773151, guid: cc753156212208c40b59a15ab60825db, type: 3}
+    - m_Name: New Label
+      m_Hash: 259326342
+      m_Sprite: {fileID: 5281326824231125313, guid: cc753156212208c40b59a15ab60825db, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 5281326824231125313, guid: cc753156212208c40b59a15ab60825db, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 2
+  - m_Name: SpiderLeg3
+    m_Hash: 550378224
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Blue
+      m_Hash: 1040475530
+      m_Sprite: {fileID: -2375499280971022630, guid: cc753156212208c40b59a15ab60825db, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -2375499280971022630, guid: cc753156212208c40b59a15ab60825db, type: 3}
+    - m_Name: Pink
+      m_Hash: 206692072
+      m_Sprite: {fileID: 8663454765308118883, guid: cc753156212208c40b59a15ab60825db, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 8663454765308118883, guid: cc753156212208c40b59a15ab60825db, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 2
+  - m_Name: SpiderLeg4
+    m_Hash: 1051365203
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Blue
+      m_Hash: 1040475530
+      m_Sprite: {fileID: 2568929487452505675, guid: cc753156212208c40b59a15ab60825db, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 2568929487452505675, guid: cc753156212208c40b59a15ab60825db, type: 3}
+    - m_Name: Pink
+      m_Hash: 206692072
+      m_Sprite: {fileID: 2956800703441573376, guid: cc753156212208c40b59a15ab60825db, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 2956800703441573376, guid: cc753156212208c40b59a15ab60825db, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 2
+  - m_Name: SpiderLeg5
+    m_Hash: 162381765
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Blue
+      m_Hash: 1040475530
+      m_Sprite: {fileID: 6751515260413672661, guid: cc753156212208c40b59a15ab60825db, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 6751515260413672661, guid: cc753156212208c40b59a15ab60825db, type: 3}
+    - m_Name: Pink
+      m_Hash: 206692072
+      m_Sprite: {fileID: -8025812451805314203, guid: cc753156212208c40b59a15ab60825db, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -8025812451805314203, guid: cc753156212208c40b59a15ab60825db, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 2
+  - m_Name: SpiderLeg6
+    m_Hash: 279244415
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Blue
+      m_Hash: 1040475530
+      m_Sprite: {fileID: 1673021539877333308, guid: cc753156212208c40b59a15ab60825db, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1673021539877333308, guid: cc753156212208c40b59a15ab60825db, type: 3}
+    - m_Name: Pink
+      m_Hash: 206692072
+      m_Sprite: {fileID: -306064026290994166, guid: cc753156212208c40b59a15ab60825db, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -306064026290994166, guid: cc753156212208c40b59a15ab60825db, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 2
+  m_PrimaryLibraryGUID: 
+  m_ModificationHash: 638731575168862123
+  m_Version: 1

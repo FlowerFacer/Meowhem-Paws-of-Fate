@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: BroomBody
+    m_Hash: 121167917
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Warm
+      m_Hash: 276909953
+      m_Sprite: {fileID: -3230561436456309095, guid: 23fd61aaf7c31304f883e9d9db530dde, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -3230561436456309095, guid: 23fd61aaf7c31304f883e9d9db530dde, type: 3}
+    - m_Name: Cold
+      m_Hash: 687416632
+      m_Sprite: {fileID: -8789663794043508326, guid: 23fd61aaf7c31304f883e9d9db530dde, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -8789663794043508326, guid: 23fd61aaf7c31304f883e9d9db530dde, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 2
+  - m_Name: BroomEyebrows
+    m_Hash: 481423089
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Warm
+      m_Hash: 276909953
+      m_Sprite: {fileID: 4987347166727920326, guid: 23fd61aaf7c31304f883e9d9db530dde, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 4987347166727920326, guid: 23fd61aaf7c31304f883e9d9db530dde, type: 3}
+    - m_Name: Cold
+      m_Hash: 687416632
+      m_Sprite: {fileID: -4301192691049699291, guid: 23fd61aaf7c31304f883e9d9db530dde, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -4301192691049699291, guid: 23fd61aaf7c31304f883e9d9db530dde, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 2
+  - m_Name: BroomEyes
+    m_Hash: 998956809
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Warm
+      m_Hash: 276909953
+      m_Sprite: {fileID: 2724391488433366575, guid: 23fd61aaf7c31304f883e9d9db530dde, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 2724391488433366575, guid: 23fd61aaf7c31304f883e9d9db530dde, type: 3}
+    - m_Name: Cold
+      m_Hash: 687416632
+      m_Sprite: {fileID: 765505485215345895, guid: 23fd61aaf7c31304f883e9d9db530dde, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 765505485215345895, guid: 23fd61aaf7c31304f883e9d9db530dde, type: 3}
+    - m_Name: HostileWarm
+      m_Hash: 131848310
+      m_Sprite: {fileID: -8618184593223045077, guid: 23fd61aaf7c31304f883e9d9db530dde, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -8618184593223045077, guid: 23fd61aaf7c31304f883e9d9db530dde, type: 3}
+    - m_Name: HostileCold
+      m_Hash: 1067692751
+      m_Sprite: {fileID: -2633226359391487917, guid: 23fd61aaf7c31304f883e9d9db530dde, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -2633226359391487917, guid: 23fd61aaf7c31304f883e9d9db530dde, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 4
+  m_PrimaryLibraryGUID: 
+  m_ModificationHash: 638731571445876394
+  m_Version: 1
