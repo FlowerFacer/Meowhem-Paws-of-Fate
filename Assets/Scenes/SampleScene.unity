@@ -2020,7 +2020,7 @@ Transform:
   m_GameObject: {fileID: 647490197}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.12, y: 0.71, z: 0}
+  m_LocalPosition: {x: -2.12, y: 0.78, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7891,7 +7891,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1158025947}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.005360171, w: 0.99998564}
+  m_LocalRotation: {x: -0, y: -0, z: -0.005359784, w: 0.9999857}
   m_LocalPosition: {x: 1.49, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10010,11 +10010,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8554176233679559876, guid: d838a0838ea24e348b3d6ce81578d2ff, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.8558103
+      value: 0.8558106
       objectReference: {fileID: 0}
     - target: {fileID: -8554176233679559876, guid: d838a0838ea24e348b3d6ce81578d2ff, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.51728976
+      value: 0.51728946
       objectReference: {fileID: 0}
     - target: {fileID: -8089108032486474258, guid: d838a0838ea24e348b3d6ce81578d2ff, type: 3}
       propertyPath: m_Sprite
@@ -10543,7 +10543,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2.5
-  jumpForce: 2
+  jumpForce: 3
   groundLayer:
     serializedVersion: 2
     m_Bits: 8

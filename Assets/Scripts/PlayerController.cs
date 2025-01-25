@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        FlipSpecificSprite(false);
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();  // Ensure sprite is correctly assigned
@@ -54,18 +55,34 @@ public class PlayerController : MonoBehaviour
 
     void FlipSprite(float direction)
     {
-        float offsetX = 0.5f;  // Adjust this value to align correctly
-        Collider2D col = GetComponent<Collider2D>();  // Get the Collider2D component
+        Vector3 currentPosition = transform.position;
+        float flipScale = 0.23f;  // Adjust as needed
 
-        if (direction > 0)
+        if (direction > 0 && transform.localScale.x < 0)
         {
-            transform.localScale = new Vector3(0.23f, 0.23f, 1);
-            col.offset = new Vector2(offsetX, col.offset.y);
+            FlipSpecificSprite(false);
+            transform.localScale = new Vector3(flipScale, 0.23f, 1);
+            transform.position = new Vector3(currentPosition.x + 0.9f, currentPosition.y, currentPosition.z);
         }
-        else if (direction < 0)
+        else if (direction < 0 && transform.localScale.x > 0)
         {
-            transform.localScale = new Vector3(-0.23f, 0.23f, 1);
-            col.offset = new Vector2(-offsetX, col.offset.y);
+            transform.localScale = new Vector3(-flipScale, 0.23f, 1);
+            transform.position = new Vector3(currentPosition.x - 0.9f, currentPosition.y, currentPosition.z);
+        }
+    }
+
+    void FlipSpecificSprite(bool facingLeft)
+    {
+        SpriteRenderer specificSprite = transform.Find("Knight Bow").GetComponent<SpriteRenderer>();
+
+        if (facingLeft)
+        {
+            specificSprite.flipX = true;
+        }
+        else
+        {
+            specificSprite.flipX = false;
+
         }
     }
 
