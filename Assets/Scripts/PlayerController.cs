@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
 
     private Collider2D col;
 
+    bool wasGrounded = true; //tracks previous grounded state
+
     public LayerMask groundLayer;
     public Transform groundCheck;
     public Animator animator;
@@ -43,16 +45,24 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         HandleJumping();
+        HandleMovement();  // Only allow movement when grounded
     }
 
     void HandleMovement()
     {
         float moveInput = Input.GetAxisRaw("Horizontal");
+
+        if (isGrounded)
+        {
+            animator.SetBool("isWalking", moveInput != 0);
+        }
+        else
+        {
+            animator.SetBool("isWalking", false);
+        }
+
         rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
-
         FlipSprite(moveInput);
-
-        animator.SetBool("isWalking", moveInput != 0);
     }
 
     void FlipSprite(float direction)
@@ -94,29 +104,33 @@ public class PlayerController : MonoBehaviour
 
     void HandleJumping()
     {
-        // Check if player is grounded using OverlapCircle
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
 
-        // Handle jump input
+        if (isGrounded && !wasGrounded)  // Set Landed only when transitioning from air to ground
+        {
+            animator.SetTrigger("Landed");
+            animator.SetBool("isJumping", false);
+            wasGrounded = true;
+        }
+
+        if (!isGrounded && wasGrounded)
+        {
+            animator.SetBool("isJumping", true);
+            wasGrounded = false;
+        }
+
         if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)) && isGrounded)
         {
             PerformJump();
-        }
-
-        // Update animator based on grounded state
-        animator.SetBool("isJumping", !isGrounded);
-
-        // Optional: Add a trigger to transition back to idle when landing
-        if (isGrounded)
-        {
-            animator.SetTrigger("Landed");
         }
     }
 
     void PerformJump()
     {
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);  // Fix: Use rb.velocity
-        animator.SetTrigger("JumpTrigger");  // Ensure it matches Animator transition
+        animator.ResetTrigger("Landed");  // Reset Landed trigger to avoid interference
+        animator.SetTrigger("JumpTrigger");  // Trigger jump animation
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+        //StartCoroutine(EndJumpAnimation());
     }
 
     void HandleCrouching()
@@ -138,6 +152,18 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("isAttacking");
             StartCoroutine(ResetAttack());
         }
+    }
+
+    IEnumerator EndJumpAnimation()
+    {
+        yield return new WaitForSeconds(0.6f);  // Wait for animation duration
+        animator.SetTrigger("Landed");  // Transition back to idle
+    }
+
+    IEnumerator ResetJumpTrigger()
+    {
+        yield return new WaitForSeconds(0.6f);
+        animator.ResetTrigger("JumpTrigger");
     }
 
     IEnumerator ResetAttack()
