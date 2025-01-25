@@ -6745,17 +6745,17 @@ ScriptedImporter:
     - name: Base Tail
       guid: 3b9961b6b0bec574d83daccd8a633d84
       position: {x: 248.89111, y: 29.134766, z: 0}
-      rotation: {x: 0, y: 0, z: 0.9772043, w: 0.21230097}
-      length: 97.6372
+      rotation: {x: 0, y: 0, z: 0.9772044, w: 0.21230085}
+      length: 97.63716
       parentId: -1
       color:
         serializedVersion: 2
         rgba: 4294967040
     - name: Middle Tail
       guid: 25351e785b9e68b478ab44ba9a067759
-      position: {x: 97.637146, y: 0.00015116292, z: 0}
-      rotation: {x: 0, y: 0, z: -0.23216705, w: 0.972676}
-      length: 147.63184
+      position: {x: 97.637115, y: -0.000017188533, z: 0}
+      rotation: {x: 0, y: 0, z: -0.23216718, w: 0.972676}
+      length: 147.6318
       parentId: 0
       color:
         serializedVersion: 2
@@ -8941,16 +8941,16 @@ ScriptedImporter:
     - name: Base Tail
       guid: 3b9961b6b0bec574d83daccd8a633d84
       position: {x: 87.04384, y: 59.726887, z: 0}
-      rotation: {x: 0, y: 0, z: 0.51736295, w: 0.85576606}
-      length: 97.63719
+      rotation: {x: 0, y: 0, z: 0.5173631, w: 0.855766}
+      length: 97.63718
       parentId: 0
       color:
         serializedVersion: 2
         rgba: 4294967040
     - name: Middle Tail
       guid: 25351e785b9e68b478ab44ba9a067759
-      position: {x: 97.63718, y: 0.0000150765745, z: 0}
-      rotation: {x: 0, y: 0, z: -0.23216704, w: 0.972676}
+      position: {x: 97.63721, y: -0.00002922312, z: 0}
+      rotation: {x: 0, y: 0, z: -0.23216717, w: 0.9726759}
       length: 147.63182
       parentId: 10
       color:
@@ -9274,7 +9274,7 @@ ScriptedImporter:
       order: 0
     dimension: {x: 0, y: 0}
     characterGroups: []
-    pivot: {x: 0.118579574, y: 0.49519703}
+    pivot: {x: 0.35732064, y: 0.4391612}
     boneReadOnly: 0
   platformSettings:
   - name: DefaultTexturePlatform
@@ -9303,7 +9303,7 @@ ScriptedImporter:
     androidETC2FallbackOverride: 0
   mosaicLayers: 1
   characterMode: 1
-  documentPivot: {x: 0.118579574, y: 0.49519703}
+  documentPivot: {x: 0.35732064, y: 0.4391612}
   documentAlignment: 9
   importHiddenLayers: 0
   layerMappingOption: 2
