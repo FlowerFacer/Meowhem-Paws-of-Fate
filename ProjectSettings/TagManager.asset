@@ -12,7 +12,7 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
+  - Fences
   - 
   - 
   - 
@@ -41,6 +41,12 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Fences
+    uniqueID: 2274860781
+    locked: 0
+  - name: Bushes
+    uniqueID: 828312021
     locked: 0
   - name: Player
     uniqueID: 1810870715
