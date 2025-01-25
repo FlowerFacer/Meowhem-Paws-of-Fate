@@ -1,83 +1,136 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
-    public Rigidbody2D rb;
-    [Header("Movement")]
-    public float moveSpeed = 5f;
-    float horizontalMovement;
+    [SerializeField]
+    public float moveSpeed = 3.5f;
+    [SerializeField]
+    public float jumpForce = 10f;
 
-    [Header("Jumping")]
-    public float jumpPower = 10f;
-    public int maxJumps = 2;
-    int jumpsRemaining;
+    private Collider2D col;
 
-    [Header("Groundcheck")]
-    public Transform groundCheckPos;
-    public Vector2 groundCheckSize = new Vector2(0.5f, 0.05f);
     public LayerMask groundLayer;
+    public Transform groundCheck;
+    public Animator animator;
+    private SpriteRenderer spriteRenderer;
+    private Rigidbody2D rb;
+    private bool isGrounded;
 
-    [Header("Gravity")]
-    public float baseGravity = 2f;
-    public float maxFallSpeed = 18f;
-    public float fallSpeedMultiplier = 2f;
-
-    // Update is called once per frame
-    void FixedUpdate()
+    void Start()
     {
-        rb.linearVelocity = new Vector2(horizontalMovement * moveSpeed, rb.linearVelocity.y);
-        GroundCheck();
-        Gravity();
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();  // Ensure sprite is correctly assigned
+        col = GetComponent<Collider2D>();
     }
 
-    public void Gravity()
+    void FixedUpdate()
     {
-        if (rb.linearVelocity.y < 0)
+        rb.linearVelocity = new Vector2(3f, rb.linearVelocity.y);  // Constant right movement (for testing)
+
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            rb.gravityScale = baseGravity = fallSpeedMultiplier; // Fall increasingly faster
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, Mathf.Max(rb.linearVelocity.y, -maxFallSpeed));
+            Debug.Log("Jump Pressed");
+            animator.SetTrigger("isJumping");  // Force jump animation trigger for testing
+        }
+
+        HandleMovement();
+        HandleJumping();
+        HandleCrouching();
+        HandleAttacking();
+    }
+
+    void HandleMovement()
+    {
+        float moveInput = Input.GetAxisRaw("Horizontal");
+        rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
+
+        animator.SetBool("isWalking", moveInput != 0);
+
+        FlipSprite(moveInput);
+    }
+
+    void FlipSprite(float direction)
+    {
+        float offsetX = 0.5f;  // Adjust this value to align correctly
+        Collider2D col = GetComponent<Collider2D>();  // Get the Collider2D component
+
+        if (direction > 0)
+        {
+            transform.localScale = new Vector3(0.23f, 0.23f, 1);
+            col.offset = new Vector2(offsetX, col.offset.y);
+        }
+        else if (direction < 0)
+        {
+            transform.localScale = new Vector3(-0.23f, 0.23f, 1);
+            col.offset = new Vector2(-offsetX, col.offset.y);
+        }
+    }
+
+    void HandleJumping()
+    {
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)) && isGrounded)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            animator.SetBool("isJumping", true);
+        }
+        else if (isGrounded)
+        {
+            animator.SetBool("isJumping", false);
+        }
+    }
+
+    void HandleCrouching()
+    {
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            animator.SetBool("isCrouching", true);
         }
         else
         {
-            rb.gravityScale = baseGravity;
+            animator.SetBool("isCrouching", false);
         }
     }
 
-    public void Move(InputAction.CallbackContext context)
+    void HandleAttacking()
     {
-        horizontalMovement = context.ReadValue<Vector2>().x;
-    }
-
-    public void Jump(InputAction.CallbackContext context)
-    {
-        if (jumpsRemaining > 0)
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            if (context.performed)
-            {
-                // Hold down jump button = full height
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpPower);
-                jumpsRemaining--;
-            }
-            else if (context.canceled) // Light tap of jump button = half the height
-            {
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
-                jumpsRemaining--;
-            }
+            animator.SetTrigger("isAttacking");
+            StartCoroutine(ResetAttack());
         }
     }
 
-    private void GroundCheck()
+    IEnumerator ResetAttack()
     {
-        if (Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer))
+        yield return new WaitForSeconds(0.5f);  // Adjust based on animation length
+        animator.ResetTrigger("isAttacking");
+        animator.SetBool("isWalking", false);  // Return to idle or walking
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
-            jumpsRemaining = maxJumps;
+            isGrounded = true;
         }
     }
 
-    private void OnDrawGizmosSelected()
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        Gizmos.color = Color.white;
-        Gizmos.DrawWireCube(groundCheckPos.position, groundCheckSize);
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            isGrounded = false;
+        }
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(groundCheck.position, 0.2f);
     }
 }
