@@ -519,7 +519,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 161820439}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.06836796, w: 0.9976602}
+  m_LocalRotation: {x: -0, y: -0, z: 0.62257546, w: 0.7825599}
   m_LocalPosition: {x: 1.269, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1207,7 +1207,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 445550591}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.020855037, w: 0.99978256}
+  m_LocalRotation: {x: -0, y: -0, z: 0.5943826, w: 0.8041824}
   m_LocalPosition: {x: 1.25, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7978,7 +7978,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1158025947}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.005359784, w: 0.9999857}
+  m_LocalRotation: {x: -0, y: -0, z: -0.05847966, w: 0.99828863}
   m_LocalPosition: {x: 1.49, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8714,7 +8714,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1509102064}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.000008322298, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.1508376, w: 0.9885586}
   m_LocalPosition: {x: 1.363, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10541,7 +10541,7 @@ Animator:
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_AnimatePhysics: 1
+  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -10633,13 +10633,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2.5
-  jumpForce: 3
+  jumpForce: 10
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
   groundCheck: {fileID: 647490198}
   animator: {fileID: 1848656591}
-  flippedAnimator: {fileID: 0}
+  flippedAnimator: {fileID: 22100000, guid: b029462c205f62149996c6e4a11b0b9d, type: 2}
 --- !u!212 &1848656595
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11693,7 +11693,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2106813656}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.04795163, w: 0.9988497}
+  m_LocalRotation: {x: -0, y: -0, z: -0.21727936, w: 0.97610945}
   m_LocalPosition: {x: 1.286, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

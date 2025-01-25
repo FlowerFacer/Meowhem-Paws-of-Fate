@@ -24,7 +24,8 @@ public class PlayerController : MonoBehaviour
     {
         FlipSpecificSprite(false);
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+        // Ensure we cache the default animator at the start of the game
+        defaultAnimator = animator.runtimeAnimatorController;
 
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();  // Ensure sprite is correctly assigned
         col = GetComponent<Collider2D>();
@@ -34,16 +35,14 @@ public class PlayerController : MonoBehaviour
     {
         rb.linearVelocity = new Vector2(3f, rb.linearVelocity.y);  // Constant right movement (for testing)
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("Jump Pressed");
-            animator.SetTrigger("isJumping");  // Force jump animation trigger for testing
-        }
-
         HandleMovement();
-        HandleJumping();
         HandleCrouching();
         HandleAttacking();
+    }
+
+    void Update()
+    {
+        HandleJumping();
     }
 
     void HandleMovement()
@@ -51,9 +50,9 @@ public class PlayerController : MonoBehaviour
         float moveInput = Input.GetAxisRaw("Horizontal");
         rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
 
-        animator.SetBool("isWalking", moveInput != 0);
-
         FlipSprite(moveInput);
+
+        animator.SetBool("isWalking", moveInput != 0);
     }
 
     void FlipSprite(float direction)
@@ -61,14 +60,14 @@ public class PlayerController : MonoBehaviour
         Vector3 currentPosition = transform.position;
         float flipScale = 0.23f;  // Adjust as needed
 
-        if (direction > 0 && transform.localScale.x < 0)
+        if (direction > 0 && transform.localScale.x < 0 && animator.runtimeAnimatorController != defaultAnimator)
         {
             // Use the default animator (facing right)
             animator.runtimeAnimatorController = defaultAnimator;
             transform.localScale = new Vector3(flipScale, 0.23f, 1);
             transform.position = new Vector3(currentPosition.x + 0.9f, currentPosition.y, currentPosition.z);
         }
-        else if (direction < 0 && transform.localScale.x > 0)
+        else if (direction < 0 && transform.localScale.x > 0 && animator.runtimeAnimatorController != flippedAnimator)
         {
             // Use the flipped animator (facing left)
             animator.runtimeAnimatorController = flippedAnimator;
@@ -92,19 +91,32 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
     void HandleJumping()
     {
+        // Check if player is grounded using OverlapCircle
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
 
+        // Handle jump input
         if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)) && isGrounded)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-            animator.SetBool("isJumping", true);
+            PerformJump();
         }
-        else if (isGrounded)
+
+        // Update animator based on grounded state
+        animator.SetBool("isJumping", !isGrounded);
+
+        // Optional: Add a trigger to transition back to idle when landing
+        if (isGrounded)
         {
-            animator.SetBool("isJumping", false);
+            animator.SetTrigger("Landed");
         }
+    }
+
+    void PerformJump()
+    {
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);  // Fix: Use rb.velocity
+        animator.SetTrigger("JumpTrigger");  // Ensure it matches Animator transition
     }
 
     void HandleCrouching()
