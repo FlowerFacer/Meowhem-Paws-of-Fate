@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayer;
     public Transform groundCheck;
     public Animator animator;
+    public AnimatorOverrideController flippedAnimator;  // Assign in Inspector
+    private RuntimeAnimatorController defaultAnimator;
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
     private bool isGrounded;
@@ -23,6 +25,7 @@ public class PlayerController : MonoBehaviour
         FlipSpecificSprite(false);
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();  // Ensure sprite is correctly assigned
         col = GetComponent<Collider2D>();
     }
@@ -60,12 +63,15 @@ public class PlayerController : MonoBehaviour
 
         if (direction > 0 && transform.localScale.x < 0)
         {
-            FlipSpecificSprite(false);
+            // Use the default animator (facing right)
+            animator.runtimeAnimatorController = defaultAnimator;
             transform.localScale = new Vector3(flipScale, 0.23f, 1);
             transform.position = new Vector3(currentPosition.x + 0.9f, currentPosition.y, currentPosition.z);
         }
         else if (direction < 0 && transform.localScale.x > 0)
         {
+            // Use the flipped animator (facing left)
+            animator.runtimeAnimatorController = flippedAnimator;
             transform.localScale = new Vector3(-flipScale, 0.23f, 1);
             transform.position = new Vector3(currentPosition.x - 0.9f, currentPosition.y, currentPosition.z);
         }

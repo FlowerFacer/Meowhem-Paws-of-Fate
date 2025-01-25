@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: FlippedAnimatorController
+  m_Controller: {fileID: 9100000, guid: 2b74508e3dfbc70438ed183155da9a2e, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: e1822fecddca925429bf44dc818f3223, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: c3176ff4d56972447ab77209dd5e8a48, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: a57ce7648fbcaa34288023bfe6a15b0c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 3f16da496f46d904cb8eaf63167231b3, type: 2}
