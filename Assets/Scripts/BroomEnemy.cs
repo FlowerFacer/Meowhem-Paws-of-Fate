@@ -6,7 +6,7 @@ public class BroomEnemy : MonoBehaviour
     public float patrolDistance = 2.5f;
     public float detectionRange = 4f;
     public int damage = 2;
-    public Transform player;
+    public Transform Player1;
     public Animator animator;
 
     private Vector3 initialPosition;
@@ -39,13 +39,21 @@ public class BroomEnemy : MonoBehaviour
         if (Mathf.Abs(transform.position.x - patrolLimit) < 0.1f)
         {
             movingRight = !movingRight;
-            Flip();
+
+            if (!movingRight)
+            {
+                Flip();  // Flip only when moving left
+            }
+            else
+            {
+                ResetFlip();  // Reset flip when moving right
+            }
         }
     }
 
     void DetectPlayer()
     {
-        if (Vector2.Distance(transform.position, player.position) < detectionRange)
+        if (Vector2.Distance(transform.position, Player1.position) < detectionRange)
         {
             playerDetected = true;
             animator.SetTrigger("SweepAttack");
@@ -54,19 +62,21 @@ public class BroomEnemy : MonoBehaviour
 
     void AttackPlayer()
     {
-        // Charge toward the player
-        transform.position = Vector3.MoveTowards(transform.position, player.position, moveSpeed * 1.5f * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, Player1.position, moveSpeed * 1.5f * Time.deltaTime);
 
-        if (Vector2.Distance(transform.position, player.position) < 1.5f)
+        if (Vector2.Distance(transform.position, Player1.position) < 1.5f)
         {
-            player.GetComponent<PlayerHealth>().TakeDamage(damage);
+            Player1.GetComponent<PlayerHealth>().TakeDamage(damage);
         }
     }
 
     void Flip()
     {
-        Vector3 localScale = transform.localScale;
-        localScale.x *= -1;
-        transform.localScale = localScale;
+        transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+    }
+
+    void ResetFlip()
+    {
+        transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
     }
 }
