@@ -6,16 +6,19 @@ public class SpiderEnemy : MonoBehaviour
     public float patrolDistance = 3f;
     public float detectionRange = 5f;
     public int damage = 1;
-    public Transform Player1;
+    public Transform player;
     public Animator animator;
+    public Transform groundCheck;  // Assign empty GroundCheck object in Inspector
+    public LayerMask groundLayer;
 
     private Vector3 initialPosition;
-    private bool movingRight = true;
+    private bool movingRight = false;
     private bool playerDetected = false;
 
     void Start()
     {
         initialPosition = transform.position;
+        ResetFlip();  // Start facing left
     }
 
     void Update()
@@ -26,8 +29,11 @@ public class SpiderEnemy : MonoBehaviour
         }
         else
         {
-            Patrol();
-            DetectPlayer();
+            if (IsGrounded())
+            {
+                Patrol();
+                DetectPlayer();
+            }
         }
     }
 
@@ -39,21 +45,13 @@ public class SpiderEnemy : MonoBehaviour
         if (Mathf.Abs(transform.position.x - patrolLimit) < 0.1f)
         {
             movingRight = !movingRight;
-
-            if (!movingRight)
-            {
-                Flip();  // Flip only when moving left
-            }
-            else
-            {
-                ResetFlip();  // Reset flip when moving right
-            }
+            UpdateFlip();
         }
     }
 
     void DetectPlayer()
     {
-        if (Vector2.Distance(transform.position, Player1.position) < detectionRange)
+        if (Vector2.Distance(transform.position, player.position) < detectionRange)
         {
             playerDetected = true;
             animator.SetTrigger("Hostile");
@@ -62,21 +60,43 @@ public class SpiderEnemy : MonoBehaviour
 
     void AttackPlayer()
     {
-        transform.position = Vector3.MoveTowards(transform.position, Player1.position, moveSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
 
-        if (Vector2.Distance(transform.position, Player1.position) < 1.5f)
+        if (Vector2.Distance(transform.position, player.position) < 1.5f)
         {
-            Player1.GetComponent<PlayerHealth>().TakeDamage(damage);
+            player.GetComponent<PlayerHealth>().TakeDamage(damage);
         }
     }
 
-    void Flip()
+    bool IsGrounded()
+    {
+        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+    }
+
+    void UpdateFlip()
+    {
+        if (movingRight)
+        {
+            FlipRight();
+        }
+        else
+        {
+            FlipLeft();
+        }
+    }
+
+    void FlipRight()
+    {
+        transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+    }
+
+    void FlipLeft()
     {
         transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
     }
 
     void ResetFlip()
     {
-        transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
     }
 }

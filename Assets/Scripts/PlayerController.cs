@@ -39,7 +39,6 @@ public class PlayerController : MonoBehaviour
 
         HandleMovement();
         HandleCrouching();
-        HandleAttacking();
     }
 
     void Update()
@@ -145,15 +144,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void HandleAttacking()
-    {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            animator.SetTrigger("isAttacking");
-            StartCoroutine(ResetAttack());
-        }
-    }
-
     IEnumerator EndJumpAnimation()
     {
         yield return new WaitForSeconds(0.6f);  // Wait for animation duration
@@ -164,13 +154,6 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(0.6f);
         animator.ResetTrigger("JumpTrigger");
-    }
-
-    IEnumerator ResetAttack()
-    {
-        yield return new WaitForSeconds(0.5f);  // Adjust based on animation length
-        animator.ResetTrigger("isAttacking");
-        animator.SetBool("isWalking", false);  // Return to idle or walking
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

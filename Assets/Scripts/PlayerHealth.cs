@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     public int health = 10;
+    public Animator animator;
 
     public void TakeDamage(int amount)
     {
@@ -18,6 +19,7 @@ public class PlayerHealth : MonoBehaviour
     void Die()
     {
         Debug.Log("Player died!");
+        animator.SetTrigger("isDead");
         // Handle player death (e.g., restart level)
     }
 }
