@@ -46,7 +46,6 @@ public class PlayerController : MonoBehaviour
 
     void HandleMovement()
     {
-        if (isAttacking) return; // Disable movement while attacking
 
         float moveInput = Input.GetAxisRaw("Horizontal");
 
@@ -77,7 +76,7 @@ public class PlayerController : MonoBehaviour
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
 
-        if (isGrounded && Input.GetKeyDown(KeyCode.Space))
+        if (isGrounded && Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             animator.SetTrigger("JumpTrigger");
@@ -100,9 +99,15 @@ public class PlayerController : MonoBehaviour
 
     void HandleAttacking()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && !isAttacking)
+        if (Input.GetMouseButtonDown(0) && !isAttacking)
         {
             StartCoroutine(PerformAttack());
+        }
+
+        // Placeholder for right mouse click special attack
+        if (Input.GetMouseButtonDown(1))
+        {
+            Debug.Log("Special attack coming soon!");
         }
     }
 
