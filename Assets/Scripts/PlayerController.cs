@@ -4,30 +4,27 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField]
-    public float moveSpeed = 3.5f;
-    [SerializeField]
-    public float jumpForce = 10f;
+    [SerializeField] public float moveSpeed = 3.5f;
+    [SerializeField] public float jumpForce = 10f;
+    [SerializeField] public float attackCooldown = 0.6f;
 
     private Collider2D col;
-
-    bool wasGrounded = true; //tracks previous grounded state
 
     public LayerMask groundLayer;
     public Transform groundCheck;
     public Animator animator;
-    public AnimatorOverrideController flippedAnimator;  // Assign in Inspector
+    public AnimatorOverrideController flippedAnimator; // Assign in Inspector
     private RuntimeAnimatorController defaultAnimator;
     private SpriteRenderer spriteRenderer;
+
     private Rigidbody2D rb;
     private bool isGrounded;
+    private bool isAttacking = false;
 
     void Start()
     {
-        FlipSpecificSprite(false);
         rb = GetComponent<Rigidbody2D>();
-        // Ensure we cache the default animator at the start of the game
-        defaultAnimator = animator.runtimeAnimatorController;
+        defaultAnimator = animator.runtimeAnimatorController; // Cache the default animator
 
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();  // Ensure sprite is correctly assigned
         col = GetComponent<Collider2D>();
@@ -35,21 +32,26 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.linearVelocity = new Vector2(3f, rb.linearVelocity.y);  // Constant right movement (for testing)
-
         HandleMovement();
-        HandleCrouching();
     }
 
     void Update()
     {
+        HandleMovement();
+        HandleCrouching();
+        HandleMovement();
         HandleJumping();
-        HandleMovement();  // Only allow movement when grounded
+        HandleAttacking();
     }
 
     void HandleMovement()
     {
+        if (isAttacking) return; // Disable movement while attacking
+
         float moveInput = Input.GetAxisRaw("Horizontal");
+
+        // Apply movement
+        rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
 
         if (isGrounded)
         {
@@ -60,76 +62,28 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isWalking", false);
         }
 
-        rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
-        FlipSprite(moveInput);
-    }
-
-    void FlipSprite(float direction)
-    {
-        Vector3 currentPosition = transform.position;
-        float flipScale = 0.23f;  // Adjust as needed
-
-        if (direction > 0 && transform.localScale.x < 0 && animator.runtimeAnimatorController != defaultAnimator)
+        // Flip player sprite
+        if (moveInput > 0)
         {
-            // Use the default animator (facing right)
-            animator.runtimeAnimatorController = defaultAnimator;
-            transform.localScale = new Vector3(flipScale, 0.23f, 1);
-            transform.position = new Vector3(currentPosition.x + 0.9f, currentPosition.y, currentPosition.z);
+            FlipSprite(1); // Face right
         }
-        else if (direction < 0 && transform.localScale.x > 0 && animator.runtimeAnimatorController != flippedAnimator)
+        else if (moveInput < 0)
         {
-            // Use the flipped animator (facing left)
-            animator.runtimeAnimatorController = flippedAnimator;
-            transform.localScale = new Vector3(-flipScale, 0.23f, 1);
-            transform.position = new Vector3(currentPosition.x - 0.9f, currentPosition.y, currentPosition.z);
+            FlipSprite(-1); // Face left
         }
     }
-
-    void FlipSpecificSprite(bool facingLeft)
-    {
-        SpriteRenderer specificSprite = transform.Find("Knight Bow").GetComponent<SpriteRenderer>();
-
-        if (facingLeft)
-        {
-            specificSprite.flipX = true;
-        }
-        else
-        {
-            specificSprite.flipX = false;
-
-        }
-    }
-
 
     void HandleJumping()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
 
-        if (isGrounded && !wasGrounded)  // Set Landed only when transitioning from air to ground
+        if (isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
-            animator.SetTrigger("Landed");
-            animator.SetBool("isJumping", false);
-            wasGrounded = true;
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            animator.SetTrigger("JumpTrigger");
         }
 
-        if (!isGrounded && wasGrounded)
-        {
-            animator.SetBool("isJumping", true);
-            wasGrounded = false;
-        }
-
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)) && isGrounded)
-        {
-            PerformJump();
-        }
-    }
-
-    void PerformJump()
-    {
-        animator.ResetTrigger("Landed");  // Reset Landed trigger to avoid interference
-        animator.SetTrigger("JumpTrigger");  // Trigger jump animation
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-        //StartCoroutine(EndJumpAnimation());
+        animator.SetBool("isJumping", !isGrounded);
     }
 
     void HandleCrouching()
@@ -144,37 +98,60 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    IEnumerator EndJumpAnimation()
+    void HandleAttacking()
     {
-        yield return new WaitForSeconds(0.6f);  // Wait for animation duration
-        animator.SetTrigger("Landed");  // Transition back to idle
-    }
-
-    IEnumerator ResetJumpTrigger()
-    {
-        yield return new WaitForSeconds(0.6f);
-        animator.ResetTrigger("JumpTrigger");
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !isAttacking)
         {
-            isGrounded = true;
+            StartCoroutine(PerformAttack());
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    IEnumerator PerformAttack()
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        isAttacking = true;
+
+        // Trigger attack animation
+        animator.SetTrigger("isAttack");
+
+        // Wait for attack animation to finish
+        yield return new WaitForSeconds(attackCooldown);
+
+        // Reset attacking state
+        isAttacking = false;
+    }
+
+    void FlipSprite(float direction)
+    {
+        Vector3 currentPosition = transform.position;
+        float flipScale = 0.23f; // Adjust as needed
+
+        if (direction > 0 && transform.localScale.x < 0)
         {
-            isGrounded = false;
+            // Flip to face right
+            transform.localScale = new Vector3(flipScale, transform.localScale.y, 1);
+            animator.runtimeAnimatorController = defaultAnimator;
+            AdjustPosition(0.9f); // Smooth position adjustment for right-facing sprite
+        }
+        else if (direction < 0 && transform.localScale.x > 0)
+        {
+            // Flip to face left
+            transform.localScale = new Vector3(-flipScale, transform.localScale.y, 1);
+            animator.runtimeAnimatorController = flippedAnimator;
+            AdjustPosition(-0.9f); // Smooth position adjustment for left-facing sprite
         }
     }
 
-    void OnDrawGizmos()
+    void AdjustPosition(float offset)
+    {
+        // Prevents teleportation by slightly adjusting the position during flipping
+        transform.position = new Vector3(transform.position.x + offset, transform.position.y, transform.position.z);
+    }
+
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(groundCheck.position, 0.2f);
     }
 }
+
+
