@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public float attackCooldown = 0.6f;
 
     private Collider2D col;
+    private BoxCollider2D playerCollider;
+    private Vector2 originalSize;
+    private Vector2 originalOffset;
 
     public LayerMask groundLayer;
     public Transform groundCheck;
@@ -28,6 +31,10 @@ public class PlayerController : MonoBehaviour
 
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();  // Ensure sprite is correctly assigned
         col = GetComponent<Collider2D>();
+
+        playerCollider = GetComponent<BoxCollider2D>();  // Get the player's collider
+        originalSize = playerCollider.size;  // Store original collider size
+        originalOffset = playerCollider.offset;  // Store original collider offset
     }
 
     void FixedUpdate()
@@ -90,10 +97,19 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftControl))
         {
             animator.SetBool("isCrouching", true);
+
+            // Reduce collider size and adjust offset
+            playerCollider.size = new Vector2(originalSize.x, originalSize.y / 2);
+            playerCollider.offset = new Vector2(originalOffset.x, originalOffset.y / 2);
+
         }
         else
         {
             animator.SetBool("isCrouching", false);
+
+            // Restore original collider size and offset
+            playerCollider.size = originalSize;
+            playerCollider.offset = originalOffset;
         }
     }
 

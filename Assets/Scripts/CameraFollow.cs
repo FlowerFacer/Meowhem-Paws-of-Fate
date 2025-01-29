@@ -5,7 +5,7 @@ public class CameraFollow : MonoBehaviour
 {
     public Transform target;
     public float smoothSpeed = 5f;
-    public Vector3 offset = new Vector3(1, 3, 0);
+    public Vector3 offset = new Vector3(2, 3, 0);
 
     public bool followX = true;
     public bool followY = true;
