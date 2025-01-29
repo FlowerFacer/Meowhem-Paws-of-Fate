@@ -2,11 +2,27 @@ using UnityEngine;
 
 public class FishpoleCollectible : MonoBehaviour
 {
-    public int fishpolePoints = 1; // Amount added per yarn ball
-
+    public int fishpolePoints = 1; // Amount added per fishpole
     public AudioClip fishpoleSound;
 
-    void OnTriggerEnter2D(Collider2D other)
+    // Hover effect variables
+    private float hoverSpeed = 2f;
+    private float hoverAmount = 0.1f;
+    private Vector3 startPosition;
+
+    private void Start()
+    {
+        startPosition = transform.position;
+    }
+
+    private void Update()
+    {
+        // Apply hover movement
+        float newY = startPosition.y + Mathf.Sin(Time.time * hoverSpeed) * hoverAmount;
+        transform.position = new Vector3(startPosition.x, newY, startPosition.z);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
@@ -24,7 +40,7 @@ public class FishpoleCollectible : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("Yarn Sound is missing!");
+                Debug.LogWarning("Fishpole Sound is missing!");
             }
 
             Debug.Log("Fishpole collected! Total fishpole count increased.");
