@@ -22,7 +22,8 @@ public class BroomEnemy : MonoBehaviour
 
     void Update()
     {
-        transform.position = new Vector3(transform.position.x, Mathf.Max(transform.position.y, groundCheck.position.y), transform.position.z);
+        // Keep the broom at a fixed Y position
+        transform.position = new Vector3(transform.position.x, initialPosition.y, transform.position.z);
     }
 
     void FixedUpdate()
@@ -64,12 +65,20 @@ public class BroomEnemy : MonoBehaviour
 
     void AttackPlayer()
     {
-        transform.position = Vector3.MoveTowards(transform.position, player.position, moveSpeed * 1.5f * Time.deltaTime);
+        // Move only in the X-axis (prevents jittering)
+        Vector3 targetPosition = new Vector3(player.position.x, transform.position.y, transform.position.z);
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * 1.5f * Time.deltaTime);
 
         if (Vector2.Distance(transform.position, player.position) < 1.5f)
         {
             player.GetComponent<PlayerHealth>().TakeDamage(damage);
         }
+
+        // Flip the broom based on direction
+        if (player.position.x > transform.position.x)
+            FlipRight();
+        else
+            FlipLeft();
     }
 
     bool IsGrounded()
