@@ -12,9 +12,9 @@ public class AudioManager : MonoBehaviour
     [System.Serializable]
     public class SoundSettings
     {
-        public string name; // Name for clarity (e.g., "Bird Chirp 1")
-        public AudioClip clip; // The sound clip
-        [Range(0f, 1f)] public float volume = 1f; // Volume for this sound
+        public string name; 
+        public AudioClip clip; 
+        [Range(0f, 1f)] public float volume = 1f; 
     }
 
     public List<SoundSettings> sounds = new List<SoundSettings>(); // List of sound settings

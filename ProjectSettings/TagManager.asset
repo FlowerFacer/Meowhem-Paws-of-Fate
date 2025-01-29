@@ -54,5 +54,8 @@ TagManager:
   - name: Enemies
     uniqueID: 735989763
     locked: 0
+  - name: Collectables
+    uniqueID: 4208003639
+    locked: 0
   m_RenderingLayers:
   - Default
