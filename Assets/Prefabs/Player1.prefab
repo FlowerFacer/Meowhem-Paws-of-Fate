@@ -833,6 +833,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player1
       objectReference: {fileID: 0}
+    - target: {fileID: -8653719598885068355, guid: d838a0838ea24e348b3d6ce81578d2ff, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: -8554176233679559876, guid: d838a0838ea24e348b3d6ce81578d2ff, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.6951654
@@ -883,15 +887,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: d838a0838ea24e348b3d6ce81578d2ff, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: d838a0838ea24e348b3d6ce81578d2ff, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: d838a0838ea24e348b3d6ce81578d2ff, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: d838a0838ea24e348b3d6ce81578d2ff, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1137,6 +1141,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: d838a0838ea24e348b3d6ce81578d2ff, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6587491938826552074}
+    - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: d838a0838ea24e348b3d6ce81578d2ff, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3260969963491743579}
     - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: d838a0838ea24e348b3d6ce81578d2ff, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5730654187276582891}
@@ -1407,6 +1414,20 @@ MonoBehaviour:
   groundCheck: {fileID: 9042200735390577158}
   animator: {fileID: 5730654187276582891}
   flippedAnimator: {fileID: 22100000, guid: b029462c205f62149996c6e4a11b0b9d, type: 2}
+--- !u!114 &3260969963491743579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5926752908543871900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a13768e37e1c134f957a48b3fa2e3b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yarnCount: 0
+  fishpoleCount: 0
 --- !u!95 &5730654187276582891
 Animator:
   serializedVersion: 7
@@ -1486,7 +1507,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
