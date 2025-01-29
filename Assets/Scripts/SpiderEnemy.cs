@@ -12,13 +12,18 @@ public class SpiderEnemy : MonoBehaviour
     public LayerMask groundLayer;
 
     private Vector3 initialPosition;
-    private bool movingRight = false;
+    private bool movingRight = false; // Now starts moving LEFT first
     private bool playerDetected = false;
 
     void Start()
     {
         initialPosition = transform.position;
-        ResetFlip();  // Start facing left
+
+        // Ensure the spider starts facing left (adjust if default sprite faces right)
+        if (transform.localScale.x > 0)
+        {
+            FlipLeft();
+        }
     }
 
     void Update()
@@ -45,7 +50,7 @@ public class SpiderEnemy : MonoBehaviour
         if (Mathf.Abs(transform.position.x - patrolLimit) < 0.1f)
         {
             movingRight = !movingRight;
-            UpdateFlip();
+            FlipDirection();
         }
     }
 
@@ -73,30 +78,25 @@ public class SpiderEnemy : MonoBehaviour
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
 
-    void UpdateFlip()
+    void FlipDirection()
     {
         if (movingRight)
         {
-            FlipRight();
+            FlipRight(); // Flips only when moving right
         }
         else
         {
-            FlipLeft();
+            FlipLeft(); // Stays flipped when moving left
         }
     }
 
     void FlipRight()
     {
-        transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
     }
 
     void FlipLeft()
     {
-        transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-    }
-
-    void ResetFlip()
-    {
-        transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
     }
 }
