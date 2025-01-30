@@ -32,8 +32,13 @@ MonoBehaviour:
       m_Sprite: {fileID: -6536144569766310067, guid: d838a0838ea24e348b3d6ce81578d2ff, type: 3}
       m_FromMain: 0
       m_SpriteOverride: {fileID: -6536144569766310067, guid: d838a0838ea24e348b3d6ce81578d2ff, type: 3}
+    - m_Name: Hurt
+      m_Hash: 666872612
+      m_Sprite: {fileID: 6005049331730648417, guid: 38d7d10a123d7944a89392e93fe71041, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 6005049331730648417, guid: 38d7d10a123d7944a89392e93fe71041, type: 3}
     m_FromMain: 0
-    m_EntryOverrideCount: 3
+    m_EntryOverrideCount: 4
   - m_Name: Right Arm
     m_Hash: 747450821
     m_CategoryList: []
@@ -152,5 +157,5 @@ MonoBehaviour:
     m_FromMain: 0
     m_EntryOverrideCount: 2
   m_PrimaryLibraryGUID: 
-  m_ModificationHash: 638729926001329492
+  m_ModificationHash: 638737996889649124
   m_Version: 1
