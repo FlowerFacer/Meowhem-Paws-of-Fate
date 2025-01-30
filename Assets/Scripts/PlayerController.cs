@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
 
@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public float moveSpeed = 3.5f;
     [SerializeField] public float jumpForce = 10f;
     [SerializeField] public float attackCooldown = 0.6f;
+    [SerializeField] public float climbJumpForceX = 2f; // Small jump to the right
+    [SerializeField] public float climbJumpForceY = 2f; // Slight upward force
 
     private Collider2D col;
     private BoxCollider2D playerCollider;
@@ -23,6 +25,10 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private bool isGrounded;
     private bool isAttacking = false;
+    private bool isClimbing = false;
+    private bool nearLadder = false;
+    private Vector2 storedPosition; // Stores final climbing position
+
 
     void Start()
     {
@@ -49,11 +55,11 @@ public class PlayerController : MonoBehaviour
         HandleMovement();
         HandleJumping();
         HandleAttacking();
+        HandleClimbing();
     }
 
     void HandleMovement()
     {
-
         float moveInput = Input.GetAxisRaw("Horizontal");
 
         // Apply movement
@@ -113,6 +119,56 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void HandleClimbing()
+    {
+        if (nearLadder && Input.GetKeyDown(KeyCode.E))
+        {
+            StartCoroutine(PerformClimb());
+        }
+    }
+
+    IEnumerator PerformClimb()
+    {
+        isClimbing = true;
+        rb.linearVelocity = Vector2.zero; // Stop movement
+        rb.bodyType = RigidbodyType2D.Kinematic; // Disable physics while climbing
+        animator.SetTrigger("isClimbing"); // Play climbing animation
+
+        yield return new WaitForSeconds(2.1f); // FULL 2.1 seconds (animation plays entirely)
+
+        rb.bodyType = RigidbodyType2D.Dynamic; // Re-enable physics
+        isClimbing = false;
+
+        // 🚀 Apply jump force to make movement available again
+        Vector2 jumpDirection = new Vector2(climbJumpForceX * transform.localScale.x, climbJumpForceY);
+        rb.linearVelocity = Vector2.zero;
+        rb.AddForce(jumpDirection, ForceMode2D.Impulse);
+
+        Debug.Log("Jump force applied: " + jumpDirection);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Ladder"))
+        {
+            nearLadder = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Ladder"))
+        {
+            nearLadder = false;
+            if (isClimbing)
+            {
+                isClimbing = false;
+                rb.gravityScale = 2.5f;
+                animator.SetBool("isClimbing", false);
+            }
+        }
+    }
+
     void HandleAttacking()
     {
         if (Input.GetMouseButtonDown(0) && !isAttacking)
@@ -143,6 +199,8 @@ public class PlayerController : MonoBehaviour
 
     void FlipSprite(float direction)
     {
+        if (isClimbing) return; // Don't flip while climbing
+
         Vector3 currentPosition = transform.position;
         float flipScale = 0.23f; // Adjust as needed
 
