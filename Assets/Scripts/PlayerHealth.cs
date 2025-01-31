@@ -9,6 +9,7 @@ public class PlayerHealth : MonoBehaviour
     {
         health -= amount;
         Debug.Log("Player took damage! Health: " + health);
+        animator.SetTrigger("HurtTrigger");
 
         if (health <= 0)
         {
