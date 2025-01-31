@@ -2961,7 +2961,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7047092671350379412, guid: 7a367be7b8a421241ad3860357d4a967, type: 3}
       propertyPath: m_TagString
-      value: Ladder
+      value: LeftLadder
       objectReference: {fileID: 0}
     - target: {fileID: 8780457726708872766, guid: 7a367be7b8a421241ad3860357d4a967, type: 3}
       propertyPath: m_LocalScale.x

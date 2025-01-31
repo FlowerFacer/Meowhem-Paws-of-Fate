@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using System.Security.Cryptography;
 
 public class PlayerController : MonoBehaviour
 {
@@ -26,7 +27,6 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     private bool isAttacking = false;
     private bool isClimbing = false;
-    private bool nearLadder = false;
 
 
     void Start()
@@ -155,11 +155,30 @@ public class PlayerController : MonoBehaviour
             rb.linearVelocity = Vector2.zero;
             animator.SetBool("isClimbing", true);
         }
+        else if (other.CompareTag("LeftLadder"))
+        {
+            if (transform.localScale.x > 0) // Facing left? Prevent climbing!
+            {
+                Debug.Log("Can't climb while facing right!");
+                return;
+            }
+
+            isClimbing = true;
+            rb.gravityScale = 0; // Disable gravity for smooth climbing
+            rb.linearVelocity = Vector2.zero;
+            animator.SetBool("isClimbing", true);
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Ladder"))
+        {
+            isClimbing = false;
+            rb.gravityScale = 2.5f; // Restore gravity
+            animator.SetBool("isClimbing", false);
+        }
+        else if (other.CompareTag("LeftLadder"))
         {
             isClimbing = false;
             rb.gravityScale = 2.5f; // Restore gravity
@@ -197,8 +216,6 @@ public class PlayerController : MonoBehaviour
 
     void FlipSprite(float direction)
     {
-        if (isClimbing) return; // Don't flip while climbing
-
         Vector3 currentPosition = transform.position;
         float flipScale = 0.23f; // Adjust as needed
 
