@@ -54,7 +54,11 @@ public class PlayerController : MonoBehaviour
         HandleMovement();
         HandleJumping();
         HandleAttacking();
-        HandleClimbing();
+
+        if (isClimbing)
+        {
+            HandleClimbing(); // Allow player control while climbing
+        }
     }
 
     void HandleMovement()
@@ -122,58 +126,44 @@ public class PlayerController : MonoBehaviour
 
     void HandleClimbing()
     {
-        if (nearLadder && Input.GetKeyDown(KeyCode.E))
+        float climbInput = Input.GetAxisRaw("Vertical"); // W = 1, S = -1
+
+        if (climbInput != 0)
         {
-            StartCoroutine(PerformClimb());
+            rb.linearVelocity = new Vector2(0, climbInput * 3f); // Move up/down
+            animator.SetBool("isClimbing", true);
+        }
+        else
+        {
+            rb.linearVelocity = new Vector2(0, 0); // Stop moving when no input
+            animator.SetBool("isClimbing", false);
         }
     }
 
-    IEnumerator PerformClimb()
+    void OnTriggerEnter2D(Collider2D other)
     {
-        isClimbing = true;
-        rb.linearVelocity = Vector2.zero; // Stop any movement
-        rb.bodyType = RigidbodyType2D.Kinematic; // Disable physics so animation isn't interrupted
-        animator.SetTrigger("isClimbing"); // Play climbing animation
-
-        yield return new WaitForSeconds(4f); // Wait for animation to complete
-
-        // ✅ Store final position
-        Vector3 finalPosition = transform.position;
-
-        // ✅ Slightly adjust position after climbing
-        finalPosition += new Vector3(0.5f * transform.localScale.x, 0.2f, 0); // Move right & up slightly
-
-        transform.position = finalPosition; // Set adjusted position
-
-        // ✅ Restore physics
-        rb.bodyType = RigidbodyType2D.Dynamic; // Re-enable physics
-
-        // ✅ Reset animation state
-        animator.ResetTrigger("isClimbing");
-        animator.SetTrigger("Idle");
-
-        isClimbing = false;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Ladder"))
+        if (other.CompareTag("Ladder"))
         {
-            nearLadder = true;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Ladder"))
-        {
-            nearLadder = false;
-            if (isClimbing)
+            if (transform.localScale.x < 0) // Facing left? Prevent climbing!
             {
-                isClimbing = false;
-                rb.gravityScale = 2.5f;
-                animator.SetBool("isClimbing", false);
+                Debug.Log("Can't climb while facing left!");
+                return;
             }
+
+            isClimbing = true;
+            rb.gravityScale = 0; // Disable gravity for smooth climbing
+            rb.linearVelocity = Vector2.zero;
+            animator.SetBool("isClimbing", true);
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Ladder"))
+        {
+            isClimbing = false;
+            rb.gravityScale = 2.5f; // Restore gravity
+            animator.SetBool("isClimbing", false);
         }
     }
 
