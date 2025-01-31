@@ -111,8 +111,7 @@ public class PlayerController : MonoBehaviour
 
             // Reduce collider size and adjust offset
             playerCollider.size = new Vector2(originalSize.x, originalSize.y / 2);
-            playerCollider.offset = new Vector2(originalOffset.x, originalOffset.y / 2);
-
+            playerCollider.offset = new Vector2(originalOffset.x, originalOffset.y - (originalSize.y / 5));
         }
         else
         {
