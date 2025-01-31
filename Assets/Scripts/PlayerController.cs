@@ -27,7 +27,6 @@ public class PlayerController : MonoBehaviour
     private bool isAttacking = false;
     private bool isClimbing = false;
     private bool nearLadder = false;
-    private Vector2 storedPosition; // Stores final climbing position
 
 
     void Start()
@@ -87,6 +86,8 @@ public class PlayerController : MonoBehaviour
 
     void HandleJumping()
     {
+        if (isClimbing) return; // Prevent jumping while climbing
+
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
 
         if (isGrounded && Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))
@@ -130,21 +131,28 @@ public class PlayerController : MonoBehaviour
     IEnumerator PerformClimb()
     {
         isClimbing = true;
-        rb.linearVelocity = Vector2.zero; // Stop movement
-        rb.bodyType = RigidbodyType2D.Kinematic; // Disable physics while climbing
+        rb.linearVelocity = Vector2.zero; // Stop any movement
+        rb.bodyType = RigidbodyType2D.Kinematic; // Disable physics so animation isn't interrupted
         animator.SetTrigger("isClimbing"); // Play climbing animation
 
-        yield return new WaitForSeconds(2.1f); // FULL 2.1 seconds (animation plays entirely)
+        yield return new WaitForSeconds(4f); // Wait for animation to complete
 
+        // ✅ Store final position
+        Vector3 finalPosition = transform.position;
+
+        // ✅ Slightly adjust position after climbing
+        finalPosition += new Vector3(0.5f * transform.localScale.x, 0.2f, 0); // Move right & up slightly
+
+        transform.position = finalPosition; // Set adjusted position
+
+        // ✅ Restore physics
         rb.bodyType = RigidbodyType2D.Dynamic; // Re-enable physics
+
+        // ✅ Reset animation state
+        animator.ResetTrigger("isClimbing");
+        animator.SetTrigger("Idle");
+
         isClimbing = false;
-
-        // 🚀 Apply jump force to make movement available again
-        Vector2 jumpDirection = new Vector2(climbJumpForceX * transform.localScale.x, climbJumpForceY);
-        rb.linearVelocity = Vector2.zero;
-        rb.AddForce(jumpDirection, ForceMode2D.Impulse);
-
-        Debug.Log("Jump force applied: " + jumpDirection);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
