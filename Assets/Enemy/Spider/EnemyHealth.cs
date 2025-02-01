@@ -9,6 +9,7 @@ public class EnemyHealth : MonoBehaviour
     public Animator animator;
     public AudioClip damageSound;
     public AudioClip deathSound;
+    public AudioClip PoofSound;
 
     public GameObject explosionPrefab; // 🔥 Reference to explosion prefab
 
@@ -92,14 +93,20 @@ public class EnemyHealth : MonoBehaviour
             AudioSource.PlayClipAtPoint(deathSound, transform.position);
         }
 
-        // 💥 SPAWN EXPLOSION SPRITE ANIMATION
-        if (explosionPrefab != null)
+        yield return new WaitForSeconds(1f); // Wait for animation to finish
+
+        if (PoofSound != null)
         {
-            GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-            Destroy(explosion, 1f); // Destroy after animation finishes
+            AudioSource.PlayClipAtPoint(PoofSound, transform.position);
         }
 
-        yield return new WaitForSeconds(1f); // Wait for animation to finish
+        // Spawn explosion slightly higher to match the enemy's body
+        if (explosionPrefab != null)
+        {
+            Vector3 explosionPosition = transform.position + new Vector3(0, 1.5f, 0); // Adjust Y position
+            GameObject explosion = Instantiate(explosionPrefab, explosionPosition, Quaternion.identity);
+            Destroy(explosion, 1f); // Destroy after animation finishes
+        }
 
         GetComponent<Collider2D>().enabled = false; // Disable only before destruction
         Destroy(gameObject);
