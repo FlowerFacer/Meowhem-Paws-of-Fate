@@ -17437,7 +17437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultMusic: {fileID: 0}
-  musicVolume: 0.5
+  musicVolume: 0.35
   sceneMusicList:
   - sceneName: Level1
     musicClip: {fileID: 8300000, guid: d2f2c4fef7d106643a52c5e91981f28b, type: 3}

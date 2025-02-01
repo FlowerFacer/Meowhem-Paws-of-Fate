@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class EnemyHealth : MonoBehaviour
@@ -9,6 +9,8 @@ public class EnemyHealth : MonoBehaviour
     public Animator animator;
     public AudioClip damageSound;
     public AudioClip deathSound;
+
+    public GameObject explosionPrefab; // 🔥 Reference to explosion prefab
 
     private bool isDead = false;
     private Rigidbody2D rb;
@@ -88,6 +90,13 @@ public class EnemyHealth : MonoBehaviour
         if (deathSound != null)
         {
             AudioSource.PlayClipAtPoint(deathSound, transform.position);
+        }
+
+        // 💥 SPAWN EXPLOSION SPRITE ANIMATION
+        if (explosionPrefab != null)
+        {
+            GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            Destroy(explosion, 1f); // Destroy after animation finishes
         }
 
         yield return new WaitForSeconds(1f); // Wait for animation to finish
