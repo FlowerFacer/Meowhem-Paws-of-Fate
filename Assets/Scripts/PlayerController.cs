@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public AnimatorOverrideController flippedAnimator; // Assign in Inspector
     private RuntimeAnimatorController defaultAnimator;
     private SpriteRenderer spriteRenderer;
+    public ParticleSystem SmokeFX;
 
     private Rigidbody2D rb;
     private bool isGrounded;
@@ -98,6 +99,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             animator.SetTrigger("JumpTrigger");
+            SmokeFX.Play();
         }
 
         animator.SetBool("isJumping", !isGrounded);
