@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
         playerCollider = GetComponent<BoxCollider2D>();  // Get the player's collider
         originalSize = playerCollider.size;  // Store original collider size
         originalOffset = playerCollider.offset;  // Store original collider offset
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
 
     void FixedUpdate()
@@ -65,17 +66,35 @@ public class PlayerController : MonoBehaviour
     void HandleMovement()
     {
         float moveInput = Input.GetAxisRaw("Horizontal");
+                // Check if player is moving
+        bool isMoving = moveInput != 0;
 
         // Apply movement
         rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
 
         if (isGrounded)
         {
-            animator.SetBool("isWalking", moveInput != 0);
+            // Enable walking animation if moving
+            animator.SetBool("isWalking", isMoving);
+
+            // Handle dust effect when moving
+            if (isMoving)
+            {
+                if (!SmokeFX.isPlaying)
+                {
+                    SmokeFX.Play();
+                }
+            }
+            else
+            {
+                SmokeFX.Stop(); // Stop dust effect when not moving
+            }
         }
         else
         {
+            // Player is in the air -> Disable walking animation & stop dust effect
             animator.SetBool("isWalking", false);
+            SmokeFX.Stop();
         }
 
         // Flip player sprite
@@ -99,7 +118,6 @@ public class PlayerController : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             animator.SetTrigger("JumpTrigger");
-            SmokeFX.Play();
         }
 
         animator.SetBool("isJumping", !isGrounded);

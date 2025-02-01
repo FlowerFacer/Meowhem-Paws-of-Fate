@@ -24244,6 +24244,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8105399488268491113, guid: d838a0838ea24e348b3d6ce81578d2ff, type: 3}
     - target: {fileID: 6587491938826552074, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
+      propertyPath: SmokeFX
+      value: 
+      objectReference: {fileID: 1953322311}
+    - target: {fileID: 6587491938826552074, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
       propertyPath: jumpForce
       value: 10.2
       objectReference: {fileID: 0}
