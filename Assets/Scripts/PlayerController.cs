@@ -19,6 +19,9 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayer;
     public Transform groundCheck;
     public Animator animator;
+    public GameObject slashEffectPrefab;
+    public float attackDuration = 0.3f;   // Time before slash disappears
+    public Transform attackPoint;         // Empty object where slash appears
     public AnimatorOverrideController flippedAnimator; // Assign in Inspector
     private RuntimeAnimatorController defaultAnimator;
     private SpriteRenderer spriteRenderer;
@@ -225,6 +228,8 @@ public class PlayerController : MonoBehaviour
 
         // Trigger attack animation
         animator.SetTrigger("isAttack");
+        GameObject slash = Instantiate(slashEffectPrefab, attackPoint.position, attackPoint.rotation);
+        Destroy(slash, attackDuration); // Remove after duration
 
         // Wait for attack animation to finish
         yield return new WaitForSeconds(attackCooldown);

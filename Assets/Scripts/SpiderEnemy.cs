@@ -67,7 +67,7 @@ public class SpiderEnemy : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
 
-        if (Vector2.Distance(transform.position, player.position) < 1.5f)
+        if (Vector2.Distance(transform.position, player.position) < 1f)
         {
             player.GetComponent<PlayerHealth>().TakeDamage(damage);
         }
