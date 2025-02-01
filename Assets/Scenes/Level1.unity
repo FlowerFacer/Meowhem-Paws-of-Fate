@@ -17437,7 +17437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultMusic: {fileID: 0}
-  musicVolume: 0.35
+  musicVolume: 0.3
   sceneMusicList:
   - sceneName: Level1
     musicClip: {fileID: 8300000, guid: d2f2c4fef7d106643a52c5e91981f28b, type: 3}
@@ -23870,6 +23870,8 @@ MonoBehaviour:
   animator: {fileID: 2121575457}
   damageSound: {fileID: 8300000, guid: 9f73927110fd5b645821868a85f345c4, type: 3}
   deathSound: {fileID: 0}
+  PoofSound: {fileID: 8300000, guid: 924c9dcfafa664746ae815abf70cb3dc, type: 3}
+  explosionPrefab: {fileID: 8937016639916312399, guid: 4f4bba2289fb34a4d9aed104f4db3351, type: 3}
   knockbackForce: 3
   hurtDuration: 0.5
 --- !u!1001 &4521542538885070152
