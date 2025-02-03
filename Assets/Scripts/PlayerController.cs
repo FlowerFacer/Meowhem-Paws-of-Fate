@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     private RuntimeAnimatorController defaultAnimator;
     private SpriteRenderer spriteRenderer;
     public ParticleSystem SmokeFX;
+    public AudioClip fireEffectSound;
 
     private Rigidbody2D rb;
     private bool isGrounded;
@@ -243,16 +244,24 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator PerformSpecialAttack()
     {
-        isSpecialAttacking = true;
+        if (fireEffectSound != null)
+        {
+            AudioManager.instance.PlaySound(fireEffectSound);
+        }
 
         // Spawn explosion slightly higher to match the enemy's body
         if (magicTransformPrefab != null)
         {
             Vector3 explosionPosition = transform.position + new Vector3(-0.5f, 1.8f, 0); // Adjust Y position
             GameObject explosion = Instantiate(magicTransformPrefab, explosionPosition, Quaternion.identity);
-            animator.SetTrigger("isSpecialAttack");
-            Destroy(explosion, 1f); // Destroy after animation finishes
+            Destroy(explosion, 0.8f); // Destroy after animation finishes
         }
+
+        yield return new WaitForSeconds(0.2f); // Wait for animation to finish
+
+        isSpecialAttacking = true;
+
+        animator.SetTrigger("isSpecialAttack");
 
         // Wait for attack animation to finish
         yield return new WaitForSeconds(specialAttackCooldown);

@@ -14802,6 +14802,9 @@ MonoBehaviour:
   - name: PoofSound
     clip: {fileID: 8300000, guid: 924c9dcfafa664746ae815abf70cb3dc, type: 3}
     volume: 0.628
+  - name: fireEffectSound
+    clip: {fileID: 8300000, guid: 97cc148b37aae674eae100b753605d77, type: 3}
+    volume: 1
 --- !u!4 &1566725482
 Transform:
   m_ObjectHideFlags: 0
@@ -24100,6 +24103,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8463182052742533, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
+      propertyPath: m_labelHash
+      value: 3.8840965e-11
+      objectReference: {fileID: 0}
     - target: {fileID: 128025520878054491, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.16419315
@@ -24144,6 +24151,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 1850120941691106777, guid: d838a0838ea24e348b3d6ce81578d2ff, type: 3}
+    - target: {fileID: 764427143767973402, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
+      propertyPath: m_labelHash
+      value: 3.8840965e-11
+      objectReference: {fileID: 0}
     - target: {fileID: 1080589352179324375, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.9426
@@ -24156,6 +24167,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -60.911
       objectReference: {fileID: 0}
+    - target: {fileID: 1218389703567681115, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
+      propertyPath: m_labelHash
+      value: 3.8840965e-11
+      objectReference: {fileID: 0}
     - target: {fileID: 1227784754379552132, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.046047673
@@ -24163,6 +24178,10 @@ PrefabInstance:
     - target: {fileID: 1227784754379552132, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0.9989393
+      objectReference: {fileID: 0}
+    - target: {fileID: 1774376061259055433, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
+      propertyPath: m_labelHash
+      value: 8.414478e-30
       objectReference: {fileID: 0}
     - target: {fileID: 1862178670972992597, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -24187,6 +24206,10 @@ PrefabInstance:
     - target: {fileID: 2132213614225594975, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.06836796
+      objectReference: {fileID: 0}
+    - target: {fileID: 2659303180032296377, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
+      propertyPath: m_labelHash
+      value: 3.8840965e-11
       objectReference: {fileID: 0}
     - target: {fileID: 3060233885049291989, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -24252,6 +24275,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 17.468
       objectReference: {fileID: 0}
+    - target: {fileID: 4177291089519612249, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
+      propertyPath: m_labelHash
+      value: 3.8840965e-11
+      objectReference: {fileID: 0}
     - target: {fileID: 4245574576003810218, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.38616192
@@ -24316,6 +24343,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player1
       objectReference: {fileID: 0}
+    - target: {fileID: 5957439939266527297, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
+      propertyPath: m_labelHash
+      value: 3.8840965e-11
+      objectReference: {fileID: 0}
     - target: {fileID: 6110634914996599122, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -24348,6 +24379,10 @@ PrefabInstance:
       propertyPath: climbJumpForceY
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6587491938826552074, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
+      propertyPath: fireEffectSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 97cc148b37aae674eae100b753605d77, type: 3}
     - target: {fileID: 6587491938826552074, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
       propertyPath: slashEffectPrefab
       value: 
