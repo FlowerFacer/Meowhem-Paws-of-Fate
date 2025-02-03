@@ -14380,6 +14380,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1392697148
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1392697149}
+  m_Layer: 0
+  m_Name: LightningPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1392697149
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392697148}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 8.89, y: 18.09, z: 0}
+  m_LocalScale: {x: 4.347826, y: 4.347826, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1848656588}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1402287630
 GameObject:
   m_ObjectHideFlags: 0
@@ -14805,6 +14836,9 @@ MonoBehaviour:
   - name: fireEffectSound
     clip: {fileID: 8300000, guid: 97cc148b37aae674eae100b753605d77, type: 3}
     volume: 1
+  - name: LightningSound
+    clip: {fileID: 8300000, guid: e5e54d9b7d1c9464cad8b8254eaeda59, type: 3}
+    volume: 0.719
 --- !u!4 &1566725482
 Transform:
   m_ObjectHideFlags: 0
@@ -23550,7 +23584,7 @@ MonoBehaviour:
   m_LightType: 2
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
@@ -24189,7 +24223,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8463182052742533, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
       propertyPath: m_labelHash
-      value: 3.8840965e-11
+      value: 9.7353715e-37
       objectReference: {fileID: 0}
     - target: {fileID: 128025520878054491, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -24237,7 +24271,7 @@ PrefabInstance:
       objectReference: {fileID: 1850120941691106777, guid: d838a0838ea24e348b3d6ce81578d2ff, type: 3}
     - target: {fileID: 764427143767973402, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
       propertyPath: m_labelHash
-      value: 3.8840965e-11
+      value: 9.7353715e-37
       objectReference: {fileID: 0}
     - target: {fileID: 1080589352179324375, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -24253,7 +24287,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1218389703567681115, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
       propertyPath: m_labelHash
-      value: 3.8840965e-11
+      value: 9.7353715e-37
       objectReference: {fileID: 0}
     - target: {fileID: 1227784754379552132, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -24265,7 +24299,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1774376061259055433, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
       propertyPath: m_labelHash
-      value: 8.414478e-30
+      value: 2.977024e-14
       objectReference: {fileID: 0}
     - target: {fileID: 1862178670972992597, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -24293,7 +24327,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2659303180032296377, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
       propertyPath: m_labelHash
-      value: 3.8840965e-11
+      value: 9.7353715e-37
       objectReference: {fileID: 0}
     - target: {fileID: 3060233885049291989, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -24361,7 +24395,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4177291089519612249, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
       propertyPath: m_labelHash
-      value: 3.8840965e-11
+      value: 9.7353715e-37
       objectReference: {fileID: 0}
     - target: {fileID: 4245574576003810218, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -24429,7 +24463,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5957439939266527297, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
       propertyPath: m_labelHash
-      value: 3.8840965e-11
+      value: 9.7353715e-37
       objectReference: {fileID: 0}
     - target: {fileID: 6110634914996599122, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
       propertyPath: m_Sprite
@@ -24456,6 +24490,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2082273352}
     - target: {fileID: 6587491938826552074, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
+      propertyPath: LightningPoint
+      value: 
+      objectReference: {fileID: 1392697149}
+    - target: {fileID: 6587491938826552074, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
+      propertyPath: LightningSound
+      value: 
+      objectReference: {fileID: 8300000, guid: e5e54d9b7d1c9464cad8b8254eaeda59, type: 3}
+    - target: {fileID: 6587491938826552074, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
       propertyPath: climbJumpForceX
       value: 2
       objectReference: {fileID: 0}
@@ -24475,6 +24517,10 @@ PrefabInstance:
       propertyPath: magicTransformPrefab
       value: 
       objectReference: {fileID: 6765106087867191617, guid: 5950833591a3d45488d8aeadd8c69bc7, type: 3}
+    - target: {fileID: 6587491938826552074, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
+      propertyPath: LightningEffectPrefab
+      value: 
+      objectReference: {fileID: 3928741771535648657, guid: 240a319a26435244db5298db13769c30, type: 3}
     - target: {fileID: 6696491491338684701, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.8015078
@@ -24557,66 +24603,12 @@ PrefabInstance:
       addedObject: {fileID: 2082273352}
     - targetCorrespondingSourceObject: {fileID: 4794107687724782591, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 1392697149}
+    - targetCorrespondingSourceObject: {fileID: 4794107687724782591, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 2101936686}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
---- !u!1001 &6467312984641715783
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3928741771535648657, guid: 240a319a26435244db5298db13769c30, type: 3}
-      propertyPath: m_Name
-      value: Lightning Attack FX
-      objectReference: {fileID: 0}
-    - target: {fileID: 3969218853160180263, guid: 240a319a26435244db5298db13769c30, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.779554
-      objectReference: {fileID: 0}
-    - target: {fileID: 3969218853160180263, guid: 240a319a26435244db5298db13769c30, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 3969218853160180263, guid: 240a319a26435244db5298db13769c30, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3969218853160180263, guid: 240a319a26435244db5298db13769c30, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3969218853160180263, guid: 240a319a26435244db5298db13769c30, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3969218853160180263, guid: 240a319a26435244db5298db13769c30, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3969218853160180263, guid: 240a319a26435244db5298db13769c30, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3969218853160180263, guid: 240a319a26435244db5298db13769c30, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3969218853160180263, guid: 240a319a26435244db5298db13769c30, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3969218853160180263, guid: 240a319a26435244db5298db13769c30, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 240a319a26435244db5298db13769c30, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -24631,4 +24623,3 @@ SceneRoots:
   - {fileID: 1566725482}
   - {fileID: 1946851425}
   - {fileID: 2025696734}
-  - {fileID: 6467312984641715783}

@@ -16,16 +16,23 @@ public class PlayerController : MonoBehaviour
     private BoxCollider2D playerCollider;
     private Vector2 originalSize;
     private Vector2 originalOffset;
-    public GameObject magicTransformPrefab; // 🔥 Reference to explosion prefab
 
     public LayerMask groundLayer;
     public Transform groundCheck;
     public Animator animator;
-    public GameObject slashEffectPrefab;
-    public float attackDuration = 0.3f;   // Time before slash disappears
-    public Transform attackPoint;         // Empty object where slash appears
     public AnimatorOverrideController flippedAnimator; // Assign in Inspector
     private RuntimeAnimatorController defaultAnimator;
+
+    public GameObject magicTransformPrefab; // Ref to Magic Transformation prefab
+    public GameObject slashEffectPrefab; // Ref to slash prefab
+    public float attackDuration = 0.3f;   // Time before slash disappears
+    public Transform attackPoint;         // Empty object where slash appears
+    public GameObject LightningEffectPrefab; // Ref to lightning prefab
+    public float LightningDuration = 0.8f; // Time before lightning disappears
+    public Transform LightningPoint; // Empty object where lightning appears
+
+    public AudioClip LightningSound;
+
     private SpriteRenderer spriteRenderer;
     public ParticleSystem SmokeFX;
     public AudioClip fireEffectSound;
@@ -220,7 +227,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Placeholder for right mouse click special attack
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && !isSpecialAttacking)
         {
             StartCoroutine(PerformSpecialAttack());
         }
@@ -262,6 +269,17 @@ public class PlayerController : MonoBehaviour
         isSpecialAttacking = true;
 
         animator.SetTrigger("isSpecialAttack");
+
+        yield return new WaitForSeconds(0.5f); // Wait for animation to finish
+
+        if (LightningSound != null)
+        {
+            AudioManager.instance.PlaySound(LightningSound);
+        }
+
+        yield return new WaitForSeconds(1.5f); // Wait for animation to progress
+        GameObject slash = Instantiate(LightningEffectPrefab, LightningPoint.position, LightningPoint.rotation);
+        Destroy(slash, LightningDuration); // Remove after duration
 
         // Wait for attack animation to finish
         yield return new WaitForSeconds(specialAttackCooldown);
