@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public float moveSpeed = 3.5f;
     [SerializeField] public float jumpForce = 10f;
     [SerializeField] public float attackCooldown = 0.6f;
+    [SerializeField] public float specialAttackCooldown = 1.6f;
     [SerializeField] public float climbJumpForceX = 2f; // Small jump to the right
     [SerializeField] public float climbJumpForceY = 2f; // Slight upward force
 
@@ -15,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private BoxCollider2D playerCollider;
     private Vector2 originalSize;
     private Vector2 originalOffset;
+    public GameObject magicTransformPrefab; // 🔥 Reference to explosion prefab
 
     public LayerMask groundLayer;
     public Transform groundCheck;
@@ -30,6 +32,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private bool isGrounded;
     private bool isAttacking = false;
+    private bool isSpecialAttacking = false;
     private bool isClimbing = false;
 
 
@@ -218,7 +221,7 @@ public class PlayerController : MonoBehaviour
         // Placeholder for right mouse click special attack
         if (Input.GetMouseButtonDown(1))
         {
-            Debug.Log("Special attack coming soon!");
+            StartCoroutine(PerformSpecialAttack());
         }
     }
 
@@ -236,6 +239,26 @@ public class PlayerController : MonoBehaviour
 
         // Reset attacking state
         isAttacking = false;
+    }
+
+    IEnumerator PerformSpecialAttack()
+    {
+        isSpecialAttacking = true;
+
+        // Spawn explosion slightly higher to match the enemy's body
+        if (magicTransformPrefab != null)
+        {
+            Vector3 explosionPosition = transform.position + new Vector3(-0.5f, 1.8f, 0); // Adjust Y position
+            GameObject explosion = Instantiate(magicTransformPrefab, explosionPosition, Quaternion.identity);
+            animator.SetTrigger("isSpecialAttack");
+            Destroy(explosion, 1f); // Destroy after animation finishes
+        }
+
+        // Wait for attack animation to finish
+        yield return new WaitForSeconds(specialAttackCooldown);
+
+        // Reset attacking state
+        isSpecialAttacking = false;
     }
 
     void FlipSprite(float direction)

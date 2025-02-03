@@ -37,7 +37,7 @@ public class EnemyHealth : MonoBehaviour
 
         if (damageSound != null)
         {
-            AudioSource.PlayClipAtPoint(damageSound, transform.position);
+            AudioManager.instance.PlaySound(damageSound);
         }
 
         if (animator != null)
@@ -90,14 +90,14 @@ public class EnemyHealth : MonoBehaviour
 
         if (deathSound != null)
         {
-            AudioSource.PlayClipAtPoint(deathSound, transform.position);
+            AudioManager.instance.PlaySound(deathSound);
         }
 
         yield return new WaitForSeconds(1f); // Wait for animation to finish
 
         if (PoofSound != null)
         {
-            AudioSource.PlayClipAtPoint(PoofSound, transform.position);
+            AudioManager.instance.PlaySound(PoofSound);
         }
 
         // Spawn explosion slightly higher to match the enemy's body
