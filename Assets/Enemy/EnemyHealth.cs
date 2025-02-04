@@ -17,8 +17,8 @@ public class EnemyHealth : MonoBehaviour
     private Rigidbody2D rb;
     private SpiderEnemy spiderAI; // Reference to movement script
 
-    public float knockbackForce = 3f; // Adjust for how much the enemy should be pushed back
-    public float hurtDuration = 0.5f; // How long the enemy stays hurt
+    public float knockbackForce = 6f; // Adjust for how much the enemy should be pushed back
+    public float hurtDuration = 0.7f; // How long the enemy stays hurt
 
     void Start()
     {
