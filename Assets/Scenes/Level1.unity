@@ -5990,7 +5990,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 887492835}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.16925663, w: 0.9855721}
+  m_LocalRotation: {x: -0, y: -0, z: -0.31499383, w: 0.9490937}
   m_LocalPosition: {x: 0.337, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6802,7 +6802,7 @@ MonoBehaviour:
   m_CategoryHash: 0
   m_labelHash: 0
   m_SpriteKey: 0
-  m_SpriteHash: 0
+  m_SpriteHash: 50170974
 --- !u!1 &1029804856
 GameObject:
   m_ObjectHideFlags: 0
@@ -15779,6 +15779,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.99936837
       objectReference: {fileID: 0}
+    - target: {fileID: -1781509799916303145, guid: cfeaf513b7b1be048bac347af6b75b0a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7485129024449336205, guid: cfeaf513b7b1be048bac347af6b75b0a, type: 3}
     - target: {fileID: -1537910753396582790, guid: cfeaf513b7b1be048bac347af6b75b0a, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.9991867
@@ -15830,6 +15834,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: cfeaf513b7b1be048bac347af6b75b0a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1406315821}
+    - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: cfeaf513b7b1be048bac347af6b75b0a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1406315822}
     - targetCorrespondingSourceObject: {fileID: 3159805493145432200, guid: cfeaf513b7b1be048bac347af6b75b0a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1016885573}
@@ -15908,6 +15915,20 @@ MonoBehaviour:
     showGizmo: 1
   - color: {r: 0, g: 1, b: 0, a: 1}
     showGizmo: 1
+--- !u!114 &1406315822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406315814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29cff538c195c249b69c6f2236de67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library: []
+  m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 713914f64f45e12408e6ad9fb8ec4b5b, type: 3}
 --- !u!1 &1484552938
 GameObject:
   m_ObjectHideFlags: 0
@@ -25257,7 +25278,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2098152049}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.15520936, w: 0.9878816}
+  m_LocalRotation: {x: -0, y: -0, z: 0.29020837, w: 0.95696354}
   m_LocalPosition: {x: 0.35, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
