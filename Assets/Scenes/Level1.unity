@@ -14847,8 +14847,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 691b5a07a68adee49a08238c8733af39, type: 3}
     volume: 0.388
   - name: Bonk
-    clip: {fileID: 8300000, guid: 9371d1a6e68b50e4cbf40d91ddb4cef5, type: 3}
-    volume: 0.274
+    clip: {fileID: 8300000, guid: ec2c3002d0f609b43933c1a4a46700ed, type: 3}
+    volume: 0.013
 --- !u!4 &1566725482
 Transform:
   m_ObjectHideFlags: 0
@@ -24550,7 +24550,7 @@ PrefabInstance:
     - target: {fileID: 7066269836347822950, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
       propertyPath: Bonk
       value: 
-      objectReference: {fileID: 8300000, guid: 9371d1a6e68b50e4cbf40d91ddb4cef5, type: 3}
+      objectReference: {fileID: 8300000, guid: ec2c3002d0f609b43933c1a4a46700ed, type: 3}
     - target: {fileID: 7755492538549158282, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
       propertyPath: m_Sprite
       value: 
