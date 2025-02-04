@@ -92,10 +92,11 @@ public class TutorialMouse : MonoBehaviour
             "Hi!",
             "My name is Tutu.",
             "I'm here to guide you!",
+            "(So you don't die)",
             "*wink*",
             "Press A / W to move!",
-            "Press SPACEBAR / W to jump!",
-            "Press CROUCH to crouch!",
+            "Press Spacebar / W to jump!",
+            "Press Crouch to crouch!",
             "... Good luck!"
         };
 

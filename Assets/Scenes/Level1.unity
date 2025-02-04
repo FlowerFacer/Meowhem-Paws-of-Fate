@@ -16414,7 +16414,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.434
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -16702,7 +16702,7 @@ MonoBehaviour:
   sounds:
   - name: RareCollectibleSound
     clip: {fileID: 8300000, guid: c7a61b89ccc40ba46ada782445f9320c, type: 3}
-    volume: 0.532
+    volume: 0.368
   - name: deathSound
     clip: {fileID: 8300000, guid: b7a1f8bcf6efeea4e8d59dcab3b539c6, type: 3}
     volume: 0.532
