@@ -100,7 +100,7 @@ public class TutorialMouse : MonoBehaviour
             "Press A / W to move!",
             "Press Spacebar / W to jump!",
             "Press Crouch to crouch!",
-            "... Good luck!"
+            "...Good luck!"
         };
 
         foreach (string line in tutorialLines)

@@ -14,11 +14,16 @@ public class LightBluePlant : MonoBehaviour
     public GameObject poofPrefab; // 🔥 Reference to explosion prefab
     public Transform poofPosition; // Assign a specific spawn point if needed
     public bool PlantDead = false;
+    private Rigidbody2D rb;
+
+    public float knockbackForce = 0.1f; // Adjust for how much the enemy should be pushed back
 
     void Start()
     {
         currentHealth = maxHealth;
         animator = GetComponent<Animator>(); // Ensure this is set
+        rb = GetComponent<Rigidbody2D>();
+
     }
 
     public void TakeDamage(int damage, Vector2 attackSource)
@@ -38,6 +43,10 @@ public class LightBluePlant : MonoBehaviour
             animator.SetTrigger("Hurt"); // Play hurt animation
             Debug.Log("Took damage!");
         }
+
+        // Knockback effect
+        Vector2 knockbackDirection = (transform.position - (Vector3)attackSource).normalized;
+        rb.linearVelocity = knockbackDirection * knockbackForce;
 
         if (animator != null)
         {

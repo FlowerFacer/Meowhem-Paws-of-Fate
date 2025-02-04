@@ -18,11 +18,19 @@ public class SlashEffect : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
-
             if (enemyHealth != null)
             {
                 Vector2 attackSource = attacker != null ? attacker.position : transform.position;
-                enemyHealth.TakeDamage(damage, attackSource); // Call the damage method
+                enemyHealth.TakeDamage(damage, attackSource);
+            }
+            else
+            {
+                LightBluePlant plantHealth = other.GetComponent<LightBluePlant>();
+                if (plantHealth != null)
+                {
+                    Vector2 attackSource = attacker != null ? attacker.position : transform.position;
+                    plantHealth.TakeDamage(damage, attackSource);
+                }
             }
         }
     }

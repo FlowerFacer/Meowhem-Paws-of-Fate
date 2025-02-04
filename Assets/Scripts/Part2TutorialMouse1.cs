@@ -11,6 +11,7 @@ public class Part2TutorialMouse : MonoBehaviour
 
     public AudioSource tutuAudioSource;
     public AudioClip[] gibberishClips; // Array for different gibberish sounds (Optional)
+    public AudioClip Gibbersh;
 
     public GameObject poofEffectPrefab; // Assign PoofEffect prefab
     public Transform poofPosition; // Assign a specific spawn point if needed
@@ -111,6 +112,12 @@ public class Part2TutorialMouse : MonoBehaviour
     {
         string text = "STOP!";
         TutusText.text = "";
+
+        if (Gibbersh != null)
+        {
+            AudioManager.instance.PlaySound(Gibbersh);
+        }
+
         foreach (char letter in text) { TutusText.text += letter; yield return new WaitForSeconds(0.05f); }
     }
 
@@ -120,10 +127,10 @@ public class Part2TutorialMouse : MonoBehaviour
 {
             "If you go down this ladder,",
             "You will encounter Vivi!",
-            "She's usually very friendly,",
-            "But someone put a light blue flower over there -",
+            "She is usually very friendly,",
+            "But someone put a light blue plant over there -",
             "And she hates it.",
-            "So you must learn how to fight!",
+            "So now you must learn how to fight!!",
             "Press the Left Mouse Button to attack!",
             "Press the Right Mouse Button to perform Special Attack!",
             "Use Special Attack wisely,",
