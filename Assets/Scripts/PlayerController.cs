@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public float moveSpeed = 3.5f;
     [SerializeField] public float jumpForce = 10f;
     [SerializeField] public float attackCooldown = 0.6f;
-    [SerializeField] public float specialAttackCooldown = 1.6f;
+    [SerializeField] public float specialAttackCooldown = 2.4f;
     [SerializeField] public float climbJumpForceX = 2f; // Small jump to the right
     [SerializeField] public float climbJumpForceY = 2f; // Slight upward force
 
@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     private RuntimeAnimatorController defaultAnimator;
 
     public GameObject magicTransformPrefab; // Ref to Magic Transformation prefab
+    public GameObject idleTransformPrefab; // Ref to Idle Transformation prefab
     public GameObject slashEffectPrefab; // Ref to slash prefab
     public float attackDuration = 0.3f;   // Time before slash disappears
     public Transform attackPoint;         // Empty object where slash appears
@@ -40,7 +41,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private bool isGrounded;
     private bool isAttacking = false;
-    private bool isSpecialAttacking = false;
+    public bool isSpecialAttacking = false;
     private bool isClimbing = false;
 
 
@@ -256,15 +257,15 @@ public class PlayerController : MonoBehaviour
             AudioManager.instance.PlaySound(fireEffectSound);
         }
 
-        // Spawn explosion slightly higher to match the enemy's body
+        // Spawn blue fire slightly higher to match the enemy's body
         if (magicTransformPrefab != null)
         {
-            Vector3 explosionPosition = transform.position + new Vector3(-0.5f, 1.8f, 0); // Adjust Y position
-            GameObject explosion = Instantiate(magicTransformPrefab, explosionPosition, Quaternion.identity);
-            Destroy(explosion, 0.8f); // Destroy after animation finishes
+            Vector3 explosionPosition = transform.position + new Vector3(-0.5f, 1f, 0); // Adjust Y position
+            GameObject BlueFire = Instantiate(magicTransformPrefab, explosionPosition, Quaternion.identity);
+            Destroy(BlueFire, 0.8f); // Destroy after animation finishes
         }
 
-        yield return new WaitForSeconds(0.2f); // Wait for animation to finish
+        //yield return new WaitForSeconds(0.2f); // Wait for animation to finish
 
         isSpecialAttacking = true;
 
@@ -278,11 +279,21 @@ public class PlayerController : MonoBehaviour
         }
 
         yield return new WaitForSeconds(1.5f); // Wait for animation to progress
-        GameObject slash = Instantiate(LightningEffectPrefab, LightningPoint.position, LightningPoint.rotation);
-        Destroy(slash, LightningDuration); // Remove after duration
+        GameObject Lightning = Instantiate(LightningEffectPrefab, LightningPoint.position, LightningPoint.rotation);
+        Destroy(Lightning, LightningDuration); // Remove after duration
 
         // Wait for attack animation to finish
-        yield return new WaitForSeconds(specialAttackCooldown);
+        // yield return new WaitForSeconds(specialAttackCooldown);
+
+        yield return new WaitForSeconds(1.9f); // Wait for animation to finish
+
+        // Spawn purple fire slightly higher to match the enemy's body
+        if (idleTransformPrefab != null)
+        {
+            Vector3 explosionPosition = transform.position + new Vector3(-0.5f, 1f, 0); // Adjust Y position
+            GameObject PurpleFire = Instantiate(idleTransformPrefab, explosionPosition, Quaternion.identity);
+            Destroy(PurpleFire, 0.8f); // Destroy after animation finishes
+        }
 
         // Reset attacking state
         isSpecialAttacking = false;

@@ -4796,6 +4796,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1848656588}
+    - target: {fileID: 8601178738707583164, guid: 27a7809fd55c3a4418449af64b5c289f, type: 3}
+      propertyPath: moveSpeed
+      value: 1.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14838,7 +14842,7 @@ MonoBehaviour:
     volume: 1
   - name: LightningSound
     clip: {fileID: 8300000, guid: e5e54d9b7d1c9464cad8b8254eaeda59, type: 3}
-    volume: 0.719
+    volume: 0.127
 --- !u!4 &1566725482
 Transform:
   m_ObjectHideFlags: 0
@@ -24513,6 +24517,10 @@ PrefabInstance:
       propertyPath: slashEffectPrefab
       value: 
       objectReference: {fileID: 2207109167339593815, guid: 2a758ea5e746b1a418fb8ba1d7547d6f, type: 3}
+    - target: {fileID: 6587491938826552074, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
+      propertyPath: idleTransformPrefab
+      value: 
+      objectReference: {fileID: 8926341232903215917, guid: 8cc19d744a8a5c245a47b0fe483b8346, type: 3}
     - target: {fileID: 6587491938826552074, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
       propertyPath: magicTransformPrefab
       value: 

@@ -46,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -84,7 +84,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -112,10 +112,10 @@ TextureImporter:
       name: burning_end_1_0
       rect:
         serializedVersion: 2
-        x: 5
+        x: 0
         y: 0
-        width: 15
-        height: 13
+        width: 24
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,10 +134,10 @@ TextureImporter:
       name: burning_end_1_1
       rect:
         serializedVersion: 2
-        x: 6
-        y: 10
-        width: 14
-        height: 15
+        x: 24
+        y: 0
+        width: 24
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,10 +156,10 @@ TextureImporter:
       name: burning_end_1_2
       rect:
         serializedVersion: 2
-        x: 28
+        x: 48
         y: 0
-        width: 90
-        height: 29
+        width: 24
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,10 +178,10 @@ TextureImporter:
       name: burning_end_1_3
       rect:
         serializedVersion: 2
-        x: 34
-        y: 13
-        width: 6
-        height: 6
+        x: 72
+        y: 0
+        width: 24
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -196,11 +196,33 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: burning_end_1_4
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b82a8350a8b53e346850686a4a3ae8b2
+      internalID: 758475199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 10579e2a91f3dcf4981e5b1e7111e1f5
     internalID: 0
     vertices: []
     indices: 
@@ -209,7 +231,12 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      burning_end_1_0: 1257684188741102043
+      burning_end_1_1: -6349114724734199559
+      burning_end_1_2: -6868061877660021563
+      burning_end_1_3: 4276299910073479359
+      burning_end_1_4: 758475199
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

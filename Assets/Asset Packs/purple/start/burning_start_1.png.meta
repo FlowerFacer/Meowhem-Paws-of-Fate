@@ -46,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -84,7 +84,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -112,10 +112,10 @@ TextureImporter:
       name: burning_start_1_0
       rect:
         serializedVersion: 2
-        x: 8
+        x: 0
         y: 0
-        width: 8
-        height: 5
+        width: 24
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,10 +134,10 @@ TextureImporter:
       name: burning_start_1_1
       rect:
         serializedVersion: 2
-        x: 31
+        x: 24
         y: 0
-        width: 11
-        height: 12
+        width: 24
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,10 +156,10 @@ TextureImporter:
       name: burning_start_1_2
       rect:
         serializedVersion: 2
-        x: 53
+        x: 48
         y: 0
-        width: 14
-        height: 16
+        width: 24
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,10 +178,10 @@ TextureImporter:
       name: burning_start_1_3
       rect:
         serializedVersion: 2
-        x: 78
+        x: 72
         y: 0
-        width: 14
-        height: 20
+        width: 24
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,7 +200,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 65f1f36cff6d10047b253524b2842482
     internalID: 0
     vertices: []
     indices: 
@@ -209,7 +209,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      burning_start_1_0: -4042574299428324789
+      burning_start_1_1: -1047715123820717244
+      burning_start_1_2: -5612888987342366831
+      burning_start_1_3: -8177555603348736441
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
