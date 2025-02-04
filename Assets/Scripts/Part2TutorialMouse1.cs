@@ -2,12 +2,12 @@ using UnityEngine;
 using System.Collections;
 using TMPro; // Import TextMeshPro
 
-public class TutorialMouse : MonoBehaviour
+public class Part2TutorialMouse : MonoBehaviour
 {
     public Animator animator; // Reference to Tutu's animator
     public TMP_Text TutusText; // Reference to the TextMeshPro 3D object
-    public float idleTime = 5f; // Time before Tutu starts talking
-    public float talkDuration = 7f; // How long Tutu speaks before disappearing
+    public float idleTime = 1f; // Time before Tutu starts talking
+    public float talkDuration = 30f; // How long Tutu speaks before disappearing
 
     public AudioSource tutuAudioSource;
     public AudioClip[] gibberishClips; // Array for different gibberish sounds (Optional)
@@ -16,6 +16,8 @@ public class TutorialMouse : MonoBehaviour
     public Transform poofPosition; // Assign a specific spawn point if needed
 
     private bool hasTalked = false; // Ensuring it only appears once per appearance
+    public GameObject tutuGameObject; // The entire Tutu prefab (Disable at start)
+
 
     void Start()
     {
@@ -27,16 +29,18 @@ public class TutorialMouse : MonoBehaviour
         {
             TutusText.gameObject.SetActive(false);
         }
+    }
 
-        // Starts the appear sequence
-        StartCoroutine(AppearSequence());
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player") && !hasTalked) // Player reaches checkpoint
+        {
+            StartCoroutine(AppearSequence());
+        }
     }
 
     IEnumerator AppearSequence()
     {
-        // Wait a momement before appearing
-        yield return new WaitForSeconds(1f);
-
         // **Spawn Poof at Tutu's position**
         GameObject poof = Instantiate(poofEffectPrefab, poofPosition.position, Quaternion.identity);
         Destroy(poof, 0.9f);
@@ -49,6 +53,18 @@ public class TutorialMouse : MonoBehaviour
 
         // Wait for the idle duration before speaking
         yield return new WaitForSeconds(idleTime);
+
+        animator.SetTrigger("Stop!");
+
+        // Show tutorial text
+        if (TutusText != null)
+        {
+            TutusText.gameObject.SetActive(true);
+            StartCoroutine(ShowTextStop()); // Display text with typewriter effect
+        }
+
+        // Wait for the talk duration before disappearing
+        yield return new WaitForSeconds(3f);
 
         if (!hasTalked)
         {
@@ -85,25 +101,37 @@ public class TutorialMouse : MonoBehaviour
 
         // **Wait for poof animation, then disable Tutu**
         yield return new WaitForSeconds(0.1f);
-        animator.SetTrigger("Disappear");
+        if (tutuGameObject != null)
+        {
+            tutuGameObject.SetActive(false);
+        }
+    }
+
+    IEnumerator ShowTextStop()
+    {
+        string text = "STOP!";
+        TutusText.text = "";
+        foreach (char letter in text) { TutusText.text += letter; yield return new WaitForSeconds(0.05f); }
     }
 
     IEnumerator ShowTextInSequence()
     {
-        string[] tutorialLines =
-        {
-            "Hi!",
-            "My name is Tutu.",
-            "I'm here to guide you!",
-            "(So you don't die)",
-            "*wink*",
-            "Press A / W to move!",
-            "Press Spacebar / W to jump!",
-            "Press Crouch to crouch!",
-            "... Good luck!"
+        string[] tutorialLines2 =
+{
+            "If you go down this ladder,",
+            "You will encounter Vivi!",
+            "She's usually very friendly,",
+            "But someone put a light blue flower over there -",
+            "And she hates it.",
+            "So you must learn how to fight!",
+            "Press the Left Mouse Button to attack!",
+            "Press the Right Mouse Button to perform Special Attack!",
+            "Use Special Attack wisely,",
+            "There is a 60 second cooldown period.",
+            "DON'T DIE!"
         };
 
-        foreach (string line in tutorialLines)
+        foreach (string line in tutorialLines2)
         {
             TutusText.text = "";
             PlayRandomGibberish(); // Plays gibberish at start of each line!
