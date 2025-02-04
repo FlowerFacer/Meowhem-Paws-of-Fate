@@ -9,6 +9,9 @@ public class TutorialMouse : MonoBehaviour
     public float idleTime = 5f; // Time before Tutu starts talking
     public float talkDuration = 7f; // How long Tutu speaks before disappearing
 
+    public AudioSource tutuAudioSource;
+    public AudioClip[] gibberishClips; // Array for different gibberish sounds (Optional)
+
     public GameObject poofEffectPrefab; // Assign PoofEffect prefab
     public Transform poofPosition; // Assign a specific spawn point if needed
 
@@ -98,13 +101,26 @@ public class TutorialMouse : MonoBehaviour
 
         foreach (string line in tutorialLines)
         {
-            TutusText.text = ""; // Clear text
+            TutusText.text = "";
+            PlayRandomGibberish(); // Plays gibberish at start of each line!
+
             foreach (char letter in line.ToCharArray())
             {
-                TutusText.text += letter; // Type letter by letter
-                yield return new WaitForSeconds(0.05f); // Adjust typing speed
+                TutusText.text += letter;
+                yield return new WaitForSeconds(0.05f);
             }
-            yield return new WaitForSeconds(1.5f); // Wait before next line
+
+            yield return new WaitForSeconds(1.5f);
+        }
+    }
+
+    void PlayRandomGibberish()
+    {
+        if (tutuAudioSource != null)
+        {
+            tutuAudioSource.pitch = Random.Range(0.9f, 1.2f); // Random pitch variation
+            tutuAudioSource.clip = gibberishClips[Random.Range(0, gibberishClips.Length)]; // Pick a random clip
+            tutuAudioSource.Play();
         }
     }
 
