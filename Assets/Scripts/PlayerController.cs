@@ -33,12 +33,13 @@ public class PlayerController : MonoBehaviour
     public Transform LightningPoint; // Empty object where lightning appears
 
     public AudioClip LightningSound;
+    public AudioClip SlashSound;
+    public AudioClip fireEffectSound;
 
     private SpriteRenderer spriteRenderer;
     public ParticleSystem SmokeFX;
-    public AudioClip fireEffectSound;
-
     private Rigidbody2D rb;
+
     private bool isGrounded;
     private bool isAttacking = false;
     public bool isSpecialAttacking = false;
@@ -237,6 +238,11 @@ public class PlayerController : MonoBehaviour
     IEnumerator PerformAttack()
     {
         isAttacking = true;
+
+        if (SlashSound != null)
+        {
+            AudioManager.instance.PlaySound(SlashSound);
+        }
 
         // Trigger attack animation
         animator.SetTrigger("isAttack");

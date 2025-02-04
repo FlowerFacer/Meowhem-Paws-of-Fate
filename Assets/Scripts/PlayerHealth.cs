@@ -5,6 +5,7 @@ public class PlayerHealth : MonoBehaviour
     private PlayerController playerController; // Reference to PlayerController
     public int health = 10;
     public Animator animator;
+    public AudioClip Bonk;
 
     void Start()
     {
@@ -18,6 +19,11 @@ public class PlayerHealth : MonoBehaviour
         {
             Debug.Log("Player is Special Attacking! No damage taken.");
             return; // Skip damage processing
+        }
+
+        if (Bonk != null)
+        {
+            AudioManager.instance.PlaySound(Bonk);
         }
 
         health -= amount;
