@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 3194915453560361475}
   - component: {fileID: 6145972587737401886}
   - component: {fileID: 7159333802585901387}
+  - component: {fileID: 8030125327054486381}
   - component: {fileID: 7012362255980920031}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mushroom Collectable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,7 +165,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -180,6 +181,42 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2.07, y: 2.09}
   m_EdgeRadius: 0
+--- !u!58 &8030125327054486381
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389842571179326430}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 1.0449998
 --- !u!95 &7012362255980920031
 Animator:
   serializedVersion: 7
@@ -212,7 +249,7 @@ GameObject:
   m_Component:
   - component: {fileID: 325203547747459372}
   - component: {fileID: 3737490580076632164}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -296,7 +333,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1898112784145206675}
   - component: {fileID: 6164932835560031062}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Light 2D (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

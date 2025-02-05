@@ -206,6 +206,9 @@ public class SpiderEnemy : MonoBehaviour
         // Wait for animation to finish
         yield return new WaitForSeconds(1f);
 
+        // Change Spider's layer to NonBlockingNPC so the player can walk through
+        gameObject.layer = LayerMask.NameToLayer("NonBlockingNPC");
+
         // 🎉 Spider stays but is now passive
         Debug.Log("Spider is now passive and the player can pass!");
 
