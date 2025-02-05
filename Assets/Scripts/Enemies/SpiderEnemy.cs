@@ -151,7 +151,7 @@ public class SpiderEnemy : MonoBehaviour
             "You seem nice after all!",
             "...",
             "I found this weird mushroom\n in the forest,",
-            "You can have it as thanks.",
+            "So you can have it as thanks.",
             "Bye!"
         };
 
@@ -212,13 +212,24 @@ public class SpiderEnemy : MonoBehaviour
         // 🎉 Spider stays but is now passive
         Debug.Log("Spider is now passive and the player can pass!");
 
-        float patrolLimit = movingRight ? initialPosition.x + patrolDistance : initialPosition.x - patrolDistance;
-        transform.position = Vector3.MoveTowards(transform.position, new Vector3(patrolLimit, transform.position.y, transform.position.z), moveSpeed * Time.deltaTime);
+        // **Start Passive Patrol**
+        StartCoroutine(PassivePatrol());
+    }
 
-        if (Mathf.Abs(transform.position.x - patrolLimit) < 0.1f)
+    IEnumerator PassivePatrol()
+    {
+        while (true) // Runs forever
         {
-            movingRight = !movingRight;
-            FlipDirection();
+            float patrolLimit = movingRight ? initialPosition.x + patrolDistance : initialPosition.x - patrolDistance;
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(patrolLimit, transform.position.y, transform.position.z), moveSpeed * Time.deltaTime);
+
+            if (Mathf.Abs(transform.position.x - patrolLimit) < 0.1f)
+            {
+                movingRight = !movingRight;
+                FlipDirection();
+            }
+
+            yield return null; // Wait for next frame
         }
     }
 }
