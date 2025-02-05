@@ -101,26 +101,8 @@ public class LightBluePlant : MonoBehaviour
         GetComponent<Collider2D>().enabled = false; // Disable only before destruction
         Destroy(gameObject);
 
-        // ✅ **Debug Spider Status**
-        if (spiderEnemy != null)
-        {
-            Debug.Log("🕷️ Checking Spider Status: " + (spiderEnemy.plantIsDead ? "DEAD" : "ALIVE"));
-        }
-        else
-        {
-            Debug.Log("❌ Spider reference is NULL!");
-        }
-
-        // ✅ **Check if Spider is still alive before unlocking the achievement**
-        if (spiderEnemy != null && !spiderEnemy.plantIsDead) // 🕷️ Spider is still alive!
-        {
-            Debug.Log("🏆 Plant Achievement Unlocked!");
-            AchievementManager.instance.ShowAchievement(plantAchievementSprite);
-        }
-        else
-        {
-            Debug.Log("🚫 No Achievement: Spider is already dead.");
-        }
+        // 🏆 Trigger Achievement
+        AchievementManager.instance.ShowAchievement(plantAchievementSprite);
     }
 
     void Die()
