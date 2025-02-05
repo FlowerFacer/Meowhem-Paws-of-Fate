@@ -183,13 +183,7 @@ public class SpiderEnemy : MonoBehaviour
         StartCoroutine(SpiderTalkSequence());
 
         // Wait before saying goodbye
-        yield return new WaitForSeconds(5f);
-
-        // Play "Bye" animation
-        animator.SetTrigger("Bye");
-
-        // Wait for animation to finish
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(25f);
 
         // 🕷️ **Throw the Magic Mushroom!** 🍄
         if (magicShroomPrefab != null && shroomThrowPoint != null)
@@ -204,12 +198,13 @@ public class SpiderEnemy : MonoBehaviour
             }
         }
 
-        // **Disable Spider's Collider so the player can walk past**
-        Collider2D spiderCollider = GetComponent<Collider2D>();
-        if (spiderCollider != null)
-        {
-            spiderCollider.enabled = false; // Now the player can walk through!
-        }
+        yield return new WaitForSeconds(1f);
+
+        // Play "Bye" animation
+        animator.SetTrigger("Bye");
+
+        // Wait for animation to finish
+        yield return new WaitForSeconds(1f);
 
         // 🎉 Spider stays but is now passive
         Debug.Log("Spider is now passive and the player can pass!");

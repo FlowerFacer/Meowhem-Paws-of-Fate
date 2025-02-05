@@ -15,6 +15,19 @@ public class SlashEffect : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other) // Continuous check
     {
+        if (other.CompareTag("Plant"))
+        {
+            LightBluePlant plantHealth = other.GetComponent<LightBluePlant>();
+            if (plantHealth != null)
+            {
+                Vector2 attackSource = attacker != null ? attacker.position : transform.position;
+                plantHealth.TakeDamage(damage, attackSource);
+            }
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
         if (other.CompareTag("Enemy"))
         {
             EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
@@ -23,15 +36,7 @@ public class SlashEffect : MonoBehaviour
                 Vector2 attackSource = attacker != null ? attacker.position : transform.position;
                 enemyHealth.TakeDamage(damage, attackSource);
             }
-            else
-            {
-                LightBluePlant plantHealth = other.GetComponent<LightBluePlant>();
-                if (plantHealth != null)
-                {
-                    Vector2 attackSource = attacker != null ? attacker.position : transform.position;
-                    plantHealth.TakeDamage(damage, attackSource);
-                }
-            }
+      
         }
     }
 }
