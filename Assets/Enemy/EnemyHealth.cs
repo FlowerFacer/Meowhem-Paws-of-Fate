@@ -19,6 +19,7 @@ public class EnemyHealth : MonoBehaviour
 
     public float knockbackForce = 6f; // Adjust for how much the enemy should be pushed back
     public float hurtDuration = 0.7f; // How long the enemy stays hurt
+    public Sprite spiderAchievementSprite; // Assign in the Inspector
 
     void Start()
     {
@@ -118,5 +119,8 @@ public class EnemyHealth : MonoBehaviour
         isDead = true;
 
         StartCoroutine(DieSequence());
+
+        // 🏆 Trigger Achievement
+        AchievementManager.instance.ShowAchievement(spiderAchievementSprite);
     }
 }

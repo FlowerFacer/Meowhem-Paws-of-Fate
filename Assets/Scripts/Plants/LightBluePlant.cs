@@ -17,6 +17,7 @@ public class LightBluePlant : MonoBehaviour
     private Rigidbody2D rb;
 
     public float knockbackForce = 0.1f; // Adjust for how much the enemy should be pushed back
+    public Sprite plantAchievementSprite; // Assign in the Inspector
 
     void Start()
     {
@@ -102,5 +103,8 @@ public class LightBluePlant : MonoBehaviour
         PlantDead = true;
 
         StartCoroutine(DieSequence());
+
+        // 🏆 Trigger Achievement
+        AchievementManager.instance.ShowAchievement(plantAchievementSprite);
     }
 }
