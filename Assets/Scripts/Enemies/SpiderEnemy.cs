@@ -21,7 +21,7 @@ public class SpiderEnemy : MonoBehaviour
     private bool plantIsDead = false; // 👀 Track if the plant is dead
     public GameObject magicShroomPrefab; // Assign this in the Inspector
     public Transform shroomThrowPoint; // Empty GameObject to set throw position
-    public float throwForce = 3f; // Adjust the throw strength
+    public float throwForce = 6f; // Adjust the throw strength
 
     void Start()
     {
@@ -147,10 +147,10 @@ public class SpiderEnemy : MonoBehaviour
 {
             "Oh...",
             "The plant is gone?",
-            "I guess I have no reason to be mad anymore.",
+            "I guess I don't have a reason\n to be mad anymore.",
             "You seem nice after all!",
             "...",
-            "I found this weird mushroom in the forest,",
+            "I found this weird mushroom\n in the forest,",
             "You can have it as thanks.",
             "Bye!"
         };
@@ -183,7 +183,7 @@ public class SpiderEnemy : MonoBehaviour
         StartCoroutine(SpiderTalkSequence());
 
         // Wait before saying goodbye
-        yield return new WaitForSeconds(25f);
+        yield return new WaitForSeconds(20f);
 
         // 🕷️ **Throw the Magic Mushroom!** 🍄
         if (magicShroomPrefab != null && shroomThrowPoint != null)
@@ -212,6 +212,13 @@ public class SpiderEnemy : MonoBehaviour
         // 🎉 Spider stays but is now passive
         Debug.Log("Spider is now passive and the player can pass!");
 
-        Patrol();
+        float patrolLimit = movingRight ? initialPosition.x + patrolDistance : initialPosition.x - patrolDistance;
+        transform.position = Vector3.MoveTowards(transform.position, new Vector3(patrolLimit, transform.position.y, transform.position.z), moveSpeed * Time.deltaTime);
+
+        if (Mathf.Abs(transform.position.x - patrolLimit) < 0.1f)
+        {
+            movingRight = !movingRight;
+            FlipDirection();
+        }
     }
 }

@@ -128,13 +128,13 @@ public class Part2TutorialMouse : MonoBehaviour
             "If you go down this ladder,",
             "You will encounter Vivi!",
             "She is usually very friendly,",
-            "But someone put a light blue plant over there -",
+            "But someone put a light blue\n plant over there -",
             "And she hates it.",
-            "So now you must learn how to fight!!",
+            "So now, you learn how to fight!!",
             "Press the Left Mouse Button to attack!",
-            "Press the Right Mouse Button to perform Special Attack!",
+            "Press the Right Mouse Button\n to perform Special Attack!",
             "Use Special Attack wisely,",
-            "There is a 60 second cooldown period.",
+            "There is a 60 second\n cooldown period.",
             "DON'T DIE!"
         };
 

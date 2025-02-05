@@ -9,6 +9,8 @@ TagManager:
   - LeftLadder
   - Enemy
   - Plant
+  - Tutu1
+  - DeathZone
   layers:
   - Default
   - TransparentFX
