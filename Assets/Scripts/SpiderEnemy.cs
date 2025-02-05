@@ -21,7 +21,7 @@ public class SpiderEnemy : MonoBehaviour
     private bool plantIsDead = false; // 👀 Track if the plant is dead
     public GameObject magicShroomPrefab; // Assign this in the Inspector
     public Transform shroomThrowPoint; // Empty GameObject to set throw position
-    public float throwForce = 5f; // Adjust the throw strength
+    public float throwForce = 3f; // Adjust the throw strength
 
     void Start()
     {
@@ -200,7 +200,7 @@ public class SpiderEnemy : MonoBehaviour
             if (shroomRb != null)
             {
                 // Apply force to throw the mushroom forward
-                shroomRb.velocity = new Vector2(transform.localScale.x * throwForce, 2f); // Adjust arc if needed
+                shroomRb.linearVelocity = new Vector2(transform.localScale.x * throwForce, 2f); // Adjust arc if needed
             }
         }
 

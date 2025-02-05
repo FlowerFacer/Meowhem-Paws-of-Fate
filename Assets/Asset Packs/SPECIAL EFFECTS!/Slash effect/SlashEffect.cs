@@ -13,7 +13,7 @@ public class SlashEffect : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerStay2D(Collider2D other) // Continuous check
     {
         if (other.CompareTag("Enemy"))
         {

@@ -44,10 +44,6 @@ public class LightBluePlant : MonoBehaviour
             Debug.Log("Took damage!");
         }
 
-        // Knockback effect
-        Vector2 knockbackDirection = (transform.position - (Vector3)attackSource).normalized;
-        rb.linearVelocity = knockbackDirection * knockbackForce;
-
         if (animator != null)
         {
             animator.SetTrigger("Hurt"); // Play hurt animation
