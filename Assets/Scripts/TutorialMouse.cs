@@ -97,9 +97,9 @@ public class TutorialMouse : MonoBehaviour
             "I'm here to guide you!",
             "(So you don't die)",
             "*wink*",
-            "Press A / W to move!",
+            "Press A / D to move!",
             "Press Spacebar / W to jump!",
-            "Press Crouch to crouch!",
+            "Press Control to crouch!",
             "...Good luck!"
         };
 

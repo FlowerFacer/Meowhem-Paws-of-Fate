@@ -2,14 +2,16 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    private PlayerController playerController; // Reference to PlayerController
-    public int health = 10;
+    private PlayerController playerController; // Default max health
+    public int maxHealth = 10;
+    public int currentHealth;
     public Animator animator;
     public AudioClip Bonk;
 
     void Start()
     {
         playerController = GetComponent<PlayerController>(); // Get the PlayerController script
+        currentHealth = maxHealth; // Initialize health
     }
 
     public void TakeDamage(int amount)
@@ -26,14 +28,21 @@ public class PlayerHealth : MonoBehaviour
             AudioManager.instance.PlaySound(Bonk);
         }
 
-        health -= amount;
-        Debug.Log("Player took damage! Health: " + health);
+        currentHealth -= amount;
+        Debug.Log("Player took damage! Health: " + currentHealth);
         animator.SetTrigger("HurtTrigger");
 
-        if (health <= 0)
+        if (currentHealth <= 0)
         {
             Die();
         }
+    }
+
+    public void IncreaseMaxHealth(int amount)
+    {
+        maxHealth += amount; // Increase the player's max health
+        currentHealth = maxHealth; // Fully heal when gaining max health
+        Debug.Log("Max Health Increased! New Max Health: " + maxHealth);
     }
 
     void Die()

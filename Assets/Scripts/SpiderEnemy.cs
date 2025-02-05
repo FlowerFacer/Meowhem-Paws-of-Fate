@@ -19,6 +19,9 @@ public class SpiderEnemy : MonoBehaviour
     private bool movingRight = false; // Now starts moving LEFT first
     private bool playerDetected = false;
     private bool plantIsDead = false; // 👀 Track if the plant is dead
+    public GameObject magicShroomPrefab; // Assign this in the Inspector
+    public Transform shroomThrowPoint; // Empty GameObject to set throw position
+    public float throwForce = 5f; // Adjust the throw strength
 
     void Start()
     {
@@ -125,7 +128,7 @@ public class SpiderEnemy : MonoBehaviour
         playerDetected = false; // 🛑 Stop attacking
         animator.SetTrigger("Idle"); // 🕷️ Play idle animation
 
-        StartCoroutine(SpiderTalkSequence());
+        StartCoroutine(FriendlySpiderSequence());
     }
 
     // 💬 **Spider Talks to Player**
@@ -133,15 +136,84 @@ public class SpiderEnemy : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
-        // 🗨️ Say dialogue one by one (Replace with UI system)
-        Debug.Log("Spider: \"Oh... the plant is gone?\"");
-        yield return new WaitForSeconds(2f);
-        Debug.Log("Spider: \"I guess I have no reason to be mad anymore.\"");
-        yield return new WaitForSeconds(2f);
-        Debug.Log("Spider: \"You seem nice after all!\"");
-        yield return new WaitForSeconds(2f);
-        Debug.Log("Spider: \"Bye!\"");
-        animator.SetTrigger("Bye");
+        // 🗨️ Enable and position dialogue text
+        if (spiderDialogue != null)
+        {
+            spiderDialogue.gameObject.SetActive(true);
+            spiderDialogue.transform.position = transform.position + new Vector3(0, 1.5f, 0); // Adjust height
+        }
+
+        string[] ViviLines =
+{
+            "Oh...",
+            "The plant is gone?",
+            "I guess I have no reason to be mad anymore.",
+            "You seem nice after all!",
+            "...",
+            "I found this weird mushroom in the forest,",
+            "You can have it as thanks.",
+            "Bye!"
+        };
+
+        foreach (string line in ViviLines)
+        {
+            spiderDialogue.text = "";
+
+            foreach (char letter in line.ToCharArray())
+            {
+                spiderDialogue.text += letter;
+                yield return new WaitForSeconds(0.05f);
+            }
+
+            yield return new WaitForSeconds(1.5f);
+        }
+
+        // Hide text
+        if (spiderDialogue != null)
+        {
+            spiderDialogue.gameObject.SetActive(false);
+        }
     }
 
+    IEnumerator FriendlySpiderSequence()
+    {
+        Debug.Log("Spider is now friendly!");
+
+        // Show friendly dialogue
+        StartCoroutine(SpiderTalkSequence());
+
+        // Wait before saying goodbye
+        yield return new WaitForSeconds(5f);
+
+        // Play "Bye" animation
+        animator.SetTrigger("Bye");
+
+        // Wait for animation to finish
+        yield return new WaitForSeconds(1f);
+
+        // 🕷️ **Throw the Magic Mushroom!** 🍄
+        if (magicShroomPrefab != null && shroomThrowPoint != null)
+        {
+            GameObject thrownShroom = Instantiate(magicShroomPrefab, shroomThrowPoint.position, Quaternion.identity);
+            Rigidbody2D shroomRb = thrownShroom.GetComponent<Rigidbody2D>();
+
+            if (shroomRb != null)
+            {
+                // Apply force to throw the mushroom forward
+                shroomRb.velocity = new Vector2(transform.localScale.x * throwForce, 2f); // Adjust arc if needed
+            }
+        }
+
+        // **Disable Spider's Collider so the player can walk past**
+        Collider2D spiderCollider = GetComponent<Collider2D>();
+        if (spiderCollider != null)
+        {
+            spiderCollider.enabled = false; // Now the player can walk through!
+        }
+
+        // 🎉 Spider stays but is now passive
+        Debug.Log("Spider is now passive and the player can pass!");
+
+        Patrol();
+    }
 }

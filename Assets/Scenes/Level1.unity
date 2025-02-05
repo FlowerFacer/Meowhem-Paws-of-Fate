@@ -5466,9 +5466,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1848656588}
     - target: {fileID: 8601178738707583164, guid: 27a7809fd55c3a4418449af64b5c289f, type: 3}
+      propertyPath: bluePlant
+      value: 
+      objectReference: {fileID: 4303762821614230674}
+    - target: {fileID: 8601178738707583164, guid: 27a7809fd55c3a4418449af64b5c289f, type: 3}
       propertyPath: moveSpeed
       value: 1.3
       objectReference: {fileID: 0}
+    - target: {fileID: 8601178738707583164, guid: 27a7809fd55c3a4418449af64b5c289f, type: 3}
+      propertyPath: spiderDialogue
+      value: 
+      objectReference: {fileID: 1056404976}
+    - target: {fileID: 8601178738707583164, guid: 27a7809fd55c3a4418449af64b5c289f, type: 3}
+      propertyPath: magicShroomPrefab
+      value: 
+      objectReference: {fileID: 1389842571179326430, guid: b914c37bffe05064abe73c46cf562b7e, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -17186,6 +17198,9 @@ MonoBehaviour:
   - name: Gibbersh
     clip: {fileID: 8300000, guid: d76a748dbf47633439fc35e1e6370b97, type: 3}
     volume: 0.432
+  - name: shroomSound
+    clip: {fileID: 8300000, guid: c7a61b89ccc40ba46ada782445f9320c, type: 3}
+    volume: 0.368
 --- !u!4 &1566725482
 Transform:
   m_ObjectHideFlags: 0
@@ -27229,6 +27244,17 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 5656886639428009081, guid: 84a1a643199ad674ebe0f745c3bcf0b9, type: 3}
   m_PrefabInstance: {fileID: 4303762821614230672}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4303762821614230674 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7800657317112928565, guid: 84a1a643199ad674ebe0f745c3bcf0b9, type: 3}
+  m_PrefabInstance: {fileID: 4303762821614230672}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637249861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e05236a2a9fec1d48aba8bd43077f00a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &4303762821614230675
 Rigidbody2D:
   serializedVersion: 5
