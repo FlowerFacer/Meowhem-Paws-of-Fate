@@ -44,6 +44,13 @@ public class PlayerInventory : MonoBehaviour
 
     IEnumerator ShowHealthBonusText()
     {
+        // 🗨️ Enable and position dialogue text
+        if (HpIncreaseText != null)
+        {
+            HpIncreaseText.gameObject.SetActive(true);
+            HpIncreaseText.transform.position = transform.position + new Vector3(0, 1.5f, 0); // Adjust height
+        }
+
         string text = "+ HP increased by 5!";
         HpIncreaseText.text = "";
 

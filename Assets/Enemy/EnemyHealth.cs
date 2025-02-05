@@ -13,7 +13,7 @@ public class EnemyHealth : MonoBehaviour
 
     public GameObject explosionPrefab; // 🔥 Reference to explosion prefab
 
-    private bool isDead = false;
+    public bool isDead = false;
     private Rigidbody2D rb;
     private SpiderEnemy spiderAI; // Reference to movement script
 

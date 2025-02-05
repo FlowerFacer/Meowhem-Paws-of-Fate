@@ -18,7 +18,7 @@ public class SpiderEnemy : MonoBehaviour
     private Vector3 initialPosition;
     private bool movingRight = false; // Now starts moving LEFT first
     private bool playerDetected = false;
-    private bool plantIsDead = false; // 👀 Track if the plant is dead
+    public bool plantIsDead = false; // 👀 Track if the plant is dead
     public GameObject magicShroomPrefab; // Assign this in the Inspector
     public Transform shroomThrowPoint; // Empty GameObject to set throw position
     public float throwForce = 6f; // Adjust the throw strength
@@ -39,8 +39,9 @@ public class SpiderEnemy : MonoBehaviour
         // Check if the plant is dead
         if (bluePlant != null && bluePlant.PlantDead && !plantIsDead)
         {
-            plantIsDead = true; // Mark plant as dead
-            ReactToPlantDeath(); // Stop being hostile and talk
+            plantIsDead = true;
+            Debug.Log("🔴 Spider detected that Plant is DEAD.");
+            ReactToPlantDeath();
         }
 
         if (plantIsDead) return; // Stop all enemy behavior if plant is dead

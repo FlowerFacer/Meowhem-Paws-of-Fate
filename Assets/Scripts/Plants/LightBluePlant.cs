@@ -15,6 +15,7 @@ public class LightBluePlant : MonoBehaviour
     public Transform poofPosition; // Assign a specific spawn point if needed
     public bool PlantDead = false;
     private Rigidbody2D rb;
+    public SpiderEnemy spiderEnemy;
 
     public float knockbackForce = 0.1f; // Adjust for how much the enemy should be pushed back
     public Sprite plantAchievementSprite; // Assign in the Inspector
@@ -25,6 +26,10 @@ public class LightBluePlant : MonoBehaviour
         animator = GetComponent<Animator>(); // Ensure this is set
         rb = GetComponent<Rigidbody2D>();
 
+        if (spiderEnemy == null)
+        { 
+           Debug.LogError("❌ Could not find SpiderEnemy in the scene!");    
+        }
     }
 
     public void TakeDamage(int damage, Vector2 attackSource)
@@ -95,6 +100,27 @@ public class LightBluePlant : MonoBehaviour
 
         GetComponent<Collider2D>().enabled = false; // Disable only before destruction
         Destroy(gameObject);
+
+        // ✅ **Debug Spider Status**
+        if (spiderEnemy != null)
+        {
+            Debug.Log("🕷️ Checking Spider Status: " + (spiderEnemy.plantIsDead ? "DEAD" : "ALIVE"));
+        }
+        else
+        {
+            Debug.Log("❌ Spider reference is NULL!");
+        }
+
+        // ✅ **Check if Spider is still alive before unlocking the achievement**
+        if (spiderEnemy != null && !spiderEnemy.plantIsDead) // 🕷️ Spider is still alive!
+        {
+            Debug.Log("🏆 Plant Achievement Unlocked!");
+            AchievementManager.instance.ShowAchievement(plantAchievementSprite);
+        }
+        else
+        {
+            Debug.Log("🚫 No Achievement: Spider is already dead.");
+        }
     }
 
     void Die()
@@ -103,8 +129,5 @@ public class LightBluePlant : MonoBehaviour
         PlantDead = true;
 
         StartCoroutine(DieSequence());
-
-        // 🏆 Trigger Achievement
-        AchievementManager.instance.ShowAchievement(plantAchievementSprite);
     }
 }
