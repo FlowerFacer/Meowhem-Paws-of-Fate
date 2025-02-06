@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class YarnballCollectible : MonoBehaviour
 {
@@ -30,7 +30,8 @@ public class YarnballCollectible : MonoBehaviour
 
             if (inventory != null)
             {
-                inventory.AddYarn(yarnPoints);
+                inventory.AddYarn(1);
+                inventory.UpdateGameData(); // ✅ **Force GameData Update**
             }
 
             // Play sound when collected

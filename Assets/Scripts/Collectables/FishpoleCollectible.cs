@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class FishpoleCollectible : MonoBehaviour
 {
@@ -30,7 +30,8 @@ public class FishpoleCollectible : MonoBehaviour
 
             if (inventory != null)
             {
-                inventory.AddFishpole(fishpolePoints);
+                inventory.AddFishpole(1);
+                inventory.UpdateGameData(); // ✅ **Force GameData Update**
             }
 
             // Play sound when collected

@@ -27,7 +27,7 @@ public class GameData : MonoBehaviour
         }
     }
 
-    public void UpdateStats(PlayerInventory inventory, SlashEffect slash, LightningEffect lightning)
+    public void UpdateStats(PlayerInventory inventory, SlashEffect slash, LightningEffect lightning, PlayerHealth health)
     {
         // Secrets
         yarnCount = inventory.yarnCount;
@@ -39,5 +39,6 @@ public class GameData : MonoBehaviour
         specialAttackPower = lightning.damage;
 
         // Max Health (if you track it elsewhere, update it here)
+        maxHealth = health.maxHealth;
     }
 }

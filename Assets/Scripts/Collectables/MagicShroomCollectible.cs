@@ -33,6 +33,7 @@ public class MagicShroomCollectible : MonoBehaviour
             if (inventory != null)
             {
                 inventory.AddMagicShroom(1); // Add the shroom to inventory
+                inventory.UpdateGameData(); // ✅ **Force GameData Update**
             }
 
             // Play sound when collected

@@ -46,6 +46,7 @@ public class PlayerHealth : MonoBehaviour
         maxHealth += amount; // Increase the player's max health
         currentHealth = maxHealth; // Fully heal when gaining max health
         Debug.Log("Max Health Increased! New Max Health: " + maxHealth);
+        UpdateGameData(); // ✅ **Force GameData Update**
     }
 
     void Die()
@@ -64,5 +65,21 @@ public class PlayerHealth : MonoBehaviour
         yield return new WaitForSeconds(2.5f); // Adjust timing as needed
         Debug.Log("Respawning or Restarting Level...");
         // Handle respawn or restart logic here
+    }
+
+    public void UpdateGameData()
+    {
+        if (GameData.instance != null)
+        {
+            SlashEffect slash = GetComponent<SlashEffect>();
+            LightningEffect lightning = GetComponent<LightningEffect>();
+            PlayerInventory inventory = GetComponent<PlayerInventory>();
+            PlayerHealth health = GetComponent<PlayerHealth>();
+
+            if (slash != null && lightning != null && inventory != null)
+            {
+                GameData.instance.UpdateStats(inventory, slash, lightning, health);
+            }
+        }
     }
 }

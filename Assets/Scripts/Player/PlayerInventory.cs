@@ -59,7 +59,6 @@ public class PlayerInventory : MonoBehaviour
         if (playerHealth != null)
         {
             playerHealth.IncreaseMaxHealth(5);
-            UpdateGameData();
             Debug.Log("Game data updated, max health increased!");
         }
     }
@@ -143,18 +142,30 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
-    void UpdateGameData()
+    public void UpdateGameData()
     {
         if (GameData.instance != null)
         {
-            SlashEffect slash = GetComponent<SlashEffect>();
-            LightningEffect lightning = GetComponent<LightningEffect>();
-            PlayerInventory inventory = GetComponent<PlayerInventory>();
+            GameData.instance.yarnCount = yarnCount;
+            GameData.instance.fishpoleCount = fishpoleCount;
+            GameData.instance.magicShroomCount = magicShroomCount;
 
-            if (slash != null && lightning != null && inventory != null)
+            if (GetComponent<PlayerHealth>() != null)
             {
-                GameData.instance.UpdateStats(inventory, slash, lightning);
+                GameData.instance.maxHealth = GetComponent<PlayerHealth>().maxHealth;
             }
+
+            if (GetComponent<SlashEffect>() != null)
+            {
+                GameData.instance.regularAttackPower = GetComponent<SlashEffect>().damage;
+            }
+
+            if (GetComponent<LightningEffect>() != null)
+            {
+                GameData.instance.specialAttackPower = GetComponent<LightningEffect>().damage;
+            }
+
+            Debug.Log($"📊 GameData Updated: HP {GameData.instance.maxHealth}, Attack {GameData.instance.regularAttackPower}, Special {GameData.instance.specialAttackPower}");
         }
     }
 }

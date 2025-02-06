@@ -7605,6 +7605,10 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8217747793498021933, guid: 27a7809fd55c3a4418449af64b5c289f, type: 3}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b7a1f8bcf6efeea4e8d59dcab3b539c6, type: 3}
+    - target: {fileID: 8217747793498021933, guid: 27a7809fd55c3a4418449af64b5c289f, type: 3}
       propertyPath: spiderAchievementSprite
       value: 
       objectReference: {fileID: 2137880217974859988, guid: 8febbf5e60fc8e7439a7f673a9954f50, type: 3}
@@ -9834,9 +9838,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f9ccf01609227e4c91ab8ae712812d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
+  maxHealth: 10
   regularAttackPower: 3
-  specialAttackPower: 0
+  specialAttackPower: 8
   yarnCount: 0
   fishpoleCount: 0
   magicShroomCount: 0
@@ -21119,7 +21123,7 @@ MonoBehaviour:
     volume: 0.368
   - name: deathSound
     clip: {fileID: 8300000, guid: b7a1f8bcf6efeea4e8d59dcab3b539c6, type: 3}
-    volume: 0.532
+    volume: 0.472
   - name: hurtSound
     clip: {fileID: 8300000, guid: 9f73927110fd5b645821868a85f345c4, type: 3}
     volume: 0.478
