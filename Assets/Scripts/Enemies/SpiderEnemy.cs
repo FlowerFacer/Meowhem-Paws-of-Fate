@@ -23,6 +23,11 @@ public class SpiderEnemy : MonoBehaviour
     public Transform shroomThrowPoint; // Empty GameObject to set throw position
     public float throwForce = 6f; // Adjust the throw strength
 
+    public GameObject spiderAttackPrefab; // The prefab of the attack effect (web)
+    public Transform attackSpawnPoint; // Empty GameObject where the attack spawns
+    public float attackCooldown = 2f; // Time between attacks
+    private bool canAttack = true; // Prevent spamming attacks
+
     void Start()
     {
         initialPosition = transform.position;
@@ -89,10 +94,25 @@ public class SpiderEnemy : MonoBehaviour
 
         transform.position = Vector3.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
 
-        if (Vector2.Distance(transform.position, player.position) < 1f)
+        if (Vector2.Distance(transform.position, player.position) < 1f && canAttack)
         {
-            player.GetComponent<PlayerHealth>().TakeDamage(damage);
+            StartCoroutine(PerformAttack());
         }
+    }
+
+    IEnumerator PerformAttack()
+    {
+        canAttack = false; // Disable attacks temporarily
+
+        // **Spawn the Spider Web Attack Effect**
+        if (spiderAttackPrefab != null && attackSpawnPoint != null)
+        {
+            Instantiate(spiderAttackPrefab, attackSpawnPoint.position, Quaternion.identity);
+        }
+
+        yield return new WaitForSeconds(attackCooldown); // Wait before attacking again
+
+        canAttack = true; // Enable attacks again
     }
 
     bool IsGrounded()
