@@ -19947,7 +19947,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6522514176345142154, guid: cfeaf513b7b1be048bac347af6b75b0a, type: 3}
       propertyPath: m_SortingOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -5216688581335493593, guid: cfeaf513b7b1be048bac347af6b75b0a, type: 3}
       propertyPath: m_SortingOrder
@@ -19979,7 +19979,7 @@ PrefabInstance:
       objectReference: {fileID: 7485129024449336205, guid: cfeaf513b7b1be048bac347af6b75b0a, type: 3}
     - target: {fileID: -1781509799916303145, guid: cfeaf513b7b1be048bac347af6b75b0a, type: 3}
       propertyPath: m_SortingOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -1537910753396582790, guid: cfeaf513b7b1be048bac347af6b75b0a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -20175,6 +20175,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d76a748dbf47633439fc35e1e6370b97, type: 3}
   poofEffectPrefab: {fileID: 508387915697105931, guid: 68c8fc365dc9a29409129a01ffa92884, type: 3}
   poofPosition: {fileID: 5186456087883548942, guid: 68c8fc365dc9a29409129a01ffa92884, type: 3}
+  PoofCloudSound: {fileID: 8300000, guid: f9ad3c376cfd81a44b1326dfe0bdd1d7, type: 3}
 --- !u!82 &1406315824
 AudioSource:
   m_ObjectHideFlags: 0
@@ -20932,6 +20933,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b9570a82a79a9fa4abf2933b97105d29, type: 3}
   - {fileID: 8300000, guid: d76a748dbf47633439fc35e1e6370b97, type: 3}
   Gibbersh: {fileID: 8300000, guid: d76a748dbf47633439fc35e1e6370b97, type: 3}
+  PoofCloudSound: {fileID: 8300000, guid: f9ad3c376cfd81a44b1326dfe0bdd1d7, type: 3}
   poofEffectPrefab: {fileID: 7492287197023920637, guid: 75ebfe1a2fe950d4cb3a5121366486f2, type: 3}
   poofPosition: {fileID: 6529469338490866586, guid: 75ebfe1a2fe950d4cb3a5121366486f2, type: 3}
   tutuGameObject: {fileID: 1523405946352524968}
@@ -21075,14 +21077,20 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 691b5a07a68adee49a08238c8733af39, type: 3}
     volume: 0.388
   - name: Bonk
-    clip: {fileID: 8300000, guid: ec2c3002d0f609b43933c1a4a46700ed, type: 3}
-    volume: 0.013
+    clip: {fileID: 8300000, guid: fa9eda5a04139174c870056368d72a01, type: 3}
+    volume: 0.167
   - name: Gibbersh
     clip: {fileID: 8300000, guid: d76a748dbf47633439fc35e1e6370b97, type: 3}
-    volume: 0.432
+    volume: 0.505
   - name: shroomSound
     clip: {fileID: 8300000, guid: c7a61b89ccc40ba46ada782445f9320c, type: 3}
     volume: 0.368
+  - name: increase
+    clip: {fileID: 8300000, guid: c2e2fe71be05ff2418d81591d345250a, type: 3}
+    volume: 0.12
+  - name: PoofCloudSound
+    clip: {fileID: 8300000, guid: f9ad3c376cfd81a44b1326dfe0bdd1d7, type: 3}
+    volume: 0.358
 --- !u!4 &1566725482
 Transform:
   m_ObjectHideFlags: 0
@@ -27734,18 +27742,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 204570273}
     m_Modifications:
-    - target: {fileID: 318485212869389154, guid: 76c14a8343de2b94483567420b2ad7f4, type: 3}
-      propertyPath: TutusText
-      value: 
-      objectReference: {fileID: 62437467}
-    - target: {fileID: 989061052327270078, guid: 76c14a8343de2b94483567420b2ad7f4, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.24
-      objectReference: {fileID: 0}
-    - target: {fileID: 989061052327270078, guid: 76c14a8343de2b94483567420b2ad7f4, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.24
-      objectReference: {fileID: 0}
     - target: {fileID: 989061052327270078, guid: 76c14a8343de2b94483567420b2ad7f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 38.25244
@@ -27786,126 +27782,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1247468216395415732, guid: 76c14a8343de2b94483567420b2ad7f4, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9995387
-      objectReference: {fileID: 0}
-    - target: {fileID: 1247468216395415732, guid: 76c14a8343de2b94483567420b2ad7f4, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.030371523
-      objectReference: {fileID: 0}
-    - target: {fileID: 1358381647132176930, guid: 76c14a8343de2b94483567420b2ad7f4, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.99950916
-      objectReference: {fileID: 0}
-    - target: {fileID: 1358381647132176930, guid: 76c14a8343de2b94483567420b2ad7f4, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.03132947
-      objectReference: {fileID: 0}
-    - target: {fileID: 1358381647132176930, guid: 76c14a8343de2b94483567420b2ad7f4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -0.138
-      objectReference: {fileID: 0}
     - target: {fileID: 2121688133370072797, guid: 76c14a8343de2b94483567420b2ad7f4, type: 3}
       propertyPath: m_Name
       value: MouseNPC Part 2
       objectReference: {fileID: 0}
-    - target: {fileID: 6144014679593719820, guid: 76c14a8343de2b94483567420b2ad7f4, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.035544276
-      objectReference: {fileID: 0}
-    - target: {fileID: 6144014679593719820, guid: 76c14a8343de2b94483567420b2ad7f4, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.99936813
-      objectReference: {fileID: 0}
-    - target: {fileID: 7714351645484469220, guid: 76c14a8343de2b94483567420b2ad7f4, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7714351645484469220, guid: 76c14a8343de2b94483567420b2ad7f4, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.0000068731597
-      objectReference: {fileID: 0}
-    - target: {fileID: 8087956488581740826, guid: 76c14a8343de2b94483567420b2ad7f4, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.99918646
-      objectReference: {fileID: 0}
-    - target: {fileID: 8087956488581740826, guid: 76c14a8343de2b94483567420b2ad7f4, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.040329274
-      objectReference: {fileID: 0}
-    - target: {fileID: 8093007192342187172, guid: 76c14a8343de2b94483567420b2ad7f4, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: -0.026527781
-      objectReference: {fileID: 0}
-    - target: {fileID: 8093007192342187172, guid: 76c14a8343de2b94483567420b2ad7f4, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.9996481
-      objectReference: {fileID: 0}
-    - target: {fileID: 9065958826589381559, guid: 76c14a8343de2b94483567420b2ad7f4, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 7485129024449336205, guid: cfeaf513b7b1be048bac347af6b75b0a, type: 3}
-    m_RemovedComponents:
-    - {fileID: 318485212869389154, guid: 76c14a8343de2b94483567420b2ad7f4, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2121688133370072797, guid: 76c14a8343de2b94483567420b2ad7f4, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1523405946352524970}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76c14a8343de2b94483567420b2ad7f4, type: 3}
 --- !u!1 &1523405946352524968 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2121688133370072797, guid: 76c14a8343de2b94483567420b2ad7f4, type: 3}
   m_PrefabInstance: {fileID: 1523405946352524967}
   m_PrefabAsset: {fileID: 0}
---- !u!61 &1523405946352524970
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1523405946352524968}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0.0000030994415, y: 11.20003}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 4.807647, y: 22.36748}
-  m_EdgeRadius: 0
 --- !u!82 &1523405946352524971 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 4191151531455374891, guid: 76c14a8343de2b94483567420b2ad7f4, type: 3}

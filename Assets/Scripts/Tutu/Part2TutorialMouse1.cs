@@ -14,6 +14,7 @@ public class Part2TutorialMouse : MonoBehaviour
     public AudioSource tutuAudioSource;
     public AudioClip[] gibberishClips; // Array for different gibberish sounds (Optional)
     public AudioClip Gibbersh;
+    public AudioClip PoofCloudSound;
 
     public GameObject poofEffectPrefab; // Assign PoofEffect prefab
     public Transform poofPosition; // Assign a specific spawn point if needed
@@ -58,6 +59,11 @@ public class Part2TutorialMouse : MonoBehaviour
     IEnumerator AppearSequence()
     {
         hasSaidStop = true;
+
+        if (PoofCloudSound != null)
+        {
+            AudioManager.instance.PlaySound(PoofCloudSound);
+        }
 
         // **Spawn Poof at Tutu's position**
         GameObject poof = Instantiate(poofEffectPrefab, poofPosition.position, Quaternion.identity);
@@ -114,6 +120,11 @@ public class Part2TutorialMouse : MonoBehaviour
         if (TutusText != null)
         {
             TutusText.gameObject.SetActive(false);
+        }
+
+        if (PoofCloudSound != null)
+        {
+            AudioManager.instance.PlaySound(PoofCloudSound);
         }
 
         // **Play poof effect again**
@@ -226,6 +237,11 @@ public class Part2TutorialMouse : MonoBehaviour
         if (TutusText != null)
         {
             TutusText.gameObject.SetActive(false);
+        }
+
+        if (PoofCloudSound != null)
+        {
+            AudioManager.instance.PlaySound(PoofCloudSound);
         }
 
         GameObject poof = Instantiate(poofEffectPrefab, poofPosition.position, Quaternion.identity);

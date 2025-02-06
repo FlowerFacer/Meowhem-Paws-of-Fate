@@ -14,6 +14,7 @@ public class TutorialMouse : MonoBehaviour
 
     public GameObject poofEffectPrefab; // Assign PoofEffect prefab
     public Transform poofPosition; // Assign a specific spawn point if needed
+    public AudioClip PoofCloudSound;
 
     private bool hasTalked = false; // Ensuring it only appears once per appearance
 
@@ -36,6 +37,11 @@ public class TutorialMouse : MonoBehaviour
     {
         // Wait a momement before appearing
         yield return new WaitForSeconds(1f);
+
+        if (PoofCloudSound != null)
+        {
+            AudioManager.instance.PlaySound(PoofCloudSound);
+        }
 
         // **Spawn Poof at Tutu's position**
         GameObject poof = Instantiate(poofEffectPrefab, poofPosition.position, Quaternion.identity);
@@ -77,6 +83,11 @@ public class TutorialMouse : MonoBehaviour
         if (TutusText != null)
         {
             TutusText.gameObject.SetActive(false);
+        }
+
+        if (PoofCloudSound != null)
+        {
+            AudioManager.instance.PlaySound(PoofCloudSound);
         }
 
         // **Play poof effect again**
