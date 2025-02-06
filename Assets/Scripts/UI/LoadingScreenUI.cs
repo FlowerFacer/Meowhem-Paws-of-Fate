@@ -27,9 +27,10 @@ public class LoadingScreenUI : MonoBehaviour
             specialAttackText.text = $"Special Attack Power: {GameData.instance.specialAttackPower}";
 
             secretsText.text = $"Secrets Found:\n" +
-                $"{GameData.instance.yarnCount}/1 Yarn Balls\n" +
-                $"{GameData.instance.fishpoleCount}/1 Fishpoles\n" +
-                $"{GameData.instance.magicShroomCount}/1 Magic Mushrooms";
+                $"\n" +
+                $"{GameData.instance.yarnCount} / 1 Yarn Balls\n" +
+                $"{GameData.instance.fishpoleCount} / 1 Fishpoles\n" +
+                $"{GameData.instance.magicShroomCount}/ 1 Magic Mushrooms";
 
             Debug.Log($"📊 Loading Screen Updated: HP {GameData.instance.maxHealth}, Attack {GameData.instance.regularAttackPower}, Special {GameData.instance.specialAttackPower}");
         }
