@@ -27,6 +27,8 @@ public class SpiderEnemy : MonoBehaviour
     public Transform attackSpawnPoint; // Empty GameObject where the attack spawns
     public float attackCooldown = 2f; // Time between attacks
     private bool canAttack = true; // Prevent spamming attacks
+    public bool playerIsDead;
+    public PlayerHealth playerHealth;
 
     void Start()
     {
@@ -49,7 +51,15 @@ public class SpiderEnemy : MonoBehaviour
             ReactToPlantDeath();
         }
 
-        if (plantIsDead) return; // Stop all enemy behavior if plant is dead
+        // If the player is dead, stop movement and attack
+        if (!playerIsDead && playerHealth.isDead)
+        {
+            playerIsDead = true; // Mark player as dead
+            ReactToPlayerDeath();
+        }
+
+        if (plantIsDead || playerIsDead) return; // Stop spider logic if necessary
+
 
         if (playerDetected)
         {
@@ -81,6 +91,8 @@ public class SpiderEnemy : MonoBehaviour
     {
         if (plantIsDead) return; // 🛑 Stop detecting player if plant is gone
 
+        if (playerIsDead) return;
+
         if (Vector2.Distance(transform.position, player.position) < detectionRange)
         {
             playerDetected = true;
@@ -91,6 +103,8 @@ public class SpiderEnemy : MonoBehaviour
     void AttackPlayer()
     {
         if (plantIsDead) return; // 🛑 Stop attacking if plant is gone
+
+        if (playerIsDead) return;
 
         transform.position = Vector3.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
 
@@ -150,6 +164,15 @@ public class SpiderEnemy : MonoBehaviour
         animator.SetTrigger("Idle"); // 🕷️ Play idle animation
 
         StartCoroutine(FriendlySpiderSequence());
+    }
+
+    void ReactToPlayerDeath()
+    {
+        Debug.Log("The player is dead! Spider stops being hostile.");
+        playerDetected = false; // 🛑 Stop attacking
+        animator.SetTrigger("Idle"); // 🕷️ Play idle animation
+
+        StartCoroutine(PassivePatrol());
     }
 
     // 💬 **Spider Talks to Player**

@@ -1,4 +1,5 @@
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class PlayerHealth : MonoBehaviour
     public int currentHealth;
     public Animator animator;
     public AudioClip Bonk;
+    public bool isDead = false;
 
     void Start()
     {
@@ -16,6 +18,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
+        if (isDead) return; // ✅ Prevent taking damage when dead
         // Prevent damage if the player is performing a special attack
         if (playerController.isSpecialAttacking)
         {
@@ -47,8 +50,19 @@ public class PlayerHealth : MonoBehaviour
 
     void Die()
     {
+        if (isDead) return; // ✅ Prevent multiple death calls
+        isDead = true;
+
         Debug.Log("Player died!");
-        animator.SetTrigger("isDead");
-        // Handle player death (e.g., restart level)
+        animator.SetBool("isDead", true); // ✅ Use Bool instead of Trigger
+
+        StopAllCoroutines(); // **Stop any active patrol or attack coroutine**
+    }
+
+    IEnumerator HandleDeath()
+    {
+        yield return new WaitForSeconds(2.5f); // Adjust timing as needed
+        Debug.Log("Respawning or Restarting Level...");
+        // Handle respawn or restart logic here
     }
 }
