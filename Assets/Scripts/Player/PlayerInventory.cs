@@ -80,6 +80,11 @@ public class PlayerInventory : MonoBehaviour
             float fadeDuration = 0.5f; // Speed of fade-in
             float timer = 0f;
 
+            if (increase != null)
+            {
+                AudioManager.instance.PlaySound(increase);
+            }
+
             while (timer < fadeDuration)
             {
                 mainTextColor.a = Mathf.Lerp(0f, 1f, timer / fadeDuration);
