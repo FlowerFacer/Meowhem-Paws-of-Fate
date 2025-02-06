@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using TMPro; // Import TextMeshPro
 using UnityEngine.InputSystem;
@@ -19,8 +19,12 @@ public class Part2TutorialMouse : MonoBehaviour
     public Transform poofPosition; // Assign a specific spawn point if needed
 
     private bool hasTalked = false; // Ensuring it only appears once per appearance
+    private bool isTalking = false; // Track if Tutu is talking
+    private bool hasSaidStop = false;
     public GameObject tutuGameObject; // The entire Tutu prefab (Disable at start)
     public bool playerSkipped = false; // detect player skipping
+
+    private Coroutine talkCoroutine; // Store running talk coroutine
 
 
     void Start()
@@ -37,15 +41,15 @@ public class Part2TutorialMouse : MonoBehaviour
 
     void Update()
     {
-        if (playerSkipped)
+        if (Input.GetKeyDown(KeyCode.Return) && isTalking)
         {
-            HandlePlayerSkip();
+            StopTutuDialogue(); // Immediately stop and trigger "RUDE!"
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && !hasTalked) // Player reaches checkpoint
+        if (other.CompareTag("Player") && !hasTalked &&!hasSaidStop) // Player reaches checkpoint
         {
             StartCoroutine(AppearSequence());
         }
@@ -53,6 +57,8 @@ public class Part2TutorialMouse : MonoBehaviour
 
     IEnumerator AppearSequence()
     {
+        hasSaidStop = true;
+
         // **Spawn Poof at Tutu's position**
         GameObject poof = Instantiate(poofEffectPrefab, poofPosition.position, Quaternion.identity);
         Destroy(poof, 0.9f);
@@ -87,6 +93,7 @@ public class Part2TutorialMouse : MonoBehaviour
     IEnumerator TalkSequence()
     {
         hasTalked = true; // Ensure it doesn't repeat
+        isTalking = true;
 
         // Play talking animation
         animator.SetBool("IsTalking", true);
@@ -100,6 +107,8 @@ public class Part2TutorialMouse : MonoBehaviour
 
         // Wait for the talk duration before disappearing
         yield return new WaitForSeconds(talkDuration);
+
+        isTalking = false;
 
         // Hide tutorial text
         if (TutusText != null)
@@ -158,14 +167,11 @@ public class Part2TutorialMouse : MonoBehaviour
             {
                 TutusText.text += letter;
                 yield return new WaitForSeconds(0.05f);
+
+                if (playerSkipped) yield break; // Stop if player skips
             }
 
             yield return new WaitForSeconds(1.5f);
-
-            if (Input.GetKey(KeyCode.Return))
-            {
-                playerSkipped = true;
-            }
         }
     }
 
@@ -179,9 +185,24 @@ public class Part2TutorialMouse : MonoBehaviour
         }
     }
 
+    void StopTutuDialogue()
+    {
+        playerSkipped = true;
+        isTalking = false;
+
+        animator.SetTrigger("Rude!");
+
+        if (talkCoroutine != null)
+        {
+            StopCoroutine(talkCoroutine); // Stop the speaking coroutine
+        }
+
+        StartCoroutine(HandlePlayerSkip());
+    }
+
     IEnumerator HandlePlayerSkip()
     {
-        string text = "STOP!";
+        string text = "RUDE!";
         TutusText.text = "";
 
         if (Gibbersh != null)
@@ -189,22 +210,29 @@ public class Part2TutorialMouse : MonoBehaviour
             AudioManager.instance.PlaySound(Gibbersh);
         }
 
-        foreach (char letter in text) { TutusText.text += letter; yield return new WaitForSeconds(0.05f); }
+        foreach (char letter in text)
+        {
+            TutusText.text += letter;
+            yield return new WaitForSeconds(0.05f);
+        }
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.8f);
 
-        // Hide tutorial text
+        StartCoroutine(HideTutu());
+    }
+
+    IEnumerator HideTutu()
+    {
         if (TutusText != null)
         {
             TutusText.gameObject.SetActive(false);
         }
 
-        // **Play poof effect again**
         GameObject poof = Instantiate(poofEffectPrefab, poofPosition.position, Quaternion.identity);
         Destroy(poof, 0.9f);
 
-        // **Wait for poof animation, then disable Tutu**
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.1f); // ✅ Coroutine requires yield
+
         if (tutuGameObject != null)
         {
             tutuGameObject.SetActive(false);
