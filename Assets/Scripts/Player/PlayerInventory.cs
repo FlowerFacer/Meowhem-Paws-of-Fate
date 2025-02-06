@@ -15,16 +15,35 @@ public class PlayerInventory : MonoBehaviour
     void Start()
     {
         playerHealth = GetComponent<PlayerHealth>(); // Get reference to PlayerHealth script
+
+        if (HpIncreaseText != null)
+        {
+            // **Get the child text**
+            TMP_Text childText = HpIncreaseText.transform.GetChild(0).GetComponent<TMP_Text>();
+
+            Color transparentMain = HpIncreaseText.color;
+            transparentMain.a = 0f; // Set transparency to 0
+            HpIncreaseText.color = transparentMain;
+
+            if (childText != null)
+            {
+                Color transparentChild = childText.color;
+                transparentChild.a = 0f;
+                childText.color = transparentChild;
+            }
+        }
     }
 
     public void AddYarn(int amount)
     {
         yarnCount += amount;
+        UpdateGameData();
         Debug.Log("Current Yarn Balls: " + yarnCount);
     }
     public void AddFishpole(int amount)
     {
         fishpoleCount += amount;
+        UpdateGameData();
         Debug.Log("Current Yarn Balls: " + fishpoleCount);
     }
 
@@ -33,32 +52,104 @@ public class PlayerInventory : MonoBehaviour
         magicShroomCount += amount;
         Debug.Log("Magic Mushroom Collected! Total: " + magicShroomCount);
 
-        ShowHealthBonusText();
+        Debug.Log("Attempting to show HP Increase text!");
+        StartCoroutine(ShowHealthBonusText()); // Start fade animation
 
         // Increase Player's Max Health
         if (playerHealth != null)
         {
             playerHealth.IncreaseMaxHealth(5);
+            UpdateGameData();
+            Debug.Log("Game data updated, max health increased!");
         }
     }
 
     IEnumerator ShowHealthBonusText()
     {
-        // 🗨️ Enable and position dialogue text
         if (HpIncreaseText != null)
         {
-            HpIncreaseText.gameObject.SetActive(true);
-            HpIncreaseText.transform.position = transform.position + new Vector3(0, 1.5f, 0); // Adjust height
+            // **Get the child text**
+            TMP_Text childText = HpIncreaseText.transform.GetChild(0).GetComponent<TMP_Text>();
+
+            Debug.Log("✅ HP Texts Found! Starting fade-in...");
+
+            Color mainTextColor = HpIncreaseText.color;
+            Color childTextColor = childText != null ? childText.color : mainTextColor;
+
+            // **Fade In Effect**
+            float fadeDuration = 0.5f; // Speed of fade-in
+            float timer = 0f;
+
+            while (timer < fadeDuration)
+            {
+                mainTextColor.a = Mathf.Lerp(0f, 1f, timer / fadeDuration);
+                HpIncreaseText.color = mainTextColor;
+
+                if (childText != null)
+                {
+                    childTextColor.a = Mathf.Lerp(0f, 1f, timer / fadeDuration);
+                    childText.color = childTextColor;
+                }
+
+                timer += Time.deltaTime;
+                yield return null;
+            }
+
+            mainTextColor.a = 1f;
+            HpIncreaseText.color = mainTextColor;
+
+            if (childText != null)
+            {
+                childTextColor.a = 1f;
+                childText.color = childTextColor;
+            }
+
+            yield return new WaitForSeconds(3f); // Keep visible for 2 seconds
+
+            Debug.Log("⏳ Starting fade-out...");
+
+            // **Fade Out Effect**
+            timer = 0f;
+            while (timer < fadeDuration)
+            {
+                mainTextColor.a = Mathf.Lerp(1f, 0f, timer / fadeDuration);
+                HpIncreaseText.color = mainTextColor;
+
+                if (childText != null)
+                {
+                    childTextColor.a = Mathf.Lerp(1f, 0f, timer / fadeDuration);
+                    childText.color = childTextColor;
+                }
+
+                timer += Time.deltaTime;
+                yield return null;
+            }
+
+            mainTextColor.a = 0f;
+            HpIncreaseText.color = mainTextColor;
+
+            if (childText != null)
+            {
+                childTextColor.a = 0f;
+                childText.color = childTextColor;
+            }
+
+            Debug.Log("🛑 HP Text Hidden.");
         }
+    }
 
-        string text = "+ HP increased by 5!";
-        HpIncreaseText.text = "";
-
-        if (increase != null)
+    void UpdateGameData()
+    {
+        if (GameData.instance != null)
         {
-            AudioManager.instance.PlaySound(increase);
-        }
+            SlashEffect slash = GetComponent<SlashEffect>();
+            LightningEffect lightning = GetComponent<LightningEffect>();
+            PlayerInventory inventory = GetComponent<PlayerInventory>();
 
-        foreach (char letter in text) { HpIncreaseText.text += letter; yield return new WaitForSeconds(0.04f); }
+            if (slash != null && lightning != null && inventory != null)
+            {
+                GameData.instance.UpdateStats(inventory, slash, lightning);
+            }
+        }
     }
 }

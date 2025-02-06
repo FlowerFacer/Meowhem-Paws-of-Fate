@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 1ad0368a15f2caa438ec0c159e439303
+guid: 936565943bf026644a0f5b44ad3368e5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -322153994735157107
-    second: Copy of Achievement Unlocked!_0
+      213: -2422951181158752361
+    second: directional stand v2_0
+  - first:
+      213: -1668608615020353962
+    second: directional stand v2_1
+  - first:
+      213: 4486065616433378207
+    second: directional stand v2_2
+  - first:
+      213: -3763370211317997272
+    second: directional stand v2_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -100,13 +109,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Copy of Achievement Unlocked!_0
+      name: directional stand v2_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 2048
-        height: 1024
+        x: 399
+        y: 1316
+        width: 413
+        height: 545
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +124,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d8086dc06aa778bf0800000000000000
-      internalID: -322153994735157107
+      spriteID: 79f5be2fcb2ff5ed0800000000000000
+      internalID: -2422951181158752361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: directional stand v2_1
+      rect:
+        serializedVersion: 2
+        x: 781
+        y: 687
+        width: 430
+        height: 568
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6562e882e49e7d8e0800000000000000
+      internalID: -1668608615020353962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: directional stand v2_2
+      rect:
+        serializedVersion: 2
+        x: 1253
+        y: 924
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f93fa92f8e4b14e30800000000000000
+      internalID: 4486065616433378207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: directional stand v2_3
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 899
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 821aa146bb2d5cbc0800000000000000
+      internalID: -3763370211317997272
       vertices: []
       indices: 
       edges: []
@@ -135,7 +210,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Copy of Achievement Unlocked!_0: -322153994735157107
+      directional stand v2_0: -2422951181158752361
+      directional stand v2_1: -1668608615020353962
+      directional stand v2_2: 4486065616433378207
+      directional stand v2_3: -3763370211317997272
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
 using TMPro; // Import TextMeshPro
+using UnityEngine.InputSystem;
+
 
 public class Part2TutorialMouse : MonoBehaviour
 {
@@ -18,6 +20,7 @@ public class Part2TutorialMouse : MonoBehaviour
 
     private bool hasTalked = false; // Ensuring it only appears once per appearance
     public GameObject tutuGameObject; // The entire Tutu prefab (Disable at start)
+    public bool playerSkipped = false; // detect player skipping
 
 
     void Start()
@@ -29,6 +32,14 @@ public class Part2TutorialMouse : MonoBehaviour
         if (TutusText != null)
         {
             TutusText.gameObject.SetActive(false);
+        }
+    }
+
+    void Update()
+    {
+        if (playerSkipped)
+        {
+            HandlePlayerSkip();
         }
     }
 
@@ -130,8 +141,8 @@ public class Part2TutorialMouse : MonoBehaviour
             "She is usually very friendly,",
             "But someone put a light blue\n plant over there -",
             "And she hates it.",
-            "So now, you learn how to fight!!",
-            "Press the Left Mouse Button to attack!",
+            "So now, prepare to fight!!",
+            "Press the Left Mouse Button\n to attack!",
             "Press the Right Mouse Button\n to perform Special Attack!",
             "Use Special Attack wisely,",
             "There is a 60 second\n cooldown period.",
@@ -150,6 +161,11 @@ public class Part2TutorialMouse : MonoBehaviour
             }
 
             yield return new WaitForSeconds(1.5f);
+
+            if (Input.GetKey(KeyCode.Return))
+            {
+                playerSkipped = true;
+            }
         }
     }
 
@@ -163,5 +179,36 @@ public class Part2TutorialMouse : MonoBehaviour
         }
     }
 
+    IEnumerator HandlePlayerSkip()
+    {
+        string text = "STOP!";
+        TutusText.text = "";
+
+        if (Gibbersh != null)
+        {
+            AudioManager.instance.PlaySound(Gibbersh);
+        }
+
+        foreach (char letter in text) { TutusText.text += letter; yield return new WaitForSeconds(0.05f); }
+
+        yield return new WaitForSeconds(1f);
+
+        // Hide tutorial text
+        if (TutusText != null)
+        {
+            TutusText.gameObject.SetActive(false);
+        }
+
+        // **Play poof effect again**
+        GameObject poof = Instantiate(poofEffectPrefab, poofPosition.position, Quaternion.identity);
+        Destroy(poof, 0.9f);
+
+        // **Wait for poof animation, then disable Tutu**
+        yield return new WaitForSeconds(0.1f);
+        if (tutuGameObject != null)
+        {
+            tutuGameObject.SetActive(false);
+        }
+    }
 }
 
