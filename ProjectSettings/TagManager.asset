@@ -25,7 +25,7 @@ TagManager:
   - Enemies
   - NonBlockingNPC
   - Deathzone
-  - 
+  - umbrella
   - 
   - 
   - 
@@ -63,6 +63,12 @@ TagManager:
     locked: 0
   - name: Collectables
     uniqueID: 4208003639
+    locked: 0
+  - name: NPC
+    uniqueID: 2603010091
+    locked: 0
+  - name: Umbrella
+    uniqueID: 73973515
     locked: 0
   m_RenderingLayers:
   - Default
