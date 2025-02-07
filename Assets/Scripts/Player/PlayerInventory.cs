@@ -44,7 +44,7 @@ public class PlayerInventory : MonoBehaviour
     {
         fishpoleCount += amount;
         UpdateGameData();
-        Debug.Log("Current Yarn Balls: " + fishpoleCount);
+        Debug.Log("Current Fishpoles: " + fishpoleCount);
     }
 
     public void AddMagicShroom(int amount)

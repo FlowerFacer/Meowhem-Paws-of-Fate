@@ -41,6 +41,10 @@ public class MagicShroomCollectible : MonoBehaviour
             {
                 AudioManager.instance.PlaySound(shroomSound);
             }
+            else
+            {
+                Debug.LogWarning("Fishpole Sound is missing!");
+            }
 
             Debug.Log("Magic Mushroom collected! Max Health Increased.");
             Destroy(gameObject); // Remove the collectible from the scene
