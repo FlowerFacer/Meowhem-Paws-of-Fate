@@ -57,11 +57,11 @@ public class PlayerController : MonoBehaviour
         playerCollider = GetComponent<BoxCollider2D>();  // Get the player's collider
         originalSize = playerCollider.size;  // Store original collider size
         originalOffset = playerCollider.offset;  // Store original collider offset
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
 
     void FixedUpdate()
     {
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.4f, groundLayer);
         HandleMovement();
     }
 
@@ -130,7 +130,7 @@ public class PlayerController : MonoBehaviour
 
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
 
-        if (isGrounded && Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))
+        if (isGrounded && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)))
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             animator.SetTrigger("JumpTrigger");
