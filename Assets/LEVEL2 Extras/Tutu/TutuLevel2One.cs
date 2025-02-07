@@ -55,7 +55,7 @@ public class TutuLevel2One : MonoBehaviour
 
         // **Transition Tutu from Invisible to Idle**
         animator.SetTrigger("Appear");
-        UmbrellaAnim.Play("Appear");
+        UmbrellaAnim.SetTrigger("Appear");
 
         // Wait for the idle duration before speaking
         yield return new WaitForSeconds(idleTime);
@@ -101,7 +101,7 @@ public class TutuLevel2One : MonoBehaviour
         // **Wait for poof animation, then disable Tutu**
         yield return new WaitForSeconds(0.1f);
         UmbrellaAnim.ResetTrigger("Appear");
-        UmbrellaAnim.Play("Disappear");
+        UmbrellaAnim.SetTrigger("Disappear");
         animator.SetTrigger("Disappear");
     }
 
@@ -111,7 +111,7 @@ public class TutuLevel2One : MonoBehaviour
         {
             "Ayo!",
             "YOU MADE IT!",
-            "(Genuinely surprised tho).",
+            "(Genuinely surprised tho)",
             "This is place is called \n Glimmergrove,",
             "And the creatures here \n are a bit less friendly.",
             "Good luck Apricot!"
