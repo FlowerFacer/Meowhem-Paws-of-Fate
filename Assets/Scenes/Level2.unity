@@ -830,6 +830,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &82094225
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 545539384277889202, guid: 650bc0ccf50b0df4c9abe9b70f415497, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15.44231
+      objectReference: {fileID: 0}
+    - target: {fileID: 545539384277889202, guid: 650bc0ccf50b0df4c9abe9b70f415497, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.2278914
+      objectReference: {fileID: 0}
+    - target: {fileID: 545539384277889202, guid: 650bc0ccf50b0df4c9abe9b70f415497, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 545539384277889202, guid: 650bc0ccf50b0df4c9abe9b70f415497, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 545539384277889202, guid: 650bc0ccf50b0df4c9abe9b70f415497, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 545539384277889202, guid: 650bc0ccf50b0df4c9abe9b70f415497, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 545539384277889202, guid: 650bc0ccf50b0df4c9abe9b70f415497, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 545539384277889202, guid: 650bc0ccf50b0df4c9abe9b70f415497, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 545539384277889202, guid: 650bc0ccf50b0df4c9abe9b70f415497, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 545539384277889202, guid: 650bc0ccf50b0df4c9abe9b70f415497, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682724451698157777, guid: 650bc0ccf50b0df4c9abe9b70f415497, type: 3}
+      propertyPath: m_Name
+      value: Broom Enemy
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 650bc0ccf50b0df4c9abe9b70f415497, type: 3}
 --- !u!1 &86799126
 GameObject:
   m_ObjectHideFlags: 0
@@ -1378,6 +1435,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4174495416084062959, guid: 84e1a94f566f63942b29b65073ede1ad, type: 3}
   m_PrefabInstance: {fileID: 175335343}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &175335345 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3838415394384342699, guid: 84e1a94f566f63942b29b65073ede1ad, type: 3}
+  m_PrefabInstance: {fileID: 175335343}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &176263773
 GameObject:
   m_ObjectHideFlags: 0
@@ -4750,6 +4818,63 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 0}
   offset: {x: 0, y: -0.5, z: 0}
+--- !u!1001 &515071701
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2715718360331694123, guid: 146b1c0da46c0fd43aa553279fea5862, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 51.369663
+      objectReference: {fileID: 0}
+    - target: {fileID: 2715718360331694123, guid: 146b1c0da46c0fd43aa553279fea5862, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.3864177
+      objectReference: {fileID: 0}
+    - target: {fileID: 2715718360331694123, guid: 146b1c0da46c0fd43aa553279fea5862, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2715718360331694123, guid: 146b1c0da46c0fd43aa553279fea5862, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2715718360331694123, guid: 146b1c0da46c0fd43aa553279fea5862, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2715718360331694123, guid: 146b1c0da46c0fd43aa553279fea5862, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2715718360331694123, guid: 146b1c0da46c0fd43aa553279fea5862, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2715718360331694123, guid: 146b1c0da46c0fd43aa553279fea5862, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2715718360331694123, guid: 146b1c0da46c0fd43aa553279fea5862, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2715718360331694123, guid: 146b1c0da46c0fd43aa553279fea5862, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3852885148372101192, guid: 146b1c0da46c0fd43aa553279fea5862, type: 3}
+      propertyPath: m_Name
+      value: Level2 Broom Enemy Blue
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 146b1c0da46c0fd43aa553279fea5862, type: 3}
 --- !u!1 &521653501
 GameObject:
   m_ObjectHideFlags: 0
@@ -13495,7 +13620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   achievementPanel: {fileID: 1773958159}
-  achievementImage: {fileID: 0}
+  achievementImage: {fileID: 175335345}
   achievementSound: {fileID: 8300000, guid: 86b5c7d4f6dae1141a1689101096b1a4, type: 3}
 --- !u!1001 &1583890526
 PrefabInstance:
@@ -17236,6 +17361,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8577839795487389888, guid: eead8a5ffcf743e459d8904cd405d85a, type: 3}
   m_PrefabInstance: {fileID: 1980221600}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1980221602 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6310355239776286809, guid: eead8a5ffcf743e459d8904cd405d85a, type: 3}
+  m_PrefabInstance: {fileID: 1980221600}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acfb95a0e85e8d441afe853138702c8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1985173326
 GameObject:
   m_ObjectHideFlags: 0
@@ -31594,6 +31730,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1776109898583564800, guid: a3181b18c69e922438764ee530d916da, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1980221601}
+    - target: {fileID: 1776109898583564800, guid: a3181b18c69e922438764ee530d916da, type: 3}
+      propertyPath: playerHealth
+      value: 
+      objectReference: {fileID: 1980221602}
     - target: {fileID: 7117856352282558039, guid: a3181b18c69e922438764ee530d916da, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.1833932
@@ -31661,3 +31805,5 @@ SceneRoots:
   - {fileID: 1503064771}
   - {fileID: 1838704103}
   - {fileID: 6534122127607823354}
+  - {fileID: 82094225}
+  - {fileID: 515071701}
