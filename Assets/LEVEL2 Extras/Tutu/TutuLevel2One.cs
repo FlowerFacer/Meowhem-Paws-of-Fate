@@ -7,8 +7,8 @@ public class TutuLevel2One : MonoBehaviour
     public Animator animator; // Reference to Tutu's animator
     public Animator UmbrellaAnim; // Ref to the umbrella object
     public TMP_Text TutusText; // Reference to the TextMeshPro 3D object
-    public float idleTime = 5f; // Time before Tutu starts talking
-    public float talkDuration = 10f; // How long Tutu speaks before disappearing
+    public float idleTime = 3f; // Time before Tutu starts talking
+    public float talkDuration = 17f; // How long Tutu speaks before disappearing
 
     public AudioSource tutuAudioSource;
     public AudioClip[] gibberishClips; // Array for different gibberish sounds (Optional)
@@ -110,8 +110,8 @@ public class TutuLevel2One : MonoBehaviour
         string[] tutorialLines =
         {
             "Ayo!",
-            "YoU MAde iT!",
-            "(Genuinely surprised though).",
+            "YOU MADE IT!",
+            "(Genuinely surprised tho).",
             "This is place is called \n Glimmergrove,",
             "And the creatures here \n are a bit less friendly.",
             "Good luck Apricot!"

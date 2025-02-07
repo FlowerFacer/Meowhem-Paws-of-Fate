@@ -17,6 +17,7 @@ public class LoadingScreenUI : MonoBehaviour
     void Start()
     {
         StartCoroutine(TypewriterEffect());
+        StartCoroutine(LoadNextLevel()); 
     }
 
     IEnumerator TypewriterEffect()
@@ -47,6 +48,6 @@ public class LoadingScreenUI : MonoBehaviour
     {
         yield return new WaitForSeconds(loadDelay);
         // Load the next scene (Change "NextLevelScene" to your actual scene name)
-        // SceneManager.LoadScene("Level2"); // to be created next! 
+        SceneManager.LoadScene("Level2"); // Loads level2 scene
     }
 }

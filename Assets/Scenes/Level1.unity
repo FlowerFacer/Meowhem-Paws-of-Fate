@@ -7030,7 +7030,7 @@ Transform:
   m_GameObject: {fileID: 676584391}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.762442, y: -5.669215, z: 0.14287148}
+  m_LocalPosition: {x: 5.776514, y: -6.426127, z: 0.14287148}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7049,6 +7049,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutu1: {fileID: 1406315814}
+  TutusText: {fileID: 62437467}
 --- !u!61 &676584394
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -22146,7 +22147,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 56.22, y: -5.41}
+  m_AnchoredPosition: {x: 56.22, y: -5.972538}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1665607678
@@ -25226,6 +25227,8 @@ MonoBehaviour:
   sceneMusicList:
   - sceneName: Level1
     musicClip: {fileID: 8300000, guid: d2f2c4fef7d106643a52c5e91981f28b, type: 3}
+  - sceneName: Level2
+    musicClip: {fileID: 8300000, guid: 143938632eb4b984e9c78d63adccadf0, type: 3}
 --- !u!4 &1946851425
 Transform:
   m_ObjectHideFlags: 0
@@ -28464,7 +28467,8 @@ PrefabInstance:
       value: -0.1596471
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2447091232356935993, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4794107687724782591, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
       insertIndex: -1
