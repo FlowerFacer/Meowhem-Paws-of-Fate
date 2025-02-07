@@ -11,8 +11,8 @@ public class LoadingScreenUI : MonoBehaviour
     public TMP_Text specialAttackText;
     public TMP_Text secretsText;
 
-    public float loadDelay = 10f; // How long the loading screen stays
-    public float typeSpeed = 0.05f; // Speed of typewriter effect
+    public float loadDelay = 13f; // How long the loading screen stays
+    public float typeSpeed = 0.03f; // Speed of typewriter effect
 
     void Start()
     {
