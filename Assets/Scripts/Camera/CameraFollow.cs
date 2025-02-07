@@ -31,7 +31,7 @@ public class CameraFollow : MonoBehaviour
 
     void Start()
     {
-        transform.position = new Vector3(-4.75f, -0.166f, -10f);  // Set to desired position
+        transform.position = new Vector3(-5.136981f, -0.166f, -10f);  // Set to desired position
     }
 
     void LateUpdate()

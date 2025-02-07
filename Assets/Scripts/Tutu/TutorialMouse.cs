@@ -36,7 +36,7 @@ public class TutorialMouse : MonoBehaviour
     IEnumerator AppearSequence()
     {
         // Wait a momement before appearing
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
         if (PoofCloudSound != null)
         {
