@@ -1,4 +1,6 @@
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
+using TMPro;
 
 public class BroomEnemy : MonoBehaviour
 {
@@ -14,6 +16,19 @@ public class BroomEnemy : MonoBehaviour
     private Vector3 initialPosition;
     private bool movingRight = true;
     private bool playerDetected = false;
+    public float attackCooldown = 2f; // Time between attacks
+    private bool canAttack = true; // Prevent spamming attacks
+    public bool SockIsDead = false;
+    public PlayerHealth playerHealth;
+    public PurpleSock purpleSock;
+    public GameObject purpleSockPrefab; // Assign this in the Inspector
+    public bool playerIsDead = false;
+
+    public GameObject magicShroomPrefab; // Assign this in the Inspector
+    public Transform shroomThrowPoint; // Empty GameObject to set throw position
+    public float throwForce = 6f; // Adjust the throw strength
+
+    public TMP_Text broomDialogue; // 🗨️ Reference to TextMeshPro 3D
 
     void Start()
     {
@@ -22,6 +37,23 @@ public class BroomEnemy : MonoBehaviour
 
     void Update()
     {
+        // Check if the sock is dead
+        if (purpleSock != null && purpleSock.SockDead && !SockIsDead)
+        {
+            SockIsDead = true;
+            Debug.Log("🔴 Spider detected that Plant is DEAD.");
+            ReactToSockDeath();
+        }
+
+        // If the player is dead, stop movement and attack
+        if (!playerIsDead && playerHealth.isDead)
+        {
+            playerIsDead = true; // Mark player as dead
+            ReactToPlayerDeath();
+        }
+
+        if (SockIsDead || playerIsDead) return; // Stop broom logic if necessary
+
         // Keep the broom at a fixed Y position
         transform.position = new Vector3(transform.position.x, initialPosition.y, transform.position.z);
     }
@@ -56,6 +88,10 @@ public class BroomEnemy : MonoBehaviour
 
     void DetectPlayer()
     {
+        if (SockIsDead) return; // 🛑 Stop detecting player if plant is gone
+
+        if (playerIsDead) return;
+
         if (Vector2.Distance(transform.position, player.position) < detectionRange)
         {
             playerDetected = true;
@@ -65,6 +101,10 @@ public class BroomEnemy : MonoBehaviour
 
     void AttackPlayer()
     {
+        if (SockIsDead) return; // 🛑 Stop attacking if plant is gone
+
+        if (playerIsDead) return;
+
         // Move only in the X-axis (prevents jittering)
         Vector3 targetPosition = new Vector3(player.position.x, transform.position.y, transform.position.z);
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * 1.5f * Time.deltaTime);
@@ -106,5 +146,126 @@ public class BroomEnemy : MonoBehaviour
     void FlipLeft()
     {
         transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+    }
+
+    // 🌱🐞 **React to sock Death**
+    void ReactToSockDeath()
+    {
+        Debug.Log("The plant is dead! Spider stops being hostile.");
+        playerDetected = false; // 🛑 Stop attacking
+        animator.SetTrigger("Idle"); // 🕷️ Play idle animation
+
+        StartCoroutine(FriendlyBroomSequence());
+    }
+
+    void ReactToPlayerDeath()
+    {
+        Debug.Log("The player is dead! Spider stops being hostile.");
+        playerDetected = false; // 🛑 Stop attacking
+        animator.SetTrigger("Idle"); // 🕷️ Play idle animation
+
+        StartCoroutine(PassivePatrol());
+    }
+
+    // 💬 **broom Talks to Player**
+    IEnumerator BroomTalkSequence()
+    {
+        yield return new WaitForSeconds(1f);
+
+        // 🗨️ Enable and position dialogue text
+        if (broomDialogue != null)
+        {
+            broomDialogue.gameObject.SetActive(true);
+            broomDialogue.transform.position = transform.position + new Vector3(0, 1.5f, 0); // Adjust height
+        }
+
+        string[] ViviLines =
+{
+            "Oh...",
+            "The plant is gone?",
+            "I guess I don't have a reason\n to be mad anymore.",
+            "You seem nice after all!",
+            "...",
+            "I found this weird mushroom\n in the forest,",
+            "So you can have it as thanks.",
+            "Bye!"
+        };
+
+        foreach (string line in ViviLines)
+        {
+            broomDialogue.text = "";
+
+            foreach (char letter in line.ToCharArray())
+            {
+                broomDialogue.text += letter;
+                yield return new WaitForSeconds(0.05f);
+            }
+
+            yield return new WaitForSeconds(1.5f);
+        }
+
+        // Hide text
+        if (broomDialogue != null)
+        {
+            broomDialogue.gameObject.SetActive(false);
+        }
+    }
+
+    IEnumerator FriendlyBroomSequence()
+    {
+        Debug.Log("Spider is now friendly!");
+
+        // Show friendly dialogue
+        StartCoroutine(BroomTalkSequence());
+
+        // Wait before saying goodbye
+        yield return new WaitForSeconds(20f);
+
+        // 🕷️ **Throw the Magic Mushroom!** 🍄
+        if (purpleSockPrefab != null && shroomThrowPoint != null)
+        {
+            GameObject thrownShroom = Instantiate(magicShroomPrefab, shroomThrowPoint.position, Quaternion.identity);
+            Rigidbody2D shroomRb = thrownShroom.GetComponent<Rigidbody2D>();
+
+            if (shroomRb != null)
+            {
+                // Apply force to throw the mushroom forward
+                shroomRb.linearVelocity = new Vector2(transform.localScale.x * throwForce, 2f); // Adjust arc if needed
+            }
+        }
+
+        yield return new WaitForSeconds(1f);
+
+        // Play "Bye" animation
+        animator.SetTrigger("Bye");
+
+        // Wait for animation to finish
+        yield return new WaitForSeconds(1f);
+
+        // Change Spider's layer to NonBlockingNPC so the player can walk through
+        gameObject.layer = LayerMask.NameToLayer("NonBlockingNPC");
+
+        // 🎉 Spider stays but is now passive
+        Debug.Log("Spider is now passive and the player can pass!");
+
+        // **Start Passive Patrol**
+        StartCoroutine(PassivePatrol());
+    }
+
+    IEnumerator PassivePatrol()
+    {
+        while (true) // Runs forever
+        {
+            float patrolLimit = movingRight ? initialPosition.x + patrolDistance : initialPosition.x - patrolDistance;
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(patrolLimit, transform.position.y, transform.position.z), moveSpeed * Time.deltaTime);
+
+            if (Mathf.Abs(transform.position.x - patrolLimit) < 0.1f)
+            {
+                movingRight = !movingRight;
+                FlipRight();
+            }
+
+            yield return null; // Wait for next frame
+        }
     }
 }
