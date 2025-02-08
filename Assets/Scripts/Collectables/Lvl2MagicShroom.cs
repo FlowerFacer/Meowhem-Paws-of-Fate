@@ -28,6 +28,8 @@ public class Lvl2MagicShroom : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            Debug.Log("Player touched the mushroom!"); // ✅ Debugging
+
             PlayerInventory inventory = other.GetComponent<PlayerInventory>();
 
             if (inventory != null)
@@ -48,6 +50,7 @@ public class Lvl2MagicShroom : MonoBehaviour
 
             Debug.Log("Magic Mushroom collected! ATK power Increased.");
             Destroy(gameObject); // Remove the collectible from the scene
+            Debug.Log("Mushroom was successfully destroyed!");
         }
     }
 }
