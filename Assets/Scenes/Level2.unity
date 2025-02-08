@@ -10314,6 +10314,7 @@ GameObject:
   - component: {fileID: 1095792332}
   - component: {fileID: 1095792331}
   - component: {fileID: 1095792333}
+  - component: {fileID: 1095792335}
   - component: {fileID: 1095792334}
   m_Layer: 0
   m_Name: Purple Sock_0
@@ -10386,7 +10387,7 @@ Transform:
   m_GameObject: {fileID: 1095792330}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.7867174, y: -1.1442739, z: 0}
+  m_LocalPosition: {x: 5.786717, y: -1.1442739, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10461,6 +10462,29 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 4.5802617, y: 4.6834188}
   m_EdgeRadius: 0
+--- !u!114 &1095792335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095792330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21ad638a08d3fa64abb0c3ec117e0876, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+  animator: {fileID: 0}
+  damageSound: {fileID: 0}
+  deathSound: {fileID: 0}
+  PoofSound: {fileID: 0}
+  poofPrefab: {fileID: 0}
+  poofPosition: {fileID: 0}
+  SockDead: 0
+  broomEnemy: {fileID: 0}
+  knockbackForce: 0.1
+  sockAchievementSprite: {fileID: 0}
 --- !u!1 &1097462846
 GameObject:
   m_ObjectHideFlags: 0
