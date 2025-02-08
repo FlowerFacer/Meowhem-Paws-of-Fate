@@ -13,6 +13,28 @@ public class LightningEffect : MonoBehaviour
         }
     }
 
+    void OnTriggerStay2D(Collider2D other) // Continuous check
+    {
+        if (other.CompareTag("Plant"))
+        {
+            LightBluePlant plantHealth = other.GetComponent<LightBluePlant>();
+            if (plantHealth != null)
+            {
+                Vector2 attackSource = attacker != null ? attacker.position : transform.position;
+                plantHealth.TakeDamage(damage, attackSource);
+            }
+        }
+        else if (other.CompareTag("Sock"))
+        {
+            PurpleSock sockHealth = other.GetComponent<PurpleSock>();
+            if (sockHealth != null)
+            {
+                Vector2 attackSource = attacker != null ? attacker.position : transform.position;
+                sockHealth.TakeDamage(damage, attackSource);
+            }
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Enemy"))

@@ -12,6 +12,7 @@ TagManager:
   - Tutu1
   - DeathZone
   - Checkpoint
+  - Sock
   layers:
   - Default
   - TransparentFX

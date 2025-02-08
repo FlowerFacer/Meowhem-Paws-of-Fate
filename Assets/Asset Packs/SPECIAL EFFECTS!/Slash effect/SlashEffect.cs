@@ -24,6 +24,15 @@ public class SlashEffect : MonoBehaviour
                 plantHealth.TakeDamage(damage, attackSource);
             }
         }
+        else if (other.CompareTag("Sock"))
+        {
+            PurpleSock sockHealth = other.GetComponent<PurpleSock>();
+            if (sockHealth != null)
+            {
+                Vector2 attackSource = attacker != null ? attacker.position : transform.position;
+                sockHealth.TakeDamage(damage, attackSource);
+            }
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)

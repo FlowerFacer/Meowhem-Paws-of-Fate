@@ -17,7 +17,6 @@ public class BroomEnemy : MonoBehaviour
     private bool movingRight = true;
     private bool playerDetected = false;
     public float attackCooldown = 2f; // Time between attacks
-    private bool canAttack = true; // Prevent spamming attacks
     public bool SockIsDead = false;
     public PlayerHealth playerHealth;
     public PurpleSock purpleSock;
@@ -28,6 +27,7 @@ public class BroomEnemy : MonoBehaviour
     public Transform shroomThrowPoint; // Empty GameObject to set throw position
     public float throwForce = 6f; // Adjust the throw strength
 
+    public TMP_Text AngryRant; // Repeating text
     public TMP_Text broomDialogue; // 🗨️ Reference to TextMeshPro 3D
 
     void Start()
@@ -41,7 +41,7 @@ public class BroomEnemy : MonoBehaviour
         if (purpleSock != null && purpleSock.SockDead && !SockIsDead)
         {
             SockIsDead = true;
-            Debug.Log("🔴 Spider detected that Plant is DEAD.");
+            Debug.Log("🔴 Spider detected that sock is DEAD.");
             ReactToSockDeath();
         }
 
@@ -56,10 +56,7 @@ public class BroomEnemy : MonoBehaviour
 
         // Keep the broom at a fixed Y position
         transform.position = new Vector3(transform.position.x, initialPosition.y, transform.position.z);
-    }
 
-    void FixedUpdate()
-    {
         if (playerDetected)
         {
             AttackPlayer();
@@ -88,7 +85,7 @@ public class BroomEnemy : MonoBehaviour
 
     void DetectPlayer()
     {
-        if (SockIsDead) return; // 🛑 Stop detecting player if plant is gone
+        if (SockIsDead) return; // 🛑 Stop detecting player if sock is gone
 
         if (playerIsDead) return;
 
@@ -101,7 +98,7 @@ public class BroomEnemy : MonoBehaviour
 
     void AttackPlayer()
     {
-        if (SockIsDead) return; // 🛑 Stop attacking if plant is gone
+        if (SockIsDead) return; // 🛑 Stop attacking if sock is gone
 
         if (playerIsDead) return;
 
@@ -151,16 +148,16 @@ public class BroomEnemy : MonoBehaviour
     // 🌱🐞 **React to sock Death**
     void ReactToSockDeath()
     {
-        Debug.Log("The plant is dead! Spider stops being hostile.");
+        Debug.Log("The sock is dead! Broom stops being hostile.");
         playerDetected = false; // 🛑 Stop attacking
-        animator.SetTrigger("Idle"); // 🕷️ Play idle animation
+        animator.SetTrigger("Idle"); // Play idle animation
 
         StartCoroutine(FriendlyBroomSequence());
     }
 
     void ReactToPlayerDeath()
     {
-        Debug.Log("The player is dead! Spider stops being hostile.");
+        Debug.Log("The player is dead! Broom stops being hostile.");
         playerDetected = false; // 🛑 Stop attacking
         animator.SetTrigger("Idle"); // 🕷️ Play idle animation
 
@@ -181,14 +178,14 @@ public class BroomEnemy : MonoBehaviour
 
         string[] ViviLines =
 {
-            "Oh...",
-            "The plant is gone?",
-            "I guess I don't have a reason\n to be mad anymore.",
-            "You seem nice after all!",
-            "...",
-            "I found this weird mushroom\n in the forest,",
-            "So you can have it as thanks.",
-            "Bye!"
+            "Huh.",
+            "You destroyed\n the stinky sock?",
+            "Some lunatic placed\n it there to prank me.",
+            "...!",
+            "Thanks dude.",
+            "This is yours,",
+            "Make good use of it.",
+            "Goodbye!"
         };
 
         foreach (string line in ViviLines)
@@ -213,7 +210,7 @@ public class BroomEnemy : MonoBehaviour
 
     IEnumerator FriendlyBroomSequence()
     {
-        Debug.Log("Spider is now friendly!");
+        Debug.Log("Broom is now friendly!");
 
         // Show friendly dialogue
         StartCoroutine(BroomTalkSequence());
@@ -246,7 +243,7 @@ public class BroomEnemy : MonoBehaviour
         gameObject.layer = LayerMask.NameToLayer("NonBlockingNPC");
 
         // 🎉 Spider stays but is now passive
-        Debug.Log("Spider is now passive and the player can pass!");
+        Debug.Log("Broom is now passive and the player can pass!");
 
         // **Start Passive Patrol**
         StartCoroutine(PassivePatrol());
@@ -262,7 +259,7 @@ public class BroomEnemy : MonoBehaviour
             if (Mathf.Abs(transform.position.x - patrolLimit) < 0.1f)
             {
                 movingRight = !movingRight;
-                FlipRight();
+                UpdateFlip();
             }
 
             yield return null; // Wait for next frame
