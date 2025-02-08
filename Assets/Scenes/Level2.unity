@@ -1374,6 +1374,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1773958160}
     m_Modifications:
     - target: {fileID: 3838415394384342699, guid: 84e1a94f566f63942b29b65073ede1ad, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 8780803958118433476, guid: 2436268bc4e07af46b46c46f4cc009d1, type: 3}
+    - target: {fileID: 3838415394384342699, guid: 84e1a94f566f63942b29b65073ede1ad, type: 3}
       propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
@@ -10475,14 +10479,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 5
-  animator: {fileID: 0}
+  animator: {fileID: 1095792333}
   damageSound: {fileID: 0}
   deathSound: {fileID: 0}
   PoofSound: {fileID: 0}
   poofPrefab: {fileID: 0}
   poofPosition: {fileID: 0}
   SockDead: 0
-  broomEnemy: {fileID: 0}
+  broomEnemy: {fileID: 1481243765}
   knockbackForce: 0.1
   sockAchievementSprite: {fileID: 0}
 --- !u!1 &1097462846
@@ -13503,6 +13507,17 @@ Transform:
   - {fileID: 1256617520}
   m_Father: {fileID: 644108641}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1481243765 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4015506359740641469, guid: 650bc0ccf50b0df4c9abe9b70f415497, type: 3}
+  m_PrefabInstance: {fileID: 82094225}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6415059c332589644b7afd042c85eaca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1481934637
 GameObject:
   m_ObjectHideFlags: 0

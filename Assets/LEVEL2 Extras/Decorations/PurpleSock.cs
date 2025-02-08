@@ -15,7 +15,7 @@ public class PurpleSock : MonoBehaviour
     public Transform poofPosition; // Assign a specific spawn point if needed
     public bool SockDead = false;
     private Rigidbody2D rb;
-    public SpiderEnemy broomEnemy;
+    public BroomEnemy broomEnemy;
 
     public float knockbackForce = 0.1f; // Adjust for how much the enemy should be pushed back
     public Sprite sockAchievementSprite; // Assign in the Inspector
