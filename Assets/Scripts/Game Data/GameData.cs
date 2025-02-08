@@ -27,7 +27,7 @@ public class GameData : MonoBehaviour
         }
     }
 
-    public void UpdateStats(PlayerInventory inventory, SlashEffect slash, LightningEffect lightning, PlayerHealth health)
+    public void UpdateStats(PlayerInventory inventory, PlayerController playerController, LightningEffect lightning, PlayerHealth health)
     {
         // Secrets
         yarnCount = inventory.yarnCount;
@@ -35,7 +35,7 @@ public class GameData : MonoBehaviour
         magicShroomCount = inventory.magicShroomCount;
 
         // Attack Power
-        regularAttackPower = slash.damage;
+        regularAttackPower = playerController.attackPower;
         specialAttackPower = lightning.damage;
 
         // Max Health (if you track it elsewhere, update it here)

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class SlashEffect : MonoBehaviour
 {
-    public int damage = 3;
+    private int attackPower = 3; // Default value (overridden on attack)
     public Transform attacker; // Assign the player to this in the Inspector
 
     void Start()
@@ -14,6 +14,11 @@ public class SlashEffect : MonoBehaviour
         }
     }
 
+    public void SetAttackPower(int newPower)
+    {
+        attackPower = newPower;
+    }
+
     void OnTriggerStay2D(Collider2D other) // Continuous check
     {
         if (other.CompareTag("Plant"))
@@ -22,7 +27,7 @@ public class SlashEffect : MonoBehaviour
             if (plantHealth != null)
             {
                 Vector2 attackSource = attacker != null ? attacker.position : transform.position;
-                plantHealth.TakeDamage(damage, attackSource);
+                plantHealth.TakeDamage(attackPower, attackSource);
             }
         }
         else if (other.CompareTag("Sock"))
@@ -31,7 +36,7 @@ public class SlashEffect : MonoBehaviour
             if (sockHealth != null)
             {
                 Vector2 attackSource = attacker != null ? attacker.position : transform.position;
-                sockHealth.TakeDamage(damage, attackSource);
+                sockHealth.TakeDamage(attackPower, attackSource);
             }
         }
     }
@@ -44,7 +49,7 @@ public class SlashEffect : MonoBehaviour
             if (enemyHealth != null)
             {
                 Vector2 attackSource = attacker != null ? attacker.position : transform.position;
-                enemyHealth.TakeDamage(damage, attackSource);
+                enemyHealth.TakeDamage(attackPower, attackSource);
             }
         }
         else if (other.CompareTag("Enemy2"))
@@ -53,30 +58,7 @@ public class SlashEffect : MonoBehaviour
             if (enemyHealth != null)
             {
                 Vector2 attackSource = attacker != null ? attacker.position : transform.position;
-                enemyHealth.TakeDamage(damage, attackSource);
-            }
-        }
-    }
-
-    public void IncreaseMaxATKpower(int amount)
-    {
-        damage += amount; // Increase the player's max health
-        Debug.Log("ATK power Increased! New ATK Power: " + damage);
-        UpdateGameData(); // ✅ **Force GameData Update**
-    }
-
-    public void UpdateGameData()
-    {
-        if (GameData.instance != null)
-        {
-            SlashEffect slash = GetComponent<SlashEffect>();
-            LightningEffect lightning = GetComponent<LightningEffect>();
-            PlayerInventory inventory = GetComponent<PlayerInventory>();
-            PlayerHealth health = GetComponent<PlayerHealth>();
-
-            if (slash != null && lightning != null && inventory != null)
-            {
-                GameData.instance.UpdateStats(inventory, slash, lightning, health);
+                enemyHealth.TakeDamage(attackPower, attackSource);
             }
         }
     }

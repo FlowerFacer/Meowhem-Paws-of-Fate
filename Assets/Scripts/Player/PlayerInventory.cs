@@ -9,13 +9,15 @@ public class PlayerInventory : MonoBehaviour
     public int magicShroomCount = 0; // Track the number of magic mushrooms collected
     public TMP_Text HpIncreaseText; // 🗨️ Reference to TextMeshPro 3D
     public AudioClip increase;
-
+    private PlayerController playerController;
     private PlayerHealth playerHealth; // Reference to player's health system
     private SlashEffect slashEffect; // Ref to player's standard attack
 
     void Start()
     {
         playerHealth = GetComponent<PlayerHealth>(); // Get reference to PlayerHealth script
+        playerController = GetComponent<PlayerController>();
+
 
         if (HpIncreaseText != null)
         {
@@ -67,16 +69,18 @@ public class PlayerInventory : MonoBehaviour
     public void AddPowerMagicShroom(int amount)
     {
         magicShroomCount += amount;
-        Debug.Log("Magic Mushroom Collected! Total: " + magicShroomCount);
+        Debug.Log($"🍄 Magic Mushroom Collected! Total: {magicShroomCount}");
 
-        Debug.Log("Attempting to show ATK power Increase text!");
         StartCoroutine(ShowHealthBonusText()); // Start fade animation
 
-        // Increase Player's Max ATK power
-        if (playerHealth != null)
+        if (playerController != null)
         {
-            slashEffect.IncreaseMaxATKpower(5);
-            Debug.Log("Game data updated, ATK power increased!");
+            playerController.IncreaseMaxATKpower(5);
+            Debug.Log("✅ ATK Power increased via PlayerController!");
+        }
+        else
+        {
+            Debug.LogError("❌ PlayerController not found!");
         }
     }
 
@@ -167,14 +171,12 @@ public class PlayerInventory : MonoBehaviour
             GameData.instance.fishpoleCount = fishpoleCount;
             GameData.instance.magicShroomCount = magicShroomCount;
 
+            // ✅ Get PlayerController instead of SlashEffect
+            PlayerController playerController = GetComponent<PlayerController>();
+
             if (GetComponent<PlayerHealth>() != null)
             {
                 GameData.instance.maxHealth = GetComponent<PlayerHealth>().maxHealth;
-            }
-
-            if (GetComponent<SlashEffect>() != null)
-            {
-                GameData.instance.regularAttackPower = GetComponent<SlashEffect>().damage;
             }
 
             if (GetComponent<LightningEffect>() != null)

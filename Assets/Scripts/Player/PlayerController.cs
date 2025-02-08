@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] public int attackPower = 3; // 🔥 Initial attack power
     [SerializeField] public float moveSpeed = 3.5f;
     [SerializeField] public float jumpForce = 10f;
     [SerializeField] public float attackCooldown = 0.6f;
@@ -82,7 +83,7 @@ public class PlayerController : MonoBehaviour
     void HandleMovement()
     {
         float moveInput = Input.GetAxisRaw("Horizontal");
-                // Check if player is moving
+        // Check if player is moving
         bool isMoving = moveInput != 0;
 
         // Apply movement
@@ -221,6 +222,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void IncreaseMaxATKpower(int amount)
+    {
+        attackPower += amount; // ✅ Increase attack power
+        Debug.Log("✅ ATK power Increased! New ATK Power: " + attackPower);
+        UpdateGameData(); // ✅ Update game data with new attack power
+    }
+
     void HandleAttacking()
     {
         if (Input.GetMouseButtonDown(0) && !isAttacking)
@@ -247,6 +255,19 @@ public class PlayerController : MonoBehaviour
         // Trigger attack animation
         animator.SetTrigger("isAttack");
         GameObject slash = Instantiate(slashEffectPrefab, attackPoint.position, attackPoint.rotation);
+
+        // ✅ Assign the reference AFTER instantiating it
+        SlashEffect slashEffect = slash.GetComponent<SlashEffect>();
+
+        if (slashEffect != null)
+        {
+            slashEffect.SetAttackPower(attackPower); // ✅ Ensure it gets correct ATK Power
+        }
+        else
+        {
+            Debug.LogError("❌ SlashEffect component missing on instantiated slash effect!");
+        }
+
         Destroy(slash, attackDuration); // Remove after duration
 
         // Wait for attack animation to finish
@@ -336,6 +357,22 @@ public class PlayerController : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(groundCheck.position, 0.2f);
+    }
+
+    public void UpdateGameData()
+    {
+        if (GameData.instance != null)
+        {
+            PlayerController damage = GetComponent<PlayerController>();
+            LightningEffect lightning = GetComponent<LightningEffect>();
+            PlayerInventory inventory = GetComponent<PlayerInventory>();
+            PlayerHealth health = GetComponent<PlayerHealth>();
+
+            if (damage != null && lightning != null && inventory != null)
+            {
+                GameData.instance.UpdateStats(inventory, damage, lightning, health);
+            }
+        }
     }
 }
 
