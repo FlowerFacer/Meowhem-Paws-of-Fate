@@ -247,7 +247,7 @@ public class BroomEnemy : MonoBehaviour
         StartCoroutine(BroomTalkSequence());
 
         // Wait before saying goodbye
-        yield return new WaitForSeconds(20f);
+        yield return new WaitForSeconds(17f);
 
         // 🕷️ **Throw the Magic Mushroom!** 🍄
         if (purpleSockPrefab != null && shroomThrowPoint != null)

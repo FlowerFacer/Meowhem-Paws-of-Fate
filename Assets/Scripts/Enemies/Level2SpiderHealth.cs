@@ -100,10 +100,11 @@ public class Level2SpiderHealth : MonoBehaviour
             AudioManager.instance.PlaySound(PoofSound);
         }
 
-        // Spawn explosion slightly higher to match the enemy's body
         if (explosionPrefab != null)
         {
-            Vector3 explosionPosition = transform.position + new Vector3(0, 1.5f, 0); // Adjust Y position
+            // Keep Y as the prefab's original Y position
+            Vector3 explosionPosition = new Vector3(transform.position.x, explosionPrefab.transform.position.y, transform.position.z);
+
             GameObject explosion = Instantiate(explosionPrefab, explosionPosition, Quaternion.identity);
             Destroy(explosion, 1f); // Destroy after animation finishes
         }

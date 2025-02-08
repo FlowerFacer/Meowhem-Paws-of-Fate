@@ -40,11 +40,19 @@ public class LightningEffect : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
-
             if (enemyHealth != null)
             {
                 Vector2 attackSource = attacker != null ? attacker.position : transform.position;
-                enemyHealth.TakeDamage(damage, attackSource); // Call the damage method
+                enemyHealth.TakeDamage(damage, attackSource);
+            }
+        }
+        else if (other.CompareTag("Enemy2"))
+        {
+            Level2SpiderHealth enemyHealth = other.GetComponent<Level2SpiderHealth>();
+            if (enemyHealth != null)
+            {
+                Vector2 attackSource = attacker != null ? attacker.position : transform.position;
+                enemyHealth.TakeDamage(damage, attackSource);
             }
         }
     }
