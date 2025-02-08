@@ -110,6 +110,13 @@ public class EnemyHealth : MonoBehaviour
             Destroy(explosion, 1f); // Destroy after animation finishes
         }
 
+        BroomEnemy broomEnemy = GetComponent<BroomEnemy>(); // Get reference to BroomEnemy script
+
+        if (broomEnemy != null)
+        {
+            broomEnemy.StopAngryRant(); // Stop the ranting when the broom dies
+        }
+
         GetComponent<Collider2D>().enabled = false; // Disable only before destruction
         Destroy(gameObject);
     }

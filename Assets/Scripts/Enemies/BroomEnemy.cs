@@ -194,7 +194,17 @@ public class BroomEnemy : MonoBehaviour
             }
 
             yield return new WaitForSeconds(1.5f);
+
+            // If the broom dies, stop the coroutine and hide the text
+            if (this == null) // Checking if the broom object has been destroyed
+            {
+                AngryRant.gameObject.SetActive(false);
+                yield break; // Stops the coroutine properly
+            }
         }
+
+        // Ensure text is disabled when hostility ends
+        AngryRant.gameObject.SetActive(false);
     }
 
     // 💬 **broom Talks to Player**
@@ -256,7 +266,7 @@ public class BroomEnemy : MonoBehaviour
             Rigidbody2D shroomRb = thrownShroom.GetComponent<Rigidbody2D>();
             if (shroomRb != null)
             {
-                shroomRb.linearVelocity = new Vector2(throwForce, 2f); // Apply force to "throw" it
+                shroomRb.linearVelocity = new Vector2(throwForce, 3.5f); // Apply force to "throw" it
             }
 
             Debug.Log("🍄 Magic Mushroom has been thrown to the player!");
@@ -298,6 +308,15 @@ public class BroomEnemy : MonoBehaviour
             }
 
             yield return null; // Wait for next frame
+        }
+    }
+
+    public void StopAngryRant()
+    {
+        if (AngryRant != null)
+        {
+            StopCoroutine(AngryRantLoop()); // Stop the coroutine
+            AngryRant.gameObject.SetActive(false); // Hide the text
         }
     }
 }
