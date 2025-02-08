@@ -1,4 +1,5 @@
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 
 public class SlashEffect : MonoBehaviour
 {
@@ -53,6 +54,29 @@ public class SlashEffect : MonoBehaviour
             {
                 Vector2 attackSource = attacker != null ? attacker.position : transform.position;
                 enemyHealth.TakeDamage(damage, attackSource);
+            }
+        }
+    }
+
+    public void IncreaseMaxATKpower(int amount)
+    {
+        damage += amount; // Increase the player's max health
+        Debug.Log("ATK power Increased! New ATK Power: " + damage);
+        UpdateGameData(); // ✅ **Force GameData Update**
+    }
+
+    public void UpdateGameData()
+    {
+        if (GameData.instance != null)
+        {
+            SlashEffect slash = GetComponent<SlashEffect>();
+            LightningEffect lightning = GetComponent<LightningEffect>();
+            PlayerInventory inventory = GetComponent<PlayerInventory>();
+            PlayerHealth health = GetComponent<PlayerHealth>();
+
+            if (slash != null && lightning != null && inventory != null)
+            {
+                GameData.instance.UpdateStats(inventory, slash, lightning, health);
             }
         }
     }

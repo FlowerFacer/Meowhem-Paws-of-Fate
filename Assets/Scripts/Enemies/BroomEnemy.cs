@@ -249,17 +249,21 @@ public class BroomEnemy : MonoBehaviour
         // Wait before saying goodbye
         yield return new WaitForSeconds(17f);
 
-        // 🕷️ **Throw the Magic Mushroom!** 🍄
-        if (purpleSockPrefab != null && shroomThrowPoint != null)
+        if (magicShroomPrefab != null && shroomThrowPoint != null)
         {
             GameObject thrownShroom = Instantiate(magicShroomPrefab, shroomThrowPoint.position, Quaternion.identity);
-            Rigidbody2D shroomRb = thrownShroom.GetComponent<Rigidbody2D>();
 
+            Rigidbody2D shroomRb = thrownShroom.GetComponent<Rigidbody2D>();
             if (shroomRb != null)
             {
-                // Apply force to throw the mushroom forward
-                shroomRb.linearVelocity = new Vector2(transform.localScale.x * throwForce, 2f); // Adjust arc if needed
+                shroomRb.linearVelocity = new Vector2(throwForce, 2f); // Apply force to "throw" it
             }
+
+            Debug.Log("🍄 Magic Mushroom has been thrown to the player!");
+        }
+        else
+        {
+            Debug.LogError("❌ Magic Mushroom prefab or throw point is not assigned!");
         }
 
         yield return new WaitForSeconds(1f);

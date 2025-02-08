@@ -11,6 +11,7 @@ public class PlayerInventory : MonoBehaviour
     public AudioClip increase;
 
     private PlayerHealth playerHealth; // Reference to player's health system
+    private SlashEffect slashEffect; // Ref to player's standard attack
 
     void Start()
     {
@@ -60,6 +61,22 @@ public class PlayerInventory : MonoBehaviour
         {
             playerHealth.IncreaseMaxHealth(5);
             Debug.Log("Game data updated, max health increased!");
+        }
+    }
+
+    public void AddPowerMagicShroom(int amount)
+    {
+        magicShroomCount += amount;
+        Debug.Log("Magic Mushroom Collected! Total: " + magicShroomCount);
+
+        Debug.Log("Attempting to show ATK power Increase text!");
+        StartCoroutine(ShowHealthBonusText()); // Start fade animation
+
+        // Increase Player's Max ATK power
+        if (playerHealth != null)
+        {
+            slashEffect.IncreaseMaxATKpower(5);
+            Debug.Log("Game data updated, ATK power increased!");
         }
     }
 
