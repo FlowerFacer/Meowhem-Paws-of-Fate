@@ -45,7 +45,15 @@ public class SlashEffect : MonoBehaviour
                 Vector2 attackSource = attacker != null ? attacker.position : transform.position;
                 enemyHealth.TakeDamage(damage, attackSource);
             }
-      
+        }
+        else if (other.CompareTag("Enemy2"))
+        {
+            Level2SpiderHealth enemyHealth = other.GetComponent<Level2SpiderHealth>();
+            if (enemyHealth != null)
+            {
+                Vector2 attackSource = attacker != null ? attacker.position : transform.position;
+                enemyHealth.TakeDamage(damage, attackSource);
+            }
         }
     }
 }

@@ -26,6 +26,7 @@ public class BroomEnemy : MonoBehaviour
     public GameObject magicShroomPrefab; // Assign this in the Inspector
     public Transform shroomThrowPoint; // Empty GameObject to set throw position
     public float throwForce = 6f; // Adjust the throw strength
+    bool isHostile = false;
 
     public TMP_Text AngryRant; // Repeating text
     public TMP_Text broomDialogue; // 🗨️ Reference to TextMeshPro 3D
@@ -40,15 +41,21 @@ public class BroomEnemy : MonoBehaviour
         // Check if the sock is dead
         if (purpleSock != null && purpleSock.SockDead && !SockIsDead)
         {
+            AngryRant.gameObject.SetActive(false);
             SockIsDead = true;
-            Debug.Log("🔴 Spider detected that sock is DEAD.");
+            isHostile = false;
+
+            animator.ResetTrigger("SweepAttack");
+            animator.SetBool("isIdle", true);
+            Debug.Log("🔴 Broom detected that sock is DEAD.");
             ReactToSockDeath();
         }
 
         // If the player is dead, stop movement and attack
         if (!playerIsDead && playerHealth.isDead)
         {
-            playerIsDead = true; // Mark player as dead
+            playerIsDead = true; // Mark player as dead/
+            isHostile = false;
             ReactToPlayerDeath();
         }
 
@@ -66,13 +73,22 @@ public class BroomEnemy : MonoBehaviour
             if (IsGrounded())
             {
                 Patrol();
-                DetectPlayer();
+                //DetectPlayer();
             }
         }
     }
 
     void Patrol()
     {
+        if (SockIsDead) return; // 🛑 Stop attacking if sock is gone
+
+        isHostile = true;
+
+        StartCoroutine(AngryRantLoop());
+
+        playerDetected = true;
+        animator.SetTrigger("SweepAttack");
+
         float patrolLimit = movingRight ? initialPosition.x + patrolDistance : initialPosition.x - patrolDistance;
         transform.position = Vector3.MoveTowards(transform.position, new Vector3(patrolLimit, transform.position.y, transform.position.z), moveSpeed * Time.deltaTime);
 
@@ -83,18 +99,17 @@ public class BroomEnemy : MonoBehaviour
         }
     }
 
-    void DetectPlayer()
-    {
-        if (SockIsDead) return; // 🛑 Stop detecting player if sock is gone
+    //void DetectPlayer()
+    //{
+    //    if (SockIsDead) return; // 🛑 Stop attacking if sock is gone
 
-        if (playerIsDead) return;
+    //    if (playerIsDead) return;
 
-        if (Vector2.Distance(transform.position, player.position) < detectionRange)
-        {
-            playerDetected = true;
-            animator.SetTrigger("SweepAttack");
-        }
-    }
+    //    isHostile = true;
+
+    //    playerDetected = true;
+    //    animator.SetTrigger("SweepAttack");
+    //}
 
     void AttackPlayer()
     {
@@ -102,20 +117,19 @@ public class BroomEnemy : MonoBehaviour
 
         if (playerIsDead) return;
 
-        // Move only in the X-axis (prevents jittering)
-        Vector3 targetPosition = new Vector3(player.position.x, transform.position.y, transform.position.z);
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * 1.5f * Time.deltaTime);
+        float patrolLimit = movingRight ? initialPosition.x + patrolDistance : initialPosition.x - patrolDistance;
+        transform.position = Vector3.MoveTowards(transform.position, new Vector3(patrolLimit, transform.position.y, transform.position.z), moveSpeed * Time.deltaTime);
 
         if (Vector2.Distance(transform.position, player.position) < 1.5f)
         {
             player.GetComponent<PlayerHealth>().TakeDamage(damage);
         }
 
-        // Flip the broom based on direction
-        if (player.position.x > transform.position.x)
-            FlipRight();
-        else
-            FlipLeft();
+        if (Mathf.Abs(transform.position.x - patrolLimit) < 0.1f)
+        {
+            movingRight = !movingRight;
+            UpdateFlip();
+        }
     }
 
     bool IsGrounded()
@@ -164,6 +178,25 @@ public class BroomEnemy : MonoBehaviour
         StartCoroutine(PassivePatrol());
     }
 
+    IEnumerator AngryRantLoop()
+    {
+        while (isHostile)
+        {
+            AngryRant.gameObject.SetActive(true);
+
+            string text = "Who put that\n dirty sock there ?!?!";
+            AngryRant.text = "";
+
+            foreach (char letter in text)
+            {
+                AngryRant.text += letter;
+                yield return new WaitForSeconds(0.05f);
+            }
+
+            yield return new WaitForSeconds(1.5f);
+        }
+    }
+
     // 💬 **broom Talks to Player**
     IEnumerator BroomTalkSequence()
     {
@@ -173,7 +206,6 @@ public class BroomEnemy : MonoBehaviour
         if (broomDialogue != null)
         {
             broomDialogue.gameObject.SetActive(true);
-            broomDialogue.transform.position = transform.position + new Vector3(0, 1.5f, 0); // Adjust height
         }
 
         string[] ViviLines =
@@ -181,7 +213,6 @@ public class BroomEnemy : MonoBehaviour
             "Huh.",
             "You destroyed\n the stinky sock?",
             "Some lunatic placed\n it there to prank me.",
-            "...!",
             "Thanks dude.",
             "This is yours,",
             "Make good use of it.",

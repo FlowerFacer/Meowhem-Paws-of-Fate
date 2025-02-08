@@ -1,9 +1,9 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
-public class PurpleSock : MonoBehaviour
+public class Level2SpiderHealth : MonoBehaviour
 {
-    public int maxHealth = 5;
+    public int maxHealth = 9;
     private int currentHealth;
 
     public Animator animator;
@@ -11,30 +11,26 @@ public class PurpleSock : MonoBehaviour
     public AudioClip deathSound;
     public AudioClip PoofSound;
 
-    public GameObject poofPrefab; // 🔥 Reference to explosion prefab
-    public Transform poofPosition; // Assign a specific spawn point if needed
-    public bool SockDead = false;
-    private Rigidbody2D rb;
-    public BroomEnemy broomEnemy;
+    public GameObject explosionPrefab; // ?? Reference to explosion prefab
 
-    public float knockbackForce = 0.1f; // Adjust for how much the enemy should be pushed back
-    public Sprite sockAchievementSprite; // Assign in the Inspector
+    public bool isDead = false;
+    private Rigidbody2D rb;
+    private SpiderEnemy spiderAI; // Reference to movement script
+
+    public float knockbackForce = 6f; // Adjust for how much the enemy should be pushed back
+    public float hurtDuration = 0.7f; // How long the enemy stays hurt
 
     void Start()
     {
         currentHealth = maxHealth;
-        animator = GetComponent<Animator>(); // Ensure this is set
         rb = GetComponent<Rigidbody2D>();
-
-        if (broomEnemy == null)
-        {
-            Debug.LogError("❌ Could not find SpiderEnemy in the scene!");
-        }
+        animator = GetComponent<Animator>(); // Ensure this is set
+        spiderAI = GetComponent<SpiderEnemy>(); // Get reference to movement script
     }
 
     public void TakeDamage(int damage, Vector2 attackSource)
     {
-        if (SockDead) return;
+        if (isDead) return;
 
         currentHealth -= damage;
         Debug.Log(gameObject.name + " took " + damage + " damage. Current Health: " + currentHealth);
@@ -50,6 +46,15 @@ public class PurpleSock : MonoBehaviour
             Debug.Log("Took damage!");
         }
 
+        if (spiderAI != null)
+        {
+            spiderAI.enabled = false; // Temporarily disable movement
+        }
+
+        // Knockback effect
+        Vector2 knockbackDirection = (transform.position - (Vector3)attackSource).normalized;
+        rb.linearVelocity = knockbackDirection * knockbackForce;
+
         if (animator != null)
         {
             animator.SetTrigger("Hurt"); // Play hurt animation
@@ -64,9 +69,14 @@ public class PurpleSock : MonoBehaviour
 
     IEnumerator ResetHurtTrigger()
     {
-        yield return new WaitForSeconds(1f); // Wait for hurt animation duration
+        yield return new WaitForSeconds(hurtDuration); // Wait for hurt animation duration
 
         animator.ResetTrigger("Hurt");
+
+        if (!isDead && spiderAI != null)
+        {
+            spiderAI.enabled = true; // Re-enable movement after recovering
+        }
     }
 
     IEnumerator DieSequence()
@@ -83,7 +93,7 @@ public class PurpleSock : MonoBehaviour
             AudioManager.instance.PlaySound(deathSound);
         }
 
-        yield return new WaitForSeconds(1.5f); // Wait for animation to finish
+        yield return new WaitForSeconds(1f); // Wait for animation to finish
 
         if (PoofSound != null)
         {
@@ -91,24 +101,21 @@ public class PurpleSock : MonoBehaviour
         }
 
         // Spawn explosion slightly higher to match the enemy's body
-        if (poofPrefab != null)
+        if (explosionPrefab != null)
         {
-            Vector3 explosionPosition = transform.position + new Vector3(0, 0f, 0); // Adjust Y position
-            GameObject explosion = Instantiate(poofPrefab, explosionPosition, Quaternion.identity);
+            Vector3 explosionPosition = transform.position + new Vector3(0, 1.5f, 0); // Adjust Y position
+            GameObject explosion = Instantiate(explosionPrefab, explosionPosition, Quaternion.identity);
             Destroy(explosion, 1f); // Destroy after animation finishes
         }
 
         GetComponent<Collider2D>().enabled = false; // Disable only before destruction
         Destroy(gameObject);
-
-        // 🏆 Trigger Achievement
-        AchievementManager.instance.ShowAchievement(sockAchievementSprite);
     }
 
     void Die()
     {
-        if (SockDead) return;
-        SockDead = true;
+        if (isDead) return;
+        isDead = true;
 
         StartCoroutine(DieSequence());
     }

@@ -899,6 +899,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1980221601}
     - target: {fileID: 4015506359740641469, guid: 650bc0ccf50b0df4c9abe9b70f415497, type: 3}
+      propertyPath: AngryRant
+      value: 
+      objectReference: {fileID: 1047465447}
+    - target: {fileID: 4015506359740641469, guid: 650bc0ccf50b0df4c9abe9b70f415497, type: 3}
       propertyPath: purpleSock
       value: 
       objectReference: {fileID: 1095792335}
@@ -1396,6 +1400,27 @@ MonoBehaviour:
   attackCooldown: 2
   playerIsDead: 0
   playerHealth: {fileID: 1980221602}
+--- !u!114 &161270170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161270152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af6a321fe49ccf94eaaa1cb8c2004c46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 12
+  animator: {fileID: 161270158}
+  damageSound: {fileID: 8300000, guid: 9f73927110fd5b645821868a85f345c4, type: 3}
+  deathSound: {fileID: 8300000, guid: b7a1f8bcf6efeea4e8d59dcab3b539c6, type: 3}
+  PoofSound: {fileID: 8300000, guid: 924c9dcfafa664746ae815abf70cb3dc, type: 3}
+  explosionPrefab: {fileID: 8937016639916312399, guid: 4f4bba2289fb34a4d9aed104f4db3351, type: 3}
+  isDead: 0
+  knockbackForce: 3
+  hurtDuration: 0.5
 --- !u!1001 &175335343
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3717,7 +3742,7 @@ GameObject:
   m_Component:
   - component: {fileID: 424163072}
   - component: {fileID: 424163074}
-  - component: {fileID: 424163073}
+  - component: {fileID: 424163075}
   m_Layer: 0
   m_Name: Checkpoint_Tutu
   m_TagString: Untagged
@@ -3740,33 +3765,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 397608579}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &424163073
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 424163071}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3a2b1eb0887d02418c1d28c773563fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 838740387}
-  TutusText: {fileID: 1035324920}
-  idleTime: 1
-  talkDuration: 35
-  tutuAudioSource: {fileID: 838740386}
-  gibberishClips:
-  - {fileID: 8300000, guid: d5fca31af3a61c04c98ec424e0b90534, type: 3}
-  - {fileID: 8300000, guid: b9570a82a79a9fa4abf2933b97105d29, type: 3}
-  - {fileID: 8300000, guid: d76a748dbf47633439fc35e1e6370b97, type: 3}
-  Gibbersh: {fileID: 8300000, guid: d76a748dbf47633439fc35e1e6370b97, type: 3}
-  PoofCloudSound: {fileID: 8300000, guid: f9ad3c376cfd81a44b1326dfe0bdd1d7, type: 3}
-  poofEffectPrefab: {fileID: 7492287197023920637, guid: 75ebfe1a2fe950d4cb3a5121366486f2, type: 3}
-  poofPosition: {fileID: 6529469338490866586, guid: 75ebfe1a2fe950d4cb3a5121366486f2, type: 3}
-  tutuGameObject: {fileID: 838740385}
-  playerSkipped: 0
 --- !u!61 &424163074
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3813,6 +3811,33 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.28448105, y: 4.0920744}
   m_EdgeRadius: 0
+--- !u!114 &424163075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424163071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcfe8d479a1050b48a371b2410e0cc71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 838740387}
+  TutusText: {fileID: 1035324920}
+  idleTime: 1
+  talkDuration: 12
+  tutuAudioSource: {fileID: 838740386}
+  gibberishClips:
+  - {fileID: 8300000, guid: d76a748dbf47633439fc35e1e6370b97, type: 3}
+  - {fileID: 8300000, guid: b9570a82a79a9fa4abf2933b97105d29, type: 3}
+  - {fileID: 8300000, guid: d5fca31af3a61c04c98ec424e0b90534, type: 3}
+  Gibbersh: {fileID: 8300000, guid: d76a748dbf47633439fc35e1e6370b97, type: 3}
+  PoofCloudSound: {fileID: 8300000, guid: f9ad3c376cfd81a44b1326dfe0bdd1d7, type: 3}
+  poofEffectPrefab: {fileID: 7492287197023920637, guid: 75ebfe1a2fe950d4cb3a5121366486f2, type: 3}
+  poofPosition: {fileID: 6529469338490866586, guid: 75ebfe1a2fe950d4cb3a5121366486f2, type: 3}
+  tutuGameObject: {fileID: 838740385}
+  playerSkipped: 0
 --- !u!1 &429984286
 GameObject:
   m_ObjectHideFlags: 0
@@ -4829,6 +4854,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1980221601}
+    - target: {fileID: 1557119135205584932, guid: 146b1c0da46c0fd43aa553279fea5862, type: 3}
+      propertyPath: playerHealth
+      value: 
+      objectReference: {fileID: 1980221602}
     - target: {fileID: 1910542324487055305, guid: 146b1c0da46c0fd43aa553279fea5862, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -4876,6 +4905,10 @@ PrefabInstance:
     - target: {fileID: 3852885148372101192, guid: 146b1c0da46c0fd43aa553279fea5862, type: 3}
       propertyPath: m_Name
       value: Level2 Broom Enemy Blue
+      objectReference: {fileID: 0}
+    - target: {fileID: 3852885148372101192, guid: 146b1c0da46c0fd43aa553279fea5862, type: 3}
+      propertyPath: m_TagString
+      value: Enemy2
       objectReference: {fileID: 0}
     - target: {fileID: 4360227773374988021, guid: 146b1c0da46c0fd43aa553279fea5862, type: 3}
       propertyPath: m_labelHash
@@ -4928,7 +4961,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3852885148372101192, guid: 146b1c0da46c0fd43aa553279fea5862, type: 3}
+      insertIndex: 4
+      addedObject: {fileID: 1870386818}
   m_SourcePrefab: {fileID: 100100000, guid: 146b1c0da46c0fd43aa553279fea5862, type: 3}
 --- !u!1 &521653501
 GameObject:
@@ -6953,7 +6989,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 15.96, y: -4.76}
+  m_AnchoredPosition: {x: 15.72, y: -4.56}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &764250455
@@ -7108,7 +7144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 0}
-  offset: {x: 0, y: -0.5, z: 0}
+  offset: {x: 0, y: -20, z: 0}
 --- !u!1 &779755730
 GameObject:
   m_ObjectHideFlags: 0
@@ -9976,7 +10012,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 15.96, y: -8}
+  m_AnchoredPosition: {x: 15.96, y: -4.3}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1047465447
@@ -10026,8 +10062,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 3.5
-  m_fontSizeBase: 3.5
+  m_fontSize: 3
+  m_fontSizeBase: 3
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -10037,7 +10073,7 @@ MonoBehaviour:
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
-  m_wordSpacing: -15
+  m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
@@ -10131,7 +10167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 0}
-  offset: {x: 0, y: -1, z: 0}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!1 &1076859967
 GameObject:
   m_ObjectHideFlags: 0
@@ -16914,6 +16950,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7511758931916572018, guid: 447d7f2c62784124faee3d041dbc57c2, type: 3}
   m_PrefabInstance: {fileID: 2020670810}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1870386808 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3852885148372101192, guid: 146b1c0da46c0fd43aa553279fea5862, type: 3}
+  m_PrefabInstance: {fileID: 515071701}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1870386813 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1668424145475833881, guid: 146b1c0da46c0fd43aa553279fea5862, type: 3}
+  m_PrefabInstance: {fileID: 515071701}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1870386818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870386808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af6a321fe49ccf94eaaa1cb8c2004c46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 9
+  animator: {fileID: 1870386813}
+  damageSound: {fileID: 0}
+  deathSound: {fileID: 0}
+  PoofSound: {fileID: 8300000, guid: 924c9dcfafa664746ae815abf70cb3dc, type: 3}
+  explosionPrefab: {fileID: 3631054199611083833, guid: b6b50d61321c5bc45a1d012287426641, type: 3}
+  isDead: 0
+  knockbackForce: 6
+  hurtDuration: 0.7
 --- !u!1 &1877644534
 GameObject:
   m_ObjectHideFlags: 0
@@ -32765,6 +32832,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Blue Spider Enemy Level2
       objectReference: {fileID: 0}
+    - target: {fileID: 8218978572199814708, guid: a3181b18c69e922438764ee530d916da, type: 3}
+      propertyPath: m_TagString
+      value: Enemy2
+      objectReference: {fileID: 0}
     - target: {fileID: 8259544774408758927, guid: a3181b18c69e922438764ee530d916da, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.06961206
@@ -32799,11 +32870,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1776109898583564800, guid: a3181b18c69e922438764ee530d916da, type: 3}
+    - {fileID: 2157447298561151633, guid: a3181b18c69e922438764ee530d916da, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8218978572199814708, guid: a3181b18c69e922438764ee530d916da, type: 3}
       insertIndex: 4
+      addedObject: {fileID: 161270170}
+    - targetCorrespondingSourceObject: {fileID: 8218978572199814708, guid: a3181b18c69e922438764ee530d916da, type: 3}
+      insertIndex: 5
       addedObject: {fileID: 161270162}
   m_SourcePrefab: {fileID: 100100000, guid: a3181b18c69e922438764ee530d916da, type: 3}
 --- !u!1660057539 &9223372036854775807
