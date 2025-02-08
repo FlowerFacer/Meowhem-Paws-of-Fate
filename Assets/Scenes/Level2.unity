@@ -1191,6 +1191,10 @@ PrefabInstance:
       propertyPath: magicShroomPrefab
       value: 
       objectReference: {fileID: 470801038693961824, guid: cab1b7c37392af74999565360896fd65, type: 3}
+    - target: {fileID: 7606567003311684932, guid: 650bc0ccf50b0df4c9abe9b70f415497, type: 3}
+      propertyPath: spiderAchievementSprite
+      value: 
+      objectReference: {fileID: -6406762239119045413, guid: 8cc237ab3ecb77040864f32fbeb79058, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 285235683665907272, guid: 650bc0ccf50b0df4c9abe9b70f415497, type: 3}
@@ -1964,7 +1968,7 @@ PrefabInstance:
     - target: {fileID: 3838415394384342699, guid: 84e1a94f566f63942b29b65073ede1ad, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 8780803958118433476, guid: 2436268bc4e07af46b46c46f4cc009d1, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 3838415394384342699, guid: 84e1a94f566f63942b29b65073ede1ad, type: 3}
       propertyPath: m_Color.a
       value: 1
