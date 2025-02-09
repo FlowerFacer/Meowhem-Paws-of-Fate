@@ -7,7 +7,14 @@ public class BroomAttack : MonoBehaviour
 
     void Start()
     {
-        attacker = transform; // Spider itself is the attacker
+        if (attacker == null)
+        {
+            attacker = GameObject.FindGameObjectWithTag("Enemy2").transform;
+        }
+        else
+        {
+            Debug.Log("Couldn't find the broom!");
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)

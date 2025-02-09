@@ -81,7 +81,7 @@ public class BlueBroomEnemy : MonoBehaviour
         if (Vector2.Distance(transform.position, player.position) < detectionRange)
         {
             playerDetected = true;
-            animator.SetTrigger("Hostile");
+            animator.SetTrigger("SweepAttack");
         }
     }
 
@@ -89,8 +89,13 @@ public class BlueBroomEnemy : MonoBehaviour
     {
         if (playerIsDead) return;
 
-        transform.position = Vector3.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
+        // Preserve the original Y position
+        Vector3 targetPosition = new Vector3(player.position.x, transform.position.y, transform.position.z);
 
+        // Move only on the X-axis
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+
+        // Perform attack if within range
         if (Vector2.Distance(transform.position, player.position) < 1f && canAttack)
         {
             StartCoroutine(PerformAttack());
@@ -101,10 +106,14 @@ public class BlueBroomEnemy : MonoBehaviour
     {
         canAttack = false; // Disable attacks temporarily
 
-        // **Spawn the Spider Web Attack Effect**
+        // **Spawn the Spider Web Attack Effect** at the correct X position
         if (spiderAttackPrefab != null && attackSpawnPoint != null)
         {
-            Instantiate(spiderAttackPrefab, attackSpawnPoint.position, Quaternion.identity);
+            // Keep the prefab's original Y position
+            Vector3 spawnPosition = new Vector3(attackSpawnPoint.position.x, spiderAttackPrefab.transform.position.y, attackSpawnPoint.position.z);
+
+            // Instantiate at adjusted position
+            Instantiate(spiderAttackPrefab, spawnPosition, Quaternion.identity);
         }
 
         yield return new WaitForSeconds(attackCooldown); // Wait before attacking again
