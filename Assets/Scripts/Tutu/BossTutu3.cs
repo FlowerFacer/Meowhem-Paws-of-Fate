@@ -99,24 +99,30 @@ public class BossTutu3 : MonoBehaviour
 
         yield return ShowText(ItalicText, "Oh well!", 1.5f);
         yield return ShowText(ItalicText, "I guess I’ll just\n have to make sure...", 2f);
+
+        animator.SetTrigger("TiltTrigger");
+        yield return new WaitForSeconds(3f);
+        animator.SetTrigger("TiltTalking");
+
         yield return ShowText(ItalicText, "You don’t make it\n any further.", 2f);
 
-        animator.SetTrigger("IsBig");
-
         yield return ShowText(UnstableText, "Let’s see how\n you handle this,\n little kitten...", 2f);
+
+        yield return new WaitForSeconds(1f);
 
         // **Disappear effect**
         HideAllText();
 
-        yield return new WaitForSeconds(200f);
+        animator.SetBool("IsTalking", false);
 
-        // **Play poof effect again**
-        GameObject poof = Instantiate(poofEffectPrefab, poofPosition.position, Quaternion.identity);
-        Destroy(poof, 0.9f);
+        yield return new WaitForSeconds(3f);
 
-        // **Wait for poof animation, then disable Tutu**
-        yield return new WaitForSeconds(0.1f);
-        animator.SetTrigger("Disappear");
+        animator.SetTrigger("isBig");
+
+        yield return new WaitForSeconds(3f);
+
+        animator.SetBool("BigMouse", true);
+
     }
 
     IEnumerator ShowText(TMP_Text textObject, string text, float delay)
@@ -141,6 +147,7 @@ public class BossTutu3 : MonoBehaviour
         TutusText.gameObject.SetActive(false);
         UnstableText.gameObject.SetActive(false);
         ItalicText.gameObject.SetActive(false);
+        UnstableText2.gameObject.SetActive(false);  
     }
 
     void PlayRandomGibberish()
