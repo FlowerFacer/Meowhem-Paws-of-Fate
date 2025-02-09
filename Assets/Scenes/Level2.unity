@@ -8128,7 +8128,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9051361770226942459, guid: 2253283e16699ef44a2040b168e3c751, type: 3}
       propertyPath: message
-      value: Whispering Thicket
+      value: Glimmergrove
       objectReference: {fileID: 0}
     - target: {fileID: 9112311360691702586, guid: 2253283e16699ef44a2040b168e3c751, type: 3}
       propertyPath: m_Name
@@ -12379,7 +12379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   messageText: {fileID: 897180045}
-  message: Default Message
+  message: Press 'E' to continue
 --- !u!1 &989581984
 GameObject:
   m_ObjectHideFlags: 0
@@ -17571,7 +17571,7 @@ GameObject:
   - component: {fileID: 1461014407}
   - component: {fileID: 1461014409}
   - component: {fileID: 1461014408}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Text Detail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24719,7 +24719,7 @@ GameObject:
   - component: {fileID: 2064126271}
   - component: {fileID: 2064126273}
   - component: {fileID: 2064126272}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Health Increase Text (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24881,9 +24881,9 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -2020106515
+  m_SortingLayer: 1
+  m_SortingOrder: 20
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1001 &2069527306
 PrefabInstance:
@@ -38023,7 +38023,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8823053713951594908, guid: 0f77d06c30bf1504ebf1a493c11c8da6, type: 3}
       propertyPath: message
-      value: Glimmergrove
+      value: Moonlit Meadow
       objectReference: {fileID: 0}
     - target: {fileID: 8823053713951594908, guid: 0f77d06c30bf1504ebf1a493c11c8da6, type: 3}
       propertyPath: messageText
@@ -38731,6 +38731,10 @@ PrefabInstance:
       propertyPath: m_SpriteHash
       value: 22871523
       objectReference: {fileID: 0}
+    - target: {fileID: 6326838097606989040, guid: a3181b18c69e922438764ee530d916da, type: 3}
+      propertyPath: m_SortingOrder
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7117856352282558039, guid: a3181b18c69e922438764ee530d916da, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.03966
@@ -38851,6 +38855,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.9127204
       objectReference: {fileID: 0}
+    - target: {fileID: 9072601360155359838, guid: a3181b18c69e922438764ee530d916da, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 6751515260413672661, guid: cc753156212208c40b59a15ab60825db, type: 3}
     m_RemovedComponents:
     - {fileID: 1776109898583564800, guid: a3181b18c69e922438764ee530d916da, type: 3}
     - {fileID: 2157447298561151633, guid: a3181b18c69e922438764ee530d916da, type: 3}
@@ -38863,7 +38871,31 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8218978572199814708, guid: a3181b18c69e922438764ee530d916da, type: 3}
       insertIndex: 5
       addedObject: {fileID: 161270162}
+    - targetCorrespondingSourceObject: {fileID: 6712961207437505786, guid: a3181b18c69e922438764ee530d916da, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6534122127607823356}
   m_SourcePrefab: {fileID: 100100000, guid: a3181b18c69e922438764ee530d916da, type: 3}
+--- !u!1 &6534122127607823355 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6712961207437505786, guid: a3181b18c69e922438764ee530d916da, type: 3}
+  m_PrefabInstance: {fileID: 6534122127607823354}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6534122127607823356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6534122127607823355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CategoryHash: 4.1828574e-33
+  m_labelHash: 0.12929359
+  m_SpriteKey: 0
+  m_SpriteHash: 207457986
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -49,6 +49,12 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        if (GameData.instance != null)
+        {
+            attackPower = GameData.instance.regularAttackPower; // ✅ Load Attack Power
+            Debug.Log("📥 Loaded Attack Power: " + attackPower);
+        }
+
         rb = GetComponent<Rigidbody2D>();
         defaultAnimator = animator.runtimeAnimatorController; // Cache the default animator
 
@@ -372,6 +378,15 @@ public class PlayerController : MonoBehaviour
             {
                 GameData.instance.UpdateStats(inventory, damage, lightning, health);
             }
+        }
+    }
+
+    void OnDestroy()
+    {
+        if (GameData.instance != null)
+        {
+            GameData.instance.regularAttackPower = attackPower; // ✅ Save Attack Power
+            Debug.Log("🔄 GameData Updated: Attack Power = " + GameData.instance.regularAttackPower);
         }
     }
 }

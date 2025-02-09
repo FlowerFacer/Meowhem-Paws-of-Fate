@@ -171,8 +171,13 @@ public class PlayerInventory : MonoBehaviour
             GameData.instance.fishpoleCount = fishpoleCount;
             GameData.instance.magicShroomCount = magicShroomCount;
 
-            // ✅ Get PlayerController instead of SlashEffect
             PlayerController playerController = GetComponent<PlayerController>();
+
+
+            if (playerController != null)
+            {
+                GameData.instance.regularAttackPower = playerController.attackPower; // ✅ Update Attack Power
+            }
 
             if (GetComponent<PlayerHealth>() != null)
             {

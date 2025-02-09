@@ -6,7 +6,7 @@ public class GameData : MonoBehaviour
 
     // Player Stats
     public int maxHealth = 10; // Default health (Update if it increases)
-    public int regularAttackPower = 3; // Matches SlashEffect damage
+    public int regularAttackPower = 3; 
     public int specialAttackPower = 8; // Matches LightningEffect damage
 
     // Secrets Collected
