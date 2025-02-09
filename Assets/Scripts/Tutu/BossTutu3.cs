@@ -7,6 +7,7 @@ public class BossTutu3 : MonoBehaviour
     public Animator animator; // Reference to Tutu's animator
     public TMP_Text TutusText; // Reference to the TextMeshPro 3D object
     public TMP_Text UnstableText;
+    public TMP_Text UnstableText2;
     public TMP_Text ItalicText;
     public float idleTime = 3f; // Time before Tutu starts talking
 
@@ -71,22 +72,36 @@ public class BossTutu3 : MonoBehaviour
         yield return ShowText(TutusText, "Oh wow...\n You really made\n it this far.", 2f);
         yield return ShowText(TutusText, "Apricot, you’re...\n impressive.", 2f);
 
-        yield return ShowText(TutusText, "And here I thought\n you'd just—", 3f);
+        yield return ShowText(TutusText, "And here I thought\n you'd just—", 1);
+
+        animator.SetTrigger("TiltTrigger");
+        yield return new WaitForSeconds(3f);
+
+        animator.SetTrigger("TiltTalking");
+
         yield return ShowText(UnstableText, "...fall into a pit\n and die by now.", 1.5f);
 
         yield return ShowText(TutusText, "But no, you kept\n pushing forward.", 2f);
         yield return ShowText(TutusText, "You fought, you won,\n you actually\n LISTENED to me.", 2f);
 
         yield return ShowText(TutusText, "Do you have\n ANY IDEA...", 1.5f);
+
+        animator.SetTrigger("TiltIdle");
+
         yield return ShowText(UnstableText, "HOW\n FRUSTRATING\n THAT WAS??", 2f);
 
-        yield return ShowText(UnstableText, "I GUIDED YOU.\n I HELPED YOU.\n I PRETENDED\n TP LOVE YOU.", 2.5f);
+        yield return ShowText(UnstableText, "I GUIDED YOU.\n I HELPED YOU.\n I PRETENDED\n TO LOVE YOU.", 2.5f);
         yield return ShowText(UnstableText, "AND YOU—", 1.5f);
-        yield return ShowText(UnstableText, "YOU WERE NEVER\n SUPPOSED TO\n MAKE IT HERE!!", 2.5f);
+
+        animator.SetTrigger("isYelling");
+
+        yield return ShowText(UnstableText2, "YOU WERE NEVER\n SUPPOSED TO\n MAKE IT HERE!!", 2.5f);
 
         yield return ShowText(ItalicText, "Oh well!", 1.5f);
         yield return ShowText(ItalicText, "I guess I’ll just\n have to make sure...", 2f);
         yield return ShowText(ItalicText, "You don’t make it\n any further.", 2f);
+
+        animator.SetTrigger("IsBig");
 
         yield return ShowText(UnstableText, "Let’s see how\n you handle this,\n little kitten...", 2f);
 
