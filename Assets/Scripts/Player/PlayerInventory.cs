@@ -18,6 +18,17 @@ public class PlayerInventory : MonoBehaviour
         playerHealth = GetComponent<PlayerHealth>(); // Get reference to PlayerHealth script
         playerController = GetComponent<PlayerController>();
 
+        if (GameData.instance != null)
+        {
+            fishpoleCount = GameData.instance.fishpoleCount; // ✅ Load Attack Power
+            Debug.Log("📥 Loaded Attack Power: " + fishpoleCount);
+
+            fishpoleCount = GameData.instance.fishpoleCount; // ✅ Load Attack Power
+            Debug.Log("📥 Loaded Attack Power: " + fishpoleCount);
+
+            magicShroomCount = GameData.instance.magicShroomCount; // ✅ Load Attack Power
+            Debug.Log("📥 Loaded Attack Power: " + magicShroomCount);
+        }
 
         if (HpIncreaseText != null)
         {
