@@ -24,10 +24,8 @@ public class BossTutu3 : MonoBehaviour
         // Ensures Tutu starts in Invisible state
         animator.Play("Invisible");
 
-        // Hide all text at the start
-        if (TutusText) TutusText.gameObject.SetActive(false);
-        if (UnstableText) UnstableText.gameObject.SetActive(false);
-        if (ItalicText) ItalicText.gameObject.SetActive(false);
+        // **Ensure all text starts hidden**
+        HideAllText();
 
         // Starts the appear sequence
         StartCoroutine(AppearSequence());
@@ -69,30 +67,32 @@ public class BossTutu3 : MonoBehaviour
         // Play talking animation
         animator.SetBool("IsTalking", true);
 
-        if (TutusText) TutusText.gameObject.SetActive(true);
-        yield return StartCoroutine(ShowTextInSequence1());
-        yield return StartCoroutine(ShowTextInSequence2A());
+        // **Main text sequence**
+        yield return ShowText(TutusText, "Oh wow...\n You really made it this far.", 2f);
+        yield return ShowText(TutusText, "Apricot, you’re... impressive.", 2f);
 
-        if (UnstableText) UnstableText.gameObject.SetActive(true);
-        yield return StartCoroutine(ShowTextInSequence2B());
+        yield return ShowText(TutusText, "And here I thought you'd just—", 0.5f);
+        yield return ShowText(UnstableText, "...fall into a pit and die by now.", 1.5f);
 
-        if (TutusText) yield return StartCoroutine(ShowTextInSequence3());
-        yield return StartCoroutine(ShowTextInSequence4A());
+        yield return ShowText(TutusText, "But no,\n you kept pushing forward.", 2f);
+        yield return ShowText(TutusText, "You fought, you won,\n you actually LISTENED to me.", 2f);
 
-        if (UnstableText) yield return StartCoroutine(ShowTextInSequence4B());
-        yield return StartCoroutine(ShowTextInSequence5());
+        yield return ShowText(TutusText, "Do you have ANY IDEA...", 1.5f);
+        yield return ShowText(UnstableText, "HOW FRUSTRATING THAT WAS??", 2f);
 
-        if (ItalicText) ItalicText.gameObject.SetActive(true);
-        yield return StartCoroutine(ShowTextInSequence6A());
+        yield return ShowText(UnstableText, "I GUIDED YOU. I HELPED YOU. I LOVED YOU.", 2f);
+        yield return ShowText(UnstableText, "AND YOU—", 1.5f);
+        yield return ShowText(UnstableText, "YOU WERE NEVER SUPPOSED TO MAKE IT HERE!!", 2.5f);
 
-        if (UnstableText) yield return StartCoroutine(ShowTextInSequence6B());
+        yield return ShowText(ItalicText, "Oh well!", 1.5f);
+        yield return ShowText(ItalicText, "I guess I’ll just have to make sure you don’t make it any further.", 2f);
 
-        // Hide all text
-        if (TutusText) TutusText.gameObject.SetActive(false);
-        if (UnstableText) UnstableText.gameObject.SetActive(false);
-        if (ItalicText) ItalicText.gameObject.SetActive(false);
+        yield return ShowText(UnstableText, "Let’s see how\n you handle this,\n little kitten", 2f);
 
-        yield return new WaitForSeconds(1.5f);
+        // **Disappear effect**
+        HideAllText();
+
+        yield return new WaitForSeconds(200f);
 
         // **Play poof effect again**
         GameObject poof = Instantiate(poofEffectPrefab, poofPosition.position, Quaternion.identity);
@@ -103,70 +103,28 @@ public class BossTutu3 : MonoBehaviour
         animator.SetTrigger("Disappear");
     }
 
-    IEnumerator ShowTextInSequence1()
+    IEnumerator ShowText(TMP_Text textObject, string text, float delay)
     {
-        yield return TypeText(TutusText, "Oh wow...\nYou really made it this far.");
-        yield return TypeText(TutusText, "Apricot, you’re... impressive.");
-    }
+        HideAllText(); // **Ensure only one text is shown at a time**
+        textObject.gameObject.SetActive(true);
+        textObject.text = "";
 
-    IEnumerator ShowTextInSequence2A()
-    {
-        yield return TypeText(TutusText, "And here I thought you'd just—");
-    }
-
-    IEnumerator ShowTextInSequence2B()
-    {
-        yield return TypeText(UnstableText, "...fall into a pit and die by now.");
-    }
-
-    IEnumerator ShowTextInSequence3()
-    {
-        yield return TypeText(TutusText, "But no,\nYou kept pushing forward.");
-        yield return TypeText(TutusText, "You fought, you won,\nYou actually LISTENED to me.");
-    }
-
-    IEnumerator ShowTextInSequence4A()
-    {
-        yield return TypeText(TutusText, "Do you have ANY IDEA...");
-    }
-
-    IEnumerator ShowTextInSequence4B()
-    {
-        yield return TypeText(UnstableText, "HOW FRUSTRATING THAT WAS??");
-    }
-
-    IEnumerator ShowTextInSequence5()
-    {
-        yield return TypeText(UnstableText, "I GUIDED YOU. I HELPED YOU. I LOVED YOU.");
-        yield return TypeText(UnstableText, "AND YOU—");
-        yield return TypeText(UnstableText, "YOU WERE NEVER SUPPOSED TO MAKE IT HERE!!");
-    }
-
-    IEnumerator ShowTextInSequence6A()
-    {
-        yield return TypeText(ItalicText, "Oh well!");
-        yield return TypeText(ItalicText, "I guess I’ll just have to make sure you don’t make it any further.");
-    }
-
-    IEnumerator ShowTextInSequence6B()
-    {
-        yield return TypeText(UnstableText, "Let’s see how\nYou handle this,\nLittle kitten");
-    }
-
-    IEnumerator TypeText(TMP_Text textComponent, string fullText)
-    {
-        if (textComponent == null) yield break;
-
-        textComponent.text = "";
         PlayRandomGibberish();
 
-        foreach (char letter in fullText)
+        foreach (char letter in text)
         {
-            textComponent.text += letter;
-            yield return new WaitForSeconds(0.05f);
+            textObject.text += letter;
+            yield return new WaitForSeconds(0.02f);
         }
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(delay);
+    }
+
+    void HideAllText()
+    {
+        TutusText.gameObject.SetActive(false);
+        UnstableText.gameObject.SetActive(false);
+        ItalicText.gameObject.SetActive(false);
     }
 
     void PlayRandomGibberish()

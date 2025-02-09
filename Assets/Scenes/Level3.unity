@@ -4493,9 +4493,13 @@ MonoBehaviour:
   TutusText: {fileID: 62437467}
   UnstableText: {fileID: 1766412079}
   ItalicText: {fileID: 62437467}
-  idleTime: 5
+  idleTime: 3
   tutuAudioSource: {fileID: 779650725}
-  gibberishClips: []
+  gibberishClips:
+  - {fileID: 8300000, guid: 1f4a7eee5cfd60543bad703a9cbf9070, type: 3}
+  - {fileID: 8300000, guid: 8420ec274f784f64899fee6cd1c306c2, type: 3}
+  - {fileID: 8300000, guid: a7356095cd85141429beab3a7d1dd66a, type: 3}
+  - {fileID: 8300000, guid: 84371fee3f7d3f64692872966bf32d0e, type: 3}
   poofEffectPrefab: {fileID: 835235119001236977, guid: 339b11fedc585514fa6639a9bf3157c2, type: 3}
   poofPosition: {fileID: 5431499079806079220, guid: 339b11fedc585514fa6639a9bf3157c2, type: 3}
   PoofCloudSound: {fileID: 8300000, guid: f9ad3c376cfd81a44b1326dfe0bdd1d7, type: 3}
