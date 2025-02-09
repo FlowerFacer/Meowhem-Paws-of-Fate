@@ -1,4 +1,4 @@
-using TMPro;
+ï»¿using TMPro;
 using UnityEngine;
 using System.Collections;
 
@@ -20,6 +20,13 @@ public class BossTutu3 : MonoBehaviour
 
     private bool hasTalked = false; // Ensuring it only appears once per appearance
 
+    // **Attack System**
+    public GameObject jumpAttackPrefab; // Prefab for attack animation
+    public Transform attackSpawnPoint; // Where the attack appears
+    public int attackDamage = 3; // Damage dealt by attack
+    public float attackCooldown = 3f; // Cooldown between attacks
+    private bool canAttack = true;
+
     void Start()
     {
         // Ensures Tutu starts in Invisible state
@@ -30,6 +37,15 @@ public class BossTutu3 : MonoBehaviour
 
         // Starts the appear sequence
         StartCoroutine(AppearSequence());
+    }
+
+    void Update()
+    {
+        // ðŸ›‘ If Tutu is in BigMouse form, allow attacks!
+        if (animator.GetBool("BigMouse") && canAttack)
+        {
+            StartCoroutine(PerformJumpAttack());
+        }
     }
 
     IEnumerator AppearSequence()
@@ -70,9 +86,9 @@ public class BossTutu3 : MonoBehaviour
 
         // **Main text sequence**
         yield return ShowText(TutusText, "Oh wow...\n You really made\n it this far.", 2f);
-        yield return ShowText(TutusText, "Apricot, you’re...\n impressive.", 2f);
+        yield return ShowText(TutusText, "Apricot, youâ€™re...\n impressive.", 2f);
 
-        yield return ShowText(TutusText, "And here I thought\n you'd just—", 1);
+        yield return ShowText(TutusText, "And here I thought\n you'd justâ€”", 1);
 
         animator.SetTrigger("TiltTrigger");
         yield return new WaitForSeconds(3f);
@@ -91,22 +107,22 @@ public class BossTutu3 : MonoBehaviour
         yield return ShowText(UnstableText, "HOW\n FRUSTRATING\n THAT WAS??", 2f);
 
         yield return ShowText(UnstableText, "I GUIDED YOU.\n I HELPED YOU.\n I PRETENDED\n TO LOVE YOU.", 2.5f);
-        yield return ShowText(UnstableText, "AND YOU—", 1.5f);
+        yield return ShowText(UnstableText, "AND YOUâ€”", 1.5f);
 
         animator.SetTrigger("isYelling");
 
         yield return ShowText(UnstableText2, "YOU WERE NEVER\n SUPPOSED TO\n MAKE IT HERE!!", 2.5f);
 
         yield return ShowText(ItalicText, "Oh well!", 1.5f);
-        yield return ShowText(ItalicText, "I guess I’ll just\n have to make sure...", 2f);
+        yield return ShowText(ItalicText, "I guess Iâ€™ll just\n have to make sure...", 2f);
 
         animator.SetTrigger("TiltTrigger");
         yield return new WaitForSeconds(3f);
         animator.SetTrigger("TiltTalking");
 
-        yield return ShowText(ItalicText, "You don’t make it\n any further.", 2f);
+        yield return ShowText(ItalicText, "You donâ€™t make it\n any further.", 2f);
 
-        yield return ShowText(UnstableText, "Let’s see how\n you handle this,\n little kitten...", 2f);
+        yield return ShowText(UnstableText, "Letâ€™s see how\n you handle this,\n little kitten...", 2f);
 
         yield return new WaitForSeconds(1f);
 
@@ -123,6 +139,27 @@ public class BossTutu3 : MonoBehaviour
 
         animator.SetBool("BigMouse", true);
 
+    }
+
+    IEnumerator PerformJumpAttack()
+    {
+        canAttack = false;
+
+        // **Trigger Jump Attack Animation**
+        animator.SetTrigger("JumpAttack");
+
+        yield return new WaitForSeconds(0.5f); // Delay before spawning attack
+
+        if (jumpAttackPrefab != null && attackSpawnPoint != null)
+        {
+            GameObject attackInstance = Instantiate(jumpAttackPrefab,
+                new Vector3(attackSpawnPoint.position.x, jumpAttackPrefab.transform.position.y, attackSpawnPoint.position.z),
+                Quaternion.identity);
+            Destroy(attackInstance, 1.2f); // Destroy attack effect after duration
+        }
+
+        yield return new WaitForSeconds(attackCooldown);
+        canAttack = true;
     }
 
     IEnumerator ShowText(TMP_Text textObject, string text, float delay)
