@@ -24,8 +24,10 @@ public class BossTutu3 : MonoBehaviour
     public GameObject jumpAttackPrefab; // Prefab for attack animation
     public Transform attackSpawnPoint; // Where the attack appears
     public int attackDamage = 3; // Damage dealt by attack
-    public float attackCooldown = 3f; // Cooldown between attacks
+    public float attackCooldown = 4f; // Cooldown between attacks
     private bool canAttack = true;
+    private bool isBigMouse = false; // Track if Tutu has transformed
+
 
     void Start()
     {
@@ -37,15 +39,6 @@ public class BossTutu3 : MonoBehaviour
 
         // Starts the appear sequence
         StartCoroutine(AppearSequence());
-    }
-
-    void Update()
-    {
-        // 🛑 If Tutu is in BigMouse form, allow attacks!
-        if (animator.GetBool("BigMouse") && canAttack)
-        {
-            StartCoroutine(PerformJumpAttack());
-        }
     }
 
     IEnumerator AppearSequence()
@@ -139,6 +132,21 @@ public class BossTutu3 : MonoBehaviour
 
         animator.SetBool("BigMouse", true);
 
+        // **Start the attack loop!**
+        StartCoroutine(AttackLoop());
+    }
+
+    IEnumerator AttackLoop()
+    {
+        while (isBigMouse) // **Loop while Tutu is transformed**
+        {
+            if (canAttack)
+            {
+                yield return StartCoroutine(PerformJumpAttack());
+            }
+
+            yield return null; // Wait for next frame
+        }
     }
 
     IEnumerator PerformJumpAttack()
@@ -148,14 +156,16 @@ public class BossTutu3 : MonoBehaviour
         // **Trigger Jump Attack Animation**
         animator.SetTrigger("JumpAttack");
 
-        yield return new WaitForSeconds(0.5f); // Delay before spawning attack
+        yield return new WaitForSeconds(0.5f);
 
         if (jumpAttackPrefab != null && attackSpawnPoint != null)
         {
-            GameObject attackInstance = Instantiate(jumpAttackPrefab,
+            GameObject attackInstance = Instantiate(
+                jumpAttackPrefab,
                 new Vector3(attackSpawnPoint.position.x, jumpAttackPrefab.transform.position.y, attackSpawnPoint.position.z),
-                Quaternion.identity);
-            Destroy(attackInstance, 1.2f); // Destroy attack effect after duration
+                Quaternion.identity
+            );
+            Destroy(attackInstance, 1.2f);
         }
 
         yield return new WaitForSeconds(attackCooldown);
