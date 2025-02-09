@@ -12,10 +12,11 @@ public class BackgroundMusicManager : MonoBehaviour
     {
         public string sceneName; // Scene name
         public AudioClip musicClip; // Music to play in this scene
+        [Range(0f, 1f)] public float volume = 0.5f; // Volume for this scene
     }
 
     public AudioClip defaultMusic; // Default music if no specific scene music is set
-    public float musicVolume = 0.5f; // Music volume
+    [Range(0f, 1f)] public float defaultVolume = 0.5f; // Default music volume
     public SceneMusic[] sceneMusicList; // List of scene-specific music
 
     private AudioSource audioSource;
@@ -25,20 +26,19 @@ public class BackgroundMusicManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject); // Persist across scenes
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(gameObject); // Prevent duplicates
+            Destroy(gameObject);
             return;
         }
 
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.loop = true;
         audioSource.playOnAwake = false;
-        audioSource.volume = musicVolume;
 
-        SceneManager.sceneLoaded += OnSceneLoaded; // Listen to scene load events
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -48,36 +48,33 @@ public class BackgroundMusicManager : MonoBehaviour
 
     private void PlayMusicForScene(string sceneName)
     {
-        AudioClip sceneMusic = null;
+        AudioClip sceneMusic = defaultMusic;
+        float sceneVolume = defaultVolume;
 
-        // Find music for the current scene
+        // Find music & volume for the current scene
         foreach (var entry in sceneMusicList)
         {
             if (entry.sceneName == sceneName)
             {
                 sceneMusic = entry.musicClip;
+                sceneVolume = entry.volume;
                 break;
             }
-        }
-
-        // Use default music if no scene-specific music is found
-        if (sceneMusic == null)
-        {
-            sceneMusic = defaultMusic;
         }
 
         // If the same music is already playing, do nothing
         if (audioSource.clip == sceneMusic) return;
 
-        // Play the new music
+        // Play the new music with its scene-specific volume
         audioSource.Stop();
         audioSource.clip = sceneMusic;
+        audioSource.volume = sceneVolume;
         audioSource.Play();
     }
 
-    public void SetVolume(float volume)
+    public void SetGlobalVolume(float volume)
     {
-        musicVolume = Mathf.Clamp01(volume); // Clamp between 0 and 1
-        audioSource.volume = musicVolume;
+        float clampedVolume = Mathf.Clamp01(volume);
+        audioSource.volume = clampedVolume;
     }
 }
