@@ -167,7 +167,7 @@ MonoBehaviour:
   regularAttackText: {fileID: 1024901227}
   specialAttackText: {fileID: 1061805791}
   secretsText: {fileID: 1360401315}
-  loadDelay: 8
+  loadDelay: 10
   typeSpeed: 0.05
 --- !u!1 &415460273
 GameObject:

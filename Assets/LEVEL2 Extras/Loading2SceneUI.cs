@@ -47,6 +47,6 @@ public class Loading2SceneUI : MonoBehaviour
     {
         yield return new WaitForSeconds(loadDelay);
         // Load the next scene (Change "NextLevelScene" to your actual scene name)
-        SceneManager.LoadScene("Level2"); // Loads level2 scene
+        SceneManager.LoadScene("Level3"); // Loads level2 scene
     }
 }
