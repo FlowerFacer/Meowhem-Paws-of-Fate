@@ -68,26 +68,27 @@ public class BossTutu3 : MonoBehaviour
         animator.SetBool("IsTalking", true);
 
         // **Main text sequence**
-        yield return ShowText(TutusText, "Oh wow...\n You really made it this far.", 2f);
-        yield return ShowText(TutusText, "Apricot, you’re... impressive.", 2f);
+        yield return ShowText(TutusText, "Oh wow...\n You really made\n it this far.", 2f);
+        yield return ShowText(TutusText, "Apricot, you’re...\n impressive.", 2f);
 
-        yield return ShowText(TutusText, "And here I thought you'd just—", 0.5f);
-        yield return ShowText(UnstableText, "...fall into a pit and die by now.", 1.5f);
+        yield return ShowText(TutusText, "And here I thought\n you'd just—", 3f);
+        yield return ShowText(UnstableText, "...fall into a pit\n and die by now.", 1.5f);
 
-        yield return ShowText(TutusText, "But no,\n you kept pushing forward.", 2f);
-        yield return ShowText(TutusText, "You fought, you won,\n you actually LISTENED to me.", 2f);
+        yield return ShowText(TutusText, "But no, you kept\n pushing forward.", 2f);
+        yield return ShowText(TutusText, "You fought, you won,\n you actually\n LISTENED to me.", 2f);
 
-        yield return ShowText(TutusText, "Do you have ANY IDEA...", 1.5f);
-        yield return ShowText(UnstableText, "HOW FRUSTRATING THAT WAS??", 2f);
+        yield return ShowText(TutusText, "Do you have\n ANY IDEA...", 1.5f);
+        yield return ShowText(UnstableText, "HOW\n FRUSTRATING\n THAT WAS??", 2f);
 
-        yield return ShowText(UnstableText, "I GUIDED YOU. I HELPED YOU. I LOVED YOU.", 2f);
+        yield return ShowText(UnstableText, "I GUIDED YOU.\n I HELPED YOU.\n I PRETENDED\n TP LOVE YOU.", 2.5f);
         yield return ShowText(UnstableText, "AND YOU—", 1.5f);
-        yield return ShowText(UnstableText, "YOU WERE NEVER SUPPOSED TO MAKE IT HERE!!", 2.5f);
+        yield return ShowText(UnstableText, "YOU WERE NEVER\n SUPPOSED TO\n MAKE IT HERE!!", 2.5f);
 
         yield return ShowText(ItalicText, "Oh well!", 1.5f);
-        yield return ShowText(ItalicText, "I guess I’ll just have to make sure you don’t make it any further.", 2f);
+        yield return ShowText(ItalicText, "I guess I’ll just\n have to make sure...", 2f);
+        yield return ShowText(ItalicText, "You don’t make it\n any further.", 2f);
 
-        yield return ShowText(UnstableText, "Let’s see how\n you handle this,\n little kitten", 2f);
+        yield return ShowText(UnstableText, "Let’s see how\n you handle this,\n little kitten...", 2f);
 
         // **Disappear effect**
         HideAllText();
@@ -114,7 +115,7 @@ public class BossTutu3 : MonoBehaviour
         foreach (char letter in text)
         {
             textObject.text += letter;
-            yield return new WaitForSeconds(0.02f);
+            yield return new WaitForSeconds(0.065f);
         }
 
         yield return new WaitForSeconds(delay);
