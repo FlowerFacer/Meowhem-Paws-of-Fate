@@ -47,7 +47,6 @@ public class PlayerController : MonoBehaviour
     public bool isSpecialAttacking = false;
     private bool isClimbing = false;
 
-
     void Start()
     {
         if (GameData.instance != null)

@@ -12,12 +12,12 @@ public class PlayerHealth : MonoBehaviour
 
     void Start()
     {
-        //if (GameData.instance != null)
-        //{
-        //    maxHealth = GameData.instance.maxHealth; // ✅ Load saved HP
-        //    currentHealth = maxHealth; // Set starting HP
-        //    Debug.Log("📥 Loaded Max HP: " + maxHealth);
-        //}
+        if (GameData.instance != null)
+        {
+            maxHealth = GameData.instance.maxHealth; // ✅ Load saved HP
+            currentHealth = maxHealth; // Set starting HP
+            Debug.Log("📥 Loaded Max HP: " + maxHealth);
+        }
 
         playerController = GetComponent<PlayerController>(); // Get the PlayerController script
     }
