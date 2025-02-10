@@ -84,6 +84,15 @@ public class PlayerController : MonoBehaviour
         {
             HandleClimbing(); // Allow player control while climbing
         }
+
+        if (animator.GetBool("isSleep"))
+        {
+            FreezePlayer();
+        }
+        else
+        {
+            UnfreezePlayer();
+        }
     }
 
     void HandleMovement()
@@ -408,6 +417,17 @@ public class PlayerController : MonoBehaviour
             GameData.instance.specialAttackPower = specialAttackPower;
             Debug.Log("🔄 GameData Updated: Attack Power = " + GameData.instance.regularAttackPower);
         }
+    }
+
+    public void FreezePlayer()
+    {
+        rb.linearVelocity = Vector2.zero; // Stop movement
+        rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY; // Freeze position
+    }
+
+    public void UnfreezePlayer()
+    {
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation; // Restore normal movement
     }
 }
 
