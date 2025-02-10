@@ -9,6 +9,7 @@ public class TutuPlush : MonoBehaviour
 
     public BossTutu3 bossTutu; // Reference to the boss script
     public GameObject tutuBoss; // Reference to the actual boss GameObject
+    private bool hasThrown = false;
 
     void Start()
     {
@@ -17,13 +18,21 @@ public class TutuPlush : MonoBehaviour
         {
             bossTutu = FindFirstObjectByType<BossTutu3>();
         }
+
+        // Start checking if boss is destroyed
+        StartCoroutine(CheckBossStatus());
     }
 
-    void Update()
+    IEnumerator CheckBossStatus()
     {
-        // **Stop lightning when boss is defeated**
-        if (tutuBoss == null)
+        while (tutuBoss != null)
         {
+            yield return null; // Wait until the boss is destroyed
+        }
+
+        if (!hasThrown)
+        {
+            hasThrown = true;
             TutuIsDead();
         }
     }
