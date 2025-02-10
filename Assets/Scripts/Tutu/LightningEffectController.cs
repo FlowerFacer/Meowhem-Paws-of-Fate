@@ -48,6 +48,9 @@ public class LightningEffectController : MonoBehaviour
         while (isLightningActive)
         {
             if (canLightning1) StartCoroutine(PerformLightning1());
+
+            yield return new WaitForSeconds(2.5f); // Adjust as needed for delay between strikes
+
             if (canLightning2) StartCoroutine(PerformLightning2());
 
             yield return new WaitForSeconds(1.5f); // Adjust as needed for delay between strikes
@@ -96,7 +99,7 @@ public class LightningEffectController : MonoBehaviour
             Destroy(attackInstance, 2f);
         }
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         canLightning2 = true;
     }
 }

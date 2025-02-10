@@ -13,6 +13,7 @@ public class GameData : MonoBehaviour
     public int yarnCount = 0;
     public int fishpoleCount = 0;
     public int magicShroomCount = 0;
+    public int tutuPlushieCount = 0;
 
     private void Awake()
     {
@@ -27,16 +28,17 @@ public class GameData : MonoBehaviour
         }
     }
 
-    public void UpdateStats(PlayerInventory inventory, PlayerController playerController, LightningEffect lightning, PlayerHealth health)
+    public void UpdateStats(PlayerInventory inventory, PlayerController playerController, PlayerHealth health)
     {
         // Secrets
         yarnCount = inventory.yarnCount;
         fishpoleCount = inventory.fishpoleCount;
         magicShroomCount = inventory.magicShroomCount;
+        tutuPlushieCount = inventory.tutuPlushieCount;
 
         // Attack Power
         regularAttackPower = playerController.attackPower;
-        specialAttackPower = lightning.damage;
+        specialAttackPower = playerController.specialAttackPower;
 
         // Max Health (if you track it elsewhere, update it here)
         maxHealth = health.maxHealth;

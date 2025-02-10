@@ -15,6 +15,11 @@ public class LightningEffect : MonoBehaviour
         }
     }
 
+    public void SetAttackPower(int newPower)
+    {
+        damage = newPower;
+    }
+
     void OnTriggerStay2D(Collider2D other) // Continuous check
     {
         if (other.CompareTag("Plant"))

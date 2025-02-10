@@ -7,6 +7,7 @@ public class PlayerInventory : MonoBehaviour
     public int yarnCount = 0; // Track the number of yarn balls collected
     public int fishpoleCount = 0; // Track the number of yarn balls collected
     public int magicShroomCount = 0; // Track the number of magic mushrooms collected
+    public int tutuPlushieCount = 0;
     public TMP_Text HpIncreaseText; // 🗨️ Reference to TextMeshPro 3D
     public AudioClip increase;
     private PlayerController playerController;
@@ -28,6 +29,9 @@ public class PlayerInventory : MonoBehaviour
 
             magicShroomCount = GameData.instance.magicShroomCount; // ✅ Load Attack Power
             Debug.Log("📥 Loaded Attack Power: " + magicShroomCount);
+
+            tutuPlushieCount = GameData.instance.tutuPlushieCount; // ✅ Load Attack Power
+            Debug.Log("📥 Loaded Attack Power: " + tutuPlushieCount);
         }
 
         if (HpIncreaseText != null)
@@ -88,6 +92,24 @@ public class PlayerInventory : MonoBehaviour
         {
             playerController.IncreaseMaxATKpower(5);
             Debug.Log("✅ ATK Power increased via PlayerController!");
+        }
+        else
+        {
+            Debug.LogError("❌ PlayerController not found!");
+        }
+    }
+
+    public void AddTutuPlushie(int amount)
+    {
+        tutuPlushieCount += amount;
+        Debug.Log($" plushie Collected! Total: {tutuPlushieCount}");
+
+        StartCoroutine(ShowHealthBonusText()); // Start fade animation
+
+        if (playerController != null)
+        {
+            playerController.IncreaseMaxATKpower(5);
+            Debug.Log("✅ SP ATK Power increased via PlayerController!");
         }
         else
         {
@@ -181,6 +203,7 @@ public class PlayerInventory : MonoBehaviour
             GameData.instance.yarnCount = yarnCount;
             GameData.instance.fishpoleCount = fishpoleCount;
             GameData.instance.magicShroomCount = magicShroomCount;
+            GameData.instance.tutuPlushieCount = tutuPlushieCount;
 
             PlayerController playerController = GetComponent<PlayerController>();
 
@@ -188,16 +211,12 @@ public class PlayerInventory : MonoBehaviour
             if (playerController != null)
             {
                 GameData.instance.regularAttackPower = playerController.attackPower; // ✅ Update Attack Power
+                GameData.instance.specialAttackPower = playerController.specialAttackPower;
             }
 
             if (GetComponent<PlayerHealth>() != null)
             {
                 GameData.instance.maxHealth = GetComponent<PlayerHealth>().maxHealth;
-            }
-
-            if (GetComponent<LightningEffect>() != null)
-            {
-                GameData.instance.specialAttackPower = GetComponent<LightningEffect>().damage;
             }
 
             Debug.Log($"📊 GameData Updated: HP {GameData.instance.maxHealth}, Attack {GameData.instance.regularAttackPower}, Special {GameData.instance.specialAttackPower}");

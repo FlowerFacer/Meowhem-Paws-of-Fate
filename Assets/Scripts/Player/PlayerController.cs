@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] public int attackPower = 3; // 🔥 Initial attack power
+    [SerializeField] public int specialAttackPower = 8;
     [SerializeField] public float moveSpeed = 3.5f;
     [SerializeField] public float jumpForce = 10f;
     [SerializeField] public float attackCooldown = 0.6f;
@@ -283,6 +284,13 @@ public class PlayerController : MonoBehaviour
         isAttacking = false;
     }
 
+    public void IncreaseMaxSPATKpower(int amount)
+    {
+        specialAttackPower += amount; // ✅ Increase attack power
+        Debug.Log("✅ ATK power Increased! New ATK Power: " + specialAttackPower);
+        UpdateGameData(); // ✅ Update game data with new attack power
+    }
+
     IEnumerator PerformSpecialAttack()
     {
         if (fireEffectSound != null)
@@ -313,6 +321,19 @@ public class PlayerController : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f); // Wait for animation to progress
         GameObject Lightning = Instantiate(LightningEffectPrefab, LightningPoint.position, LightningPoint.rotation);
+
+        // ✅ Assign the reference AFTER instantiating it
+        LightningEffect lightningEffect = Lightning.GetComponent<LightningEffect>();
+
+        if (lightningEffect != null)
+        {
+            lightningEffect.SetAttackPower(specialAttackPower); // ✅ Ensure it gets correct ATK Power
+        }
+        else
+        {
+            Debug.LogError("❌ SlashEffect component missing on instantiated slash effect!");
+        }
+
         Destroy(Lightning, LightningDuration); // Remove after duration
 
         // Wait for attack animation to finish
@@ -370,13 +391,12 @@ public class PlayerController : MonoBehaviour
         if (GameData.instance != null)
         {
             PlayerController damage = GetComponent<PlayerController>();
-            LightningEffect lightning = GetComponent<LightningEffect>();
             PlayerInventory inventory = GetComponent<PlayerInventory>();
             PlayerHealth health = GetComponent<PlayerHealth>();
 
-            if (damage != null && lightning != null && inventory != null)
+            if (damage != null && inventory != null)
             {
-                GameData.instance.UpdateStats(inventory, damage, lightning, health);
+                GameData.instance.UpdateStats(inventory, damage, health);
             }
         }
     }
@@ -386,6 +406,7 @@ public class PlayerController : MonoBehaviour
         if (GameData.instance != null)
         {
             GameData.instance.regularAttackPower = attackPower; // ✅ Save Attack Power
+            GameData.instance.specialAttackPower = specialAttackPower;
             Debug.Log("🔄 GameData Updated: Attack Power = " + GameData.instance.regularAttackPower);
         }
     }

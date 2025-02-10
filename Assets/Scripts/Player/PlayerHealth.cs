@@ -78,13 +78,12 @@ public class PlayerHealth : MonoBehaviour
         if (GameData.instance != null)
         {
             PlayerController damage = GetComponent<PlayerController>();
-            LightningEffect lightning = GetComponent<LightningEffect>();
             PlayerInventory inventory = GetComponent<PlayerInventory>();
             PlayerHealth health = GetComponent<PlayerHealth>();
 
-            if (damage != null && lightning != null && inventory != null)
+            if (damage != null && inventory != null)
             {
-                GameData.instance.UpdateStats(inventory, damage, lightning, health);
+                GameData.instance.UpdateStats(inventory, damage, health);
             }
         }
     }
