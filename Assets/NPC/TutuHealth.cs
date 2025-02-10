@@ -7,8 +7,8 @@ public class TutuHealth : MonoBehaviour
     private int currentHealth;
 
     public Animator animator;
-    public AudioClip damageSound;
-    public AudioClip deathSound;
+    public AudioClip damageSoundMouse;
+    public AudioClip deathSoundMouse;
     public AudioClip PoofSound;
 
     public GameObject poofPrefab; // 🔥 Reference to explosion prefab
@@ -33,9 +33,9 @@ public class TutuHealth : MonoBehaviour
         currentHealth -= damage;
         Debug.Log(gameObject.name + " took " + damage + " damage. Current Health: " + currentHealth);
 
-        if (damageSound != null)
+        if (damageSoundMouse != null)
         {
-            AudioManager.instance.PlaySound(damageSound);
+            AudioManager.instance.PlaySound(damageSoundMouse);
         }
 
         if (animator != null)
@@ -72,9 +72,9 @@ public class TutuHealth : MonoBehaviour
             animator.SetTrigger("Die");
         }
 
-        if (deathSound != null)
+        if (deathSoundMouse != null)
         {
-            AudioManager.instance.PlaySound(deathSound);
+            AudioManager.instance.PlaySound(deathSoundMouse);
         }
 
         yield return new WaitForSeconds(1f); // Wait for animation to finish

@@ -3739,6 +3739,14 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.02741245
       objectReference: {fileID: 0}
+    - target: {fileID: 5025946576311875269, guid: cc4d5ce0e707f66479b8969eab038e64, type: 3}
+      propertyPath: maxHealth
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025946576311875269, guid: cc4d5ce0e707f66479b8969eab038e64, type: 3}
+      propertyPath: currentHealth
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 6163922339002707924, guid: cc4d5ce0e707f66479b8969eab038e64, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.9984095
@@ -4090,6 +4098,7 @@ MonoBehaviour:
   attackSpawnPoint: {fileID: 1466052584}
   attackDamage: 3
   attackCooldown: 3
+  isBigMouse: 0
 --- !u!4 &779650734 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2330957585397726098, guid: f88dd1d7f9367f547939845f2202125e, type: 3}
@@ -4109,8 +4118,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 20
   animator: {fileID: 779650728}
-  damageSound: {fileID: 8300000, guid: ce0b435a2bd69c249bf6c739f3359551, type: 3}
-  deathSound: {fileID: 8300000, guid: 8b783b673266f204e969cce45751d1a0, type: 3}
+  damageSoundMouse: {fileID: 0}
+  deathSoundMouse: {fileID: 0}
   PoofSound: {fileID: 8300000, guid: f9ad3c376cfd81a44b1326dfe0bdd1d7, type: 3}
   poofPrefab: {fileID: 835235119001236977, guid: 339b11fedc585514fa6639a9bf3157c2, type: 3}
   poofPosition: {fileID: 1314694485}
@@ -13864,6 +13873,12 @@ MonoBehaviour:
     volume: 0.12
   - name: PoofCloudSound
     clip: {fileID: 8300000, guid: f9ad3c376cfd81a44b1326dfe0bdd1d7, type: 3}
+    volume: 0.358
+  - name: deathSoundMouse
+    clip: {fileID: 8300000, guid: 8b783b673266f204e969cce45751d1a0, type: 3}
+    volume: 0.358
+  - name: damageSoundMouse
+    clip: {fileID: 8300000, guid: ce0b435a2bd69c249bf6c739f3359551, type: 3}
     volume: 0.358
 --- !u!4 &1566725482
 Transform:
