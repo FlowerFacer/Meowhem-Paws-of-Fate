@@ -17,7 +17,7 @@ public class CreditsMusicManager : MonoBehaviour
         if (audioSource == null)
         {
             audioSource = gameObject.AddComponent<AudioSource>();
-            audioSource.loop = true;
+            audioSource.loop = false;
             audioSource.playOnAwake = false;
         }
 
