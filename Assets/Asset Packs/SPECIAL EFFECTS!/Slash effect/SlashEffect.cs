@@ -5,6 +5,8 @@ public class SlashEffect : MonoBehaviour
 {
     private int attackPower = 3; // Default value (overridden on attack)
     public Transform attacker; // Assign the player to this in the Inspector
+    private bool hasHitTutu = false; // ✅ Prevents multiple hits per attack
+
 
     void Start()
     {
@@ -66,16 +68,26 @@ public class SlashEffect : MonoBehaviour
             TutuHealth enemyHealth = other.GetComponent<TutuHealth>();
             BossTutu3 bossTutu = other.GetComponent<BossTutu3>(); // Get Tutu's script
 
-            if (bossTutu != null && bossTutu.isBigMouse) // ✅ Check if Tutu has transformed
+            if (bossTutu != null && bossTutu.isBigMouse && !hasHitTutu) // ✅ Check if Tutu has transformed
             {
                 // ✅ Apply Damage Only if Tutu has Transformed
                 Vector2 attackSource = attacker != null ? attacker.position : transform.position;
                 enemyHealth.TakeDamage(attackPower, attackSource);
+
+                hasHitTutu = true; // ✅ Mark as hit
+                StartCoroutine(ResetHit()); // ✅ Reset after cooldown
             }
             else
             {
                 Debug.Log("❌ Attack ineffective! Tutu hasn't transformed yet.");
             }
         }
+    }
+
+    // ✅ Prevents multiple hits by resetting after attack duration
+    IEnumerator ResetHit()
+    {
+        yield return new WaitForSeconds(0.5f); // Wait until attack is over
+        hasHitTutu = false; // Allow hitting again in next attack
     }
 }

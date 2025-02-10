@@ -22,6 +22,7 @@ public class BossTutu3 : MonoBehaviour
 
     // **Attack System**
     public GameObject jumpAttackPrefab; // Prefab for attack animation
+    public AudioClip jumpAttackSound;
     public Transform attackSpawnPoint; // Where the attack appears
     public int attackDamage = 3; // Damage dealt by attack
     public float attackCooldown = 2.5f; // Cooldown between attacks
@@ -78,7 +79,7 @@ public class BossTutu3 : MonoBehaviour
         animator.SetBool("IsTalking", true);
 
         // **Main text sequence**
-        yield return ShowText(TutusText, "Oh wow...\n You really made\n it this far.", 2f);
+        yield return ShowText(TutusText, "Oh wow...\n You really made\n it this far", 2f);
         yield return ShowText(TutusText, "Apricot, you’re...\n impressive.", 2f);
 
         yield return ShowText(TutusText, "And here I thought\n you'd just—", 1);
@@ -91,7 +92,7 @@ public class BossTutu3 : MonoBehaviour
         yield return ShowText(UnstableText, "...fall into a pit\n and die by now.", 1.5f);
 
         yield return ShowText(TutusText, "But no, you kept\n pushing forward.", 2f);
-        yield return ShowText(TutusText, "You fought, you won,\n you actually\n LISTENED to me.", 2f);
+        yield return ShowText(TutusText, "You fought, you won,\n you actually LISTENED to me.", 2f);
 
         yield return ShowText(TutusText, "Do you have\n ANY IDEA...", 1.5f);
 
@@ -99,8 +100,9 @@ public class BossTutu3 : MonoBehaviour
 
         yield return ShowText(UnstableText, "HOW\n FRUSTRATING\n THAT WAS??", 2f);
 
-        yield return ShowText(UnstableText, "I GUIDED YOU.\n I HELPED YOU.\n I PRETENDED\n TO LOVE YOU.", 2.5f);
-        yield return ShowText(UnstableText, "AND YOU—", 1.5f);
+        yield return ShowText(UnstableText, "I GUIDED YOU.\n I HELPED YOU.", 1.5f);
+        yield return ShowText(UnstableText, "I EVEN PRETENDED\n TO LOVE YOU.", 1.5f);
+        yield return ShowText(UnstableText, "AND YOU...", 1f);
 
         animator.SetTrigger("isYelling");
 
@@ -110,7 +112,7 @@ public class BossTutu3 : MonoBehaviour
         yield return ShowText(ItalicText, "I guess I’ll just\n have to make sure...", 2f);
 
         animator.SetTrigger("TiltTrigger");
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2.7f);
         animator.SetTrigger("TiltTalking");
 
         yield return ShowText(ItalicText, "You don’t make it\n any further.", 2f);
@@ -161,12 +163,17 @@ public class BossTutu3 : MonoBehaviour
 
         if (jumpAttackPrefab != null && attackSpawnPoint != null)
         {
+            if (jumpAttackSound != null)
+            {
+                AudioManager.instance.PlaySound(jumpAttackSound);
+            }
+
             GameObject attackInstance = Instantiate(
                 jumpAttackPrefab,
                 new Vector3(attackSpawnPoint.position.x, jumpAttackPrefab.transform.position.y, attackSpawnPoint.position.z),
                 Quaternion.identity
             );
-            Destroy(attackInstance, 1.2f);
+            Destroy(attackInstance, 2f);
         }
 
         yield return new WaitForSeconds(attackCooldown);

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class TutuHealth : MonoBehaviour
 {
-    public int maxHealth = 5;
+    public int maxHealth = 20;
     private int currentHealth;
 
     public Animator animator;
@@ -77,7 +77,7 @@ public class TutuHealth : MonoBehaviour
             AudioManager.instance.PlaySound(deathSoundMouse);
         }
 
-        yield return new WaitForSeconds(1f); // Wait for animation to finish
+        yield return new WaitForSeconds(2f); // Wait for animation to finish
 
         if (PoofSound != null)
         {
