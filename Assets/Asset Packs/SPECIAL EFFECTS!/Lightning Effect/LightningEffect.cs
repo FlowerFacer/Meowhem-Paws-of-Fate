@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class LightningEffect : MonoBehaviour
 {
     public int damage = 8;
     public Transform attacker; // Assign the player to this in the Inspector
+    private bool hasHitTutu = false; // ✅ Prevents multiple hits per attack
 
     void Start()
     {
@@ -60,16 +62,26 @@ public class LightningEffect : MonoBehaviour
             TutuHealth enemyHealth = other.GetComponent<TutuHealth>();
             BossTutu3 bossTutu = other.GetComponent<BossTutu3>(); // Get Tutu's script
 
-            if (bossTutu != null && bossTutu.isBigMouse) // ✅ Check if Tutu has transformed
+            if (bossTutu != null && bossTutu.isBigMouse && !hasHitTutu) // ✅ Check if Tutu has transformed
             {
                 // ✅ Apply Damage Only if Tutu has Transformed
                 Vector2 attackSource = attacker != null ? attacker.position : transform.position;
                 enemyHealth.TakeDamage(damage, attackSource);
+
+                hasHitTutu = true; // ✅ Mark as hit
+                StartCoroutine(ResetHit()); // ✅ Reset after cooldown
             }
             else
             {
                 Debug.Log("❌ Attack ineffective! Tutu hasn't transformed yet.");
             }
         }
+    }
+
+    // ✅ Prevents multiple hits by resetting after attack duration
+    IEnumerator ResetHit()
+    {
+        yield return new WaitForSeconds(3f); // Wait until attack is over
+        hasHitTutu = false; // Allow hitting again in next attack
     }
 }

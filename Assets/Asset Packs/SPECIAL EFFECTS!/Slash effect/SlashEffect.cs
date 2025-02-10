@@ -87,7 +87,7 @@ public class SlashEffect : MonoBehaviour
     // ✅ Prevents multiple hits by resetting after attack duration
     IEnumerator ResetHit()
     {
-        yield return new WaitForSeconds(0.5f); // Wait until attack is over
+        yield return new WaitForSeconds(0.7f); // Wait until attack is over
         hasHitTutu = false; // Allow hitting again in next attack
     }
 }

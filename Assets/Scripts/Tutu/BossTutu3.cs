@@ -79,7 +79,7 @@ public class BossTutu3 : MonoBehaviour
         animator.SetBool("IsTalking", true);
 
         // **Main text sequence**
-        yield return ShowText(TutusText, "Oh wow...\n You really made\n it this far", 2f);
+        yield return ShowText(TutusText, "Oh wow...\n You really made\n it this far.", 2f);
         yield return ShowText(TutusText, "Apricot, you’re...\n impressive.", 2f);
 
         yield return ShowText(TutusText, "And here I thought\n you'd just—", 1);
@@ -112,14 +112,14 @@ public class BossTutu3 : MonoBehaviour
         yield return ShowText(ItalicText, "I guess I’ll just\n have to make sure...", 2f);
 
         animator.SetTrigger("TiltTrigger");
-        yield return new WaitForSeconds(2.7f);
+        yield return new WaitForSeconds(3f);
         animator.SetTrigger("TiltTalking");
 
         yield return ShowText(ItalicText, "You don’t make it\n any further.", 2f);
 
-        yield return ShowText(UnstableText, "Let’s see how\n you handle this,\n little kitten...", 2f);
+        yield return ShowText(UnstableText, "Let’s see how\n you handle this,\n little kitten...", 1.5f);
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         // **Disappear effect**
         HideAllText();
