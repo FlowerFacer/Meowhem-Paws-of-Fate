@@ -26,7 +26,7 @@ public class BossTutu3 : MonoBehaviour
     public int attackDamage = 3; // Damage dealt by attack
     public float attackCooldown = 2.5f; // Cooldown between attacks
     private bool canAttack = true;
-    private bool isBigMouse = false; // Track if Tutu has transformed
+    public bool isBigMouse = false; // Track if Tutu has transformed
 
 
     void Start()

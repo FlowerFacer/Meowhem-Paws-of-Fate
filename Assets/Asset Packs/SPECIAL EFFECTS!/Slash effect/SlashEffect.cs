@@ -64,10 +64,17 @@ public class SlashEffect : MonoBehaviour
         else if (other.CompareTag("BossEnemy"))
         {
             TutuHealth enemyHealth = other.GetComponent<TutuHealth>();
-            if (enemyHealth != null)
+            BossTutu3 bossTutu = other.GetComponent<BossTutu3>(); // Get Tutu's script
+
+            if (bossTutu != null && bossTutu.isBigMouse) // ✅ Check if Tutu has transformed
             {
+                // ✅ Apply Damage Only if Tutu has Transformed
                 Vector2 attackSource = attacker != null ? attacker.position : transform.position;
                 enemyHealth.TakeDamage(attackPower, attackSource);
+            }
+            else
+            {
+                Debug.Log("❌ Attack ineffective! Tutu hasn't transformed yet.");
             }
         }
     }
