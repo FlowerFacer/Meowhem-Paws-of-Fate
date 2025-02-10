@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Level4ExitTrigger : MonoBehaviour
 {
-    public string loadingSceneName = "Ending1"; // Name of the loading scene
+    public string loadingSceneName = "Credits"; // Name of the loading scene
     public Image fadeImage; // Assign a UI Image (Black Panel) in Canvas
     public float fadeDuration = 1.5f; // Adjust fade speed
 

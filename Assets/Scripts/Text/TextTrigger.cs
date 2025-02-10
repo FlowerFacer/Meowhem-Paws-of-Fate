@@ -6,6 +6,8 @@ public class TextTrigger : MonoBehaviour
     public TMP_Text messageText; // Assign a TextMeshPro UI Text in Inspector
     public string message = "Default Message"; // Custom message for this trigger
 
+    //
+
     private void Start()
     {
         if (messageText != null)
