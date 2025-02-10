@@ -155,6 +155,16 @@ public class BossTutu3 : MonoBehaviour
                 yield return StartCoroutine(PerformJumpAttack());
             }
 
+            if (canLightning1)
+            {
+                yield return StartCoroutine(PerformLightning1());
+            }
+
+            if (canLightning2)
+            {
+                yield return StartCoroutine(PerformLightning1());
+            }
+
             yield return null; // Wait for next frame
         }
     }
@@ -199,7 +209,7 @@ public class BossTutu3 : MonoBehaviour
             }
 
             GameObject attackInstance = Instantiate(
-                jumpAttackPrefab,
+                lightningAttackPrefab1,
                 new Vector3(lightningSpawnPoint1.position.x, lightningAttackPrefab1.transform.position.y, lightningSpawnPoint1.position.z),
                 Quaternion.identity
             );
@@ -222,7 +232,7 @@ public class BossTutu3 : MonoBehaviour
             }
 
             GameObject attackInstance = Instantiate(
-                jumpAttackPrefab,
+                lightningAttackPrefab2,
                 new Vector3(lightningSpawnPoint2.position.x, lightningAttackPrefab1.transform.position.y, lightningSpawnPoint2.position.z),
                 Quaternion.identity
             );
