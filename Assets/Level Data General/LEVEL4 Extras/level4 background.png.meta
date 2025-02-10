@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9a2de828f08eb88409b96b5990d6ced8
+guid: 05a07e9a2543b354b80f84f9ced79047
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2563890418612357489
-    second: Bush 1 (no flowers) - GREEN_0
+      213: -8688695936944494197
+    second: level4 background_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bush 1 (no flowers) - GREEN_0
+      name: level4 background_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 45
-        height: 30
+        width: 1439
+        height: 823
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f8635939f3b3b6cd0800000000000000
-      internalID: -2563890418612357489
+      spriteID: b892b0d741d8b6780800000000000000
+      internalID: -8688695936944494197
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Bush 1 (no flowers) - GREEN_0: -2563890418612357489
+      level4 background_0: -8688695936944494197
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
