@@ -3,7 +3,7 @@ using System.Collections;
 
 public class TutuHealth : MonoBehaviour
 {
-    public int maxHealth = 20;
+    public int maxHealth = 50;
     private int currentHealth;
 
     public Animator animator;

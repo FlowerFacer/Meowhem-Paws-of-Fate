@@ -22,18 +22,11 @@ public class BossTutu3 : MonoBehaviour
 
     // **Attack System**
     public GameObject jumpAttackPrefab; // Prefab for attack animation
-    public GameObject lightningAttackPrefab1;
-    public GameObject lightningAttackPrefab2;
     public AudioClip jumpAttackSound;
     public Transform attackSpawnPoint; // Where the attack appears
-    public Transform lightningSpawnPoint1;
-    public Transform lightningSpawnPoint2;
-    public AudioClip LightningSound;
     public int attackDamage = 3; // Damage dealt by attack
-    public float attackCooldown = 2.5f; // Cooldown between attacks
+    public float attackCooldown = 1f; // Cooldown between attacks
     private bool canAttack = true;
-    private bool canLightning1 = true;
-    private bool canLightning2 = true;
     public bool isBigMouse = false; // Track if Tutu has transformed
 
 
@@ -155,16 +148,6 @@ public class BossTutu3 : MonoBehaviour
                 yield return StartCoroutine(PerformJumpAttack());
             }
 
-            if (canLightning1)
-            {
-                yield return StartCoroutine(PerformLightning1());
-            }
-
-            if (canLightning2)
-            {
-                yield return StartCoroutine(PerformLightning1());
-            }
-
             yield return null; // Wait for next frame
         }
     }
@@ -195,52 +178,6 @@ public class BossTutu3 : MonoBehaviour
 
         yield return new WaitForSeconds(attackCooldown);
         canAttack = true;
-    }
-
-    IEnumerator PerformLightning1()
-    {
-        canLightning1 = false;
-
-        if (lightningAttackPrefab1 != null && lightningSpawnPoint1 != null)
-        {
-            if (LightningSound != null)
-            {
-                AudioManager.instance.PlaySound(LightningSound);
-            }
-
-            GameObject attackInstance = Instantiate(
-                lightningAttackPrefab1,
-                new Vector3(lightningSpawnPoint1.position.x, lightningAttackPrefab1.transform.position.y, lightningSpawnPoint1.position.z),
-                Quaternion.identity
-            );
-            Destroy(attackInstance, 2f);
-        }
-
-        yield return new WaitForSeconds(1f);
-        canLightning1 = true;
-    }
-
-    IEnumerator PerformLightning2()
-    {
-        canLightning2 = false;
-
-        if (lightningAttackPrefab2 != null && lightningSpawnPoint2 != null)
-        {
-            if (LightningSound != null)
-            {
-                AudioManager.instance.PlaySound(LightningSound);
-            }
-
-            GameObject attackInstance = Instantiate(
-                lightningAttackPrefab2,
-                new Vector3(lightningSpawnPoint2.position.x, lightningAttackPrefab1.transform.position.y, lightningSpawnPoint2.position.z),
-                Quaternion.identity
-            );
-            Destroy(attackInstance, 2f);
-        }
-
-        yield return new WaitForSeconds(1f);
-        canLightning2 = true;
     }
 
     IEnumerator ShowText(TMP_Text textObject, string text, float delay)
