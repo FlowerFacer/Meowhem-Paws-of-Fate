@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 400596044951550795}
   - component: {fileID: -8778501817656569450}
   - component: {fileID: 5566102844667393761}
-  - component: {fileID: 818558983204970509}
+  - component: {fileID: 1066754688029640188}
   m_Layer: 0
   m_Name: JumpAttack
   m_TagString: Untagged
@@ -127,8 +127,8 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!61 &818558983204970509
-BoxCollider2D:
+--- !u!58 &1066754688029640188
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -161,18 +161,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.1600003, y: 4.630989}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 4.1600003, y: 2.8806152}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0.009303093, y: -1.2186372}
+  m_Radius: 2.1480489
 --- !u!1 &6237122849735792097
 GameObject:
   m_ObjectHideFlags: 0

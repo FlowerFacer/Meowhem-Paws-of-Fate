@@ -24,7 +24,7 @@ public class BossTutu3 : MonoBehaviour
     public GameObject jumpAttackPrefab; // Prefab for attack animation
     public Transform attackSpawnPoint; // Where the attack appears
     public int attackDamage = 3; // Damage dealt by attack
-    public float attackCooldown = 4f; // Cooldown between attacks
+    public float attackCooldown = 2.5f; // Cooldown between attacks
     private bool canAttack = true;
     private bool isBigMouse = false; // Track if Tutu has transformed
 
@@ -131,6 +131,7 @@ public class BossTutu3 : MonoBehaviour
         yield return new WaitForSeconds(3f);
 
         animator.SetBool("BigMouse", true);
+        isBigMouse = true; // ✅ Now the attack loop can start
 
         // **Start the attack loop!**
         StartCoroutine(AttackLoop());

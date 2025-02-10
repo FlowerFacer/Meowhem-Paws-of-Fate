@@ -14,6 +14,7 @@ TagManager:
   - Checkpoint
   - Sock
   - Enemy2
+  - BossEnemy
   layers:
   - Default
   - TransparentFX

@@ -55,5 +55,14 @@ public class LightningEffect : MonoBehaviour
                 enemyHealth.TakeDamage(damage, attackSource);
             }
         }
+        else if (other.CompareTag("BossEnemy"))
+        {
+            TutuHealth enemyHealth = other.GetComponent<TutuHealth>();
+            if (enemyHealth != null)
+            {
+                Vector2 attackSource = attacker != null ? attacker.position : transform.position;
+                enemyHealth.TakeDamage(damage, attackSource);
+            }
+        }
     }
 }
