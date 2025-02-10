@@ -87,14 +87,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3928741771535648657, guid: 240a319a26435244db5298db13769c30, type: 3}
       insertIndex: 2
-      addedObject: {fileID: 1171385178378085372}
+      addedObject: {fileID: -5827713178311442360}
   m_SourcePrefab: {fileID: 100100000, guid: 240a319a26435244db5298db13769c30, type: 3}
 --- !u!1 &3716402101469933345 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3928741771535648657, guid: 240a319a26435244db5298db13769c30, type: 3}
   m_PrefabInstance: {fileID: 366728729826584752}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1171385178378085372
+--- !u!114 &-5827713178311442360
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -103,8 +103,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 3716402101469933345}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e091ac2b2b63e324ba5262ddf932d180, type: 3}
+  m_Script: {fileID: 11500000, guid: de52a7b0aa7f27e4aa39ad6179f40e90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 3
-  attackDuration: 1
+  damage: 8
+  attacker: {fileID: 0}

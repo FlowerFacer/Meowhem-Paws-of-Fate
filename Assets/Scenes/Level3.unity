@@ -1379,7 +1379,7 @@ Transform:
   m_GameObject: {fileID: 302549738}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.9, y: 1.55, z: 0.11216951}
+  m_LocalPosition: {x: -13.9, y: -0.75, z: 0.11216951}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3343,7 +3343,7 @@ PrefabInstance:
       objectReference: {fileID: -5062332785526653551, guid: d838a0838ea24e348b3d6ce81578d2ff, type: 3}
     - target: {fileID: 2019708019143041953, guid: cc4d5ce0e707f66479b8969eab038e64, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 29.1
+      value: 20.46
       objectReference: {fileID: 0}
     - target: {fileID: 2767751941468965368, guid: cc4d5ce0e707f66479b8969eab038e64, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3497,6 +3497,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.597987
       objectReference: {fileID: 0}
+    - target: {fileID: 8990495707114284713, guid: cc4d5ce0e707f66479b8969eab038e64, type: 3}
+      propertyPath: slashEffectPrefab
+      value: 
+      objectReference: {fileID: 2207109167339593815, guid: 2a758ea5e746b1a418fb8ba1d7547d6f, type: 3}
     - target: {fileID: 8990495707114284713, guid: cc4d5ce0e707f66479b8969eab038e64, type: 3}
       propertyPath: LightningEffectPrefab
       value: 
@@ -5124,7 +5128,7 @@ Transform:
   m_GameObject: {fileID: 1049251130}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.33, y: 1.55, z: 0.11216951}
+  m_LocalPosition: {x: -2.33, y: -0.75, z: 0.11216951}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

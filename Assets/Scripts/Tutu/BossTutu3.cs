@@ -92,7 +92,7 @@ public class BossTutu3 : MonoBehaviour
         yield return ShowText(UnstableText, "...fall into a pit\n and die by now.", 1.5f);
 
         yield return ShowText(TutusText, "But no, you kept\n pushing forward.", 2f);
-        yield return ShowText(TutusText, "You fought, you won,\n you actually LISTENED to me.", 2f);
+        yield return ShowText(TutusText, "You fought, you won,\n you actually LISTENED\n to me.", 2f);
 
         yield return ShowText(TutusText, "Do you have\n ANY IDEA...", 1.5f);
 
