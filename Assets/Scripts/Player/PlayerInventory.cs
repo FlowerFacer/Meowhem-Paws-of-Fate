@@ -108,7 +108,7 @@ public class PlayerInventory : MonoBehaviour
 
         if (playerController != null)
         {
-            playerController.IncreaseMaxATKpower(5);
+            playerController.IncreaseMaxSPATKpower(5);
             Debug.Log("✅ SP ATK Power increased via PlayerController!");
         }
         else
