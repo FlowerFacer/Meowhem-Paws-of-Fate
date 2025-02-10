@@ -3,7 +3,7 @@
 public class BossWallController : MonoBehaviour
 {
     public GameObject tutuBoss; // Assign the boss in the Inspector
-    private BoxCollider2D wallCollider;
+    public BoxCollider2D wallCollider;
 
     void Start()
     {
