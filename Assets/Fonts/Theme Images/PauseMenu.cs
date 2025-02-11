@@ -8,7 +8,7 @@ public class PauseMenu : MonoBehaviour
     public bool isPaused = false;
 
     // ⛔️ Scenes where the pause menu is disabled
-    private string[] disabledScenes = { "MainMenu", "LoadingScreen", "Credits" };
+    private string[] disabledScenes = { "MenuScene", "LoadingScene", "LoadingScene2", "LoadingScene3", "Credits" };
 
     void Awake()
     {

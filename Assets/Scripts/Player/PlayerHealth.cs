@@ -8,6 +8,7 @@ public class PlayerHealth : MonoBehaviour
     public int currentHealth;
     public Animator animator;
     public AudioClip Bonk;
+    public AudioClip PlayerDeath;
     public bool isDead = false;
 
     void Start()
@@ -63,14 +64,36 @@ public class PlayerHealth : MonoBehaviour
         Debug.Log("Player died!");
         animator.SetBool("isDead", true); // ✅ Use Bool instead of Trigger
 
+        if (PlayerDeath != null)
+        {
+            AudioManager.instance.PlaySound(PlayerDeath);
+        }
+
+        // ❌ Disable PlayerController so movement is disabled
+        if (playerController != null)
+        {
+            playerController.enabled = false;
+        }
+
+        // 🛑 Freeze Rigidbody to prevent sliding
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero; // Stop movement
+            rb.constraints = RigidbodyConstraints2D.FreezeAll; // ✅ Completely freeze physics
+        }
+
         StopAllCoroutines(); // **Stop any active patrol or attack coroutine**
+
+        StartCoroutine(HandleDeath());
     }
 
     IEnumerator HandleDeath()
     {
-        yield return new WaitForSeconds(2.5f); // Adjust timing as needed
+        yield return new WaitForSeconds(3f); // Adjust timing as needed
         Debug.Log("Respawning or Restarting Level...");
-        // Handle respawn or restart logic here
+
+        DeathMenu.instance.ShowDeathMenu(); // ✅ Call Death UI when player dies
     }
 
     public void UpdateGameData()

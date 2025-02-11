@@ -1201,88 +1201,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 650bc0ccf50b0df4c9abe9b70f415497, type: 3}
---- !u!1 &86799126
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 86799128}
-  - component: {fileID: 86799127}
-  m_Layer: 0
-  m_Name: AudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &86799127
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 86799126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46611be7298d41342a791dd96fe9a616, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  masterVolume: 1
-  sounds:
-  - name: RareCollectibleSound
-    clip: {fileID: 8300000, guid: c7a61b89ccc40ba46ada782445f9320c, type: 3}
-    volume: 0.368
-  - name: deathSound
-    clip: {fileID: 8300000, guid: b7a1f8bcf6efeea4e8d59dcab3b539c6, type: 3}
-    volume: 0.472
-  - name: hurtSound
-    clip: {fileID: 8300000, guid: 9f73927110fd5b645821868a85f345c4, type: 3}
-    volume: 0.478
-  - name: PoofSound
-    clip: {fileID: 8300000, guid: 924c9dcfafa664746ae815abf70cb3dc, type: 3}
-    volume: 0.628
-  - name: fireEffectSound
-    clip: {fileID: 8300000, guid: 97cc148b37aae674eae100b753605d77, type: 3}
-    volume: 1
-  - name: LightningSound
-    clip: {fileID: 8300000, guid: e5e54d9b7d1c9464cad8b8254eaeda59, type: 3}
-    volume: 0.127
-  - name: SlashSound
-    clip: {fileID: 8300000, guid: 691b5a07a68adee49a08238c8733af39, type: 3}
-    volume: 0.388
-  - name: Bonk
-    clip: {fileID: 8300000, guid: c8d34d73a3d46d34d92eafa5d0736562, type: 3}
-    volume: 0.351
-  - name: Gibbersh
-    clip: {fileID: 8300000, guid: d76a748dbf47633439fc35e1e6370b97, type: 3}
-    volume: 0.375
-  - name: shroomSound
-    clip: {fileID: 8300000, guid: c7a61b89ccc40ba46ada782445f9320c, type: 3}
-    volume: 0.368
-  - name: increase
-    clip: {fileID: 8300000, guid: c2e2fe71be05ff2418d81591d345250a, type: 3}
-    volume: 0.12
-  - name: PoofCloudSound
-    clip: {fileID: 8300000, guid: f9ad3c376cfd81a44b1326dfe0bdd1d7, type: 3}
-    volume: 0.358
---- !u!4 &86799128
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 86799126}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.0708816, y: -0.102506146, z: -0.068990596}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &87902284
 GameObject:
   m_ObjectHideFlags: 0
@@ -18837,6 +18755,103 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1615879005
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1615879007}
+  - component: {fileID: 1615879006}
+  m_Layer: 0
+  m_Name: AudioManager (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1615879006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615879005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46611be7298d41342a791dd96fe9a616, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  masterVolume: 1
+  sounds:
+  - name: RareCollectibleSound
+    clip: {fileID: 8300000, guid: c7a61b89ccc40ba46ada782445f9320c, type: 3}
+    volume: 0.368
+  - name: deathSound
+    clip: {fileID: 8300000, guid: b7a1f8bcf6efeea4e8d59dcab3b539c6, type: 3}
+    volume: 0.472
+  - name: hurtSound
+    clip: {fileID: 8300000, guid: 9f73927110fd5b645821868a85f345c4, type: 3}
+    volume: 0.478
+  - name: PoofSound
+    clip: {fileID: 8300000, guid: 924c9dcfafa664746ae815abf70cb3dc, type: 3}
+    volume: 0.628
+  - name: fireEffectSound
+    clip: {fileID: 8300000, guid: 97cc148b37aae674eae100b753605d77, type: 3}
+    volume: 1
+  - name: LightningSound
+    clip: {fileID: 8300000, guid: e5e54d9b7d1c9464cad8b8254eaeda59, type: 3}
+    volume: 0.127
+  - name: SlashSound
+    clip: {fileID: 8300000, guid: 691b5a07a68adee49a08238c8733af39, type: 3}
+    volume: 0.388
+  - name: Bonk
+    clip: {fileID: 8300000, guid: c8d34d73a3d46d34d92eafa5d0736562, type: 3}
+    volume: 0.351
+  - name: Gibbersh
+    clip: {fileID: 8300000, guid: d76a748dbf47633439fc35e1e6370b97, type: 3}
+    volume: 0.375
+  - name: shroomSound
+    clip: {fileID: 8300000, guid: c7a61b89ccc40ba46ada782445f9320c, type: 3}
+    volume: 0.368
+  - name: increase
+    clip: {fileID: 8300000, guid: c2e2fe71be05ff2418d81591d345250a, type: 3}
+    volume: 0.12
+  - name: PoofCloudSound
+    clip: {fileID: 8300000, guid: f9ad3c376cfd81a44b1326dfe0bdd1d7, type: 3}
+    volume: 0.358
+  - name: deathSoundMouse
+    clip: {fileID: 8300000, guid: 8b783b673266f204e969cce45751d1a0, type: 3}
+    volume: 0.303
+  - name: damageSoundMouse
+    clip: {fileID: 8300000, guid: ce0b435a2bd69c249bf6c739f3359551, type: 3}
+    volume: 0.316
+  - name: jumpAttackSound
+    clip: {fileID: 8300000, guid: 97cc148b37aae674eae100b753605d77, type: 3}
+    volume: 0.537
+  - name: RedLightning
+    clip: {fileID: 8300000, guid: f16d259f2ce9c794c9f406c7d23e9cc1, type: 3}
+    volume: 0.135
+  - name: PlayerDeath
+    clip: {fileID: 8300000, guid: 846354e164166da48868514f3103b359, type: 3}
+    volume: 0.257
+--- !u!4 &1615879007
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615879005}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.0708816, y: -0.102506146, z: -0.068990596}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1617384300
 GameObject:
   m_ObjectHideFlags: 0
@@ -38804,7 +38819,7 @@ SceneRoots:
   - {fileID: 397608579}
   - {fileID: 1953457430}
   - {fileID: 977597823}
-  - {fileID: 86799128}
+  - {fileID: 1615879007}
   - {fileID: 796651202}
   - {fileID: 961956141}
   - {fileID: 429984288}
