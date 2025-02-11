@@ -5,9 +5,36 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/MenuScene.unity
+    guid: b2fc753bcd9dfe047a94c29d5e750d13
+  - enabled: 1
+    path: Assets/Scenes/Level1.unity
+    guid: fac0815cbaa995540a8198cbfd0c5502
+  - enabled: 1
+    path: Assets/Scenes/LoadingScene.unity
+    guid: 2a293700eb7de9f43baecda4f39ee0ea
+  - enabled: 1
+    path: Assets/Scenes/Level2.unity
+    guid: 3351df8eb0d136b40bbdb32bd3bfa1e2
+  - enabled: 1
+    path: Assets/Scenes/LoadingScene2.unity
+    guid: 56cade0f4bd3ea6479a6acd90aa3500f
+  - enabled: 1
+    path: Assets/Scenes/Level3.unity
+    guid: 3f1a5d336a7d54d468924424fb7ca32b
+  - enabled: 1
+    path: Assets/Scenes/LoadingScene3.unity
+    guid: 403600afbda13c647b21d9cbc5bd9c33
+  - enabled: 1
+    path: Assets/Scenes/Level4.unity
+    guid: a9341744f08e6b34b8a7e202301cf18d
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: f6997aad5a2166e40844c0728822299a
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

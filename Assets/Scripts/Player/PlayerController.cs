@@ -49,6 +49,8 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        Cursor.visible = false;       // Hide cursor if needed
+
         if (GameData.instance != null)
         {
             attackPower = GameData.instance.regularAttackPower; // ✅ Load Attack Power
@@ -248,12 +250,18 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && !isAttacking)
         {
+            if (PauseMenu.instance != null && PauseMenu.instance.isPaused)
+                return; // ✅ Prevent flipping while paused
+
             StartCoroutine(PerformAttack());
         }
 
         // Placeholder for right mouse click special attack
         if (Input.GetMouseButtonDown(1) && !isSpecialAttacking)
         {
+            if (PauseMenu.instance != null && PauseMenu.instance.isPaused)
+                return; // ✅ Prevent flipping while paused
+
             StartCoroutine(PerformSpecialAttack());
         }
     }
@@ -363,6 +371,9 @@ public class PlayerController : MonoBehaviour
 
     void FlipSprite(float direction)
     {
+        if (PauseMenu.instance != null && PauseMenu.instance.isPaused)
+            return; // ✅ Prevent flipping while paused
+
         Vector3 currentPosition = transform.position;
         float flipScale = 0.23f; // Adjust as needed
 
