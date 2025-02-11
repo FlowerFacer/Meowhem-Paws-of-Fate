@@ -29,7 +29,7 @@ public class LoadingScene3UI : MonoBehaviour
             yield return StartCoroutine(TypeText(secretsText, $"Secrets Found :\n" +
                 $"{GameData.instance.yarnCount} / 3 Yarn Balls\n" +
                 $"{GameData.instance.fishpoleCount} / 3 Fishpoles\n" +
-                $"{GameData.instance.magicShroomCount} / 2 Magic Mushrooms" +
+                $"{GameData.instance.magicShroomCount} / 2 Magic Mushrooms\n" +
                 $"{GameData.instance.tutuPlushieCount} / 1 Tutu Plushie"));
         }
     }

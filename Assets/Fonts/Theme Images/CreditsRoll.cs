@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class CreditsRoll : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class CreditsRoll : MonoBehaviour
         }
 
         // Optionally restart or load a new scene
-        yield return new WaitForSeconds(2f);
-        Debug.Log("Credits Finished!");
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene("MenuScene");
     }
 }

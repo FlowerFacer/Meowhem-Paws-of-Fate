@@ -344,7 +344,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 384, y: 2941}
+  m_AnchoredPosition: {x: 384, y: 664.25635}
   m_SizeDelta: {x: 509, y: 496.9657}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &98305945
@@ -450,7 +450,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 960, y: 5700.6294}
+  m_AnchoredPosition: {x: 960, y: 3423.8857}
   m_SizeDelta: {x: 1920, y: 595.7355}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &173586057
@@ -733,7 +733,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 960, y: -2565.7705}
+  m_AnchoredPosition: {x: 960, y: -3028.9746}
   m_SizeDelta: {x: 1920, y: 595.7355}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &281217879
@@ -880,7 +880,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 384, y: 4125}
+  m_AnchoredPosition: {x: 384, y: 1848.2563}
   m_SizeDelta: {x: 509, y: 496.9657}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &354653829
@@ -956,7 +956,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -385, y: 3532}
+  m_AnchoredPosition: {x: -385, y: 1255.2563}
   m_SizeDelta: {x: 682, y: 513.4988}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &467353546
@@ -1032,7 +1032,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -385, y: 2361}
+  m_AnchoredPosition: {x: -385, y: 84.256836}
   m_SizeDelta: {x: 509, y: 496.9657}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &576498063
@@ -1349,6 +1349,7 @@ RectTransform:
   - {fileID: 576498062}
   - {fileID: 1632271691}
   - {fileID: 1838478575}
+  - {fileID: 2031735405}
   - {fileID: 2047993376}
   - {fileID: 281217878}
   - {fileID: 1507436546}
@@ -1358,8 +1359,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000061035156, y: -6534.5483}
-  m_SizeDelta: {x: 1920, y: 14149.097}
+  m_AnchoredPosition: {x: -0.000061035156, y: -4257.8047}
+  m_SizeDelta: {x: 1920, y: 9595.606}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1032994656
 MonoBehaviour:
@@ -1766,7 +1767,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 960, y: -3059.1465}
+  m_AnchoredPosition: {x: 960, y: -3522.3506}
   m_SizeDelta: {x: 1920, y: 595.7355}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1507436547
@@ -2038,7 +2039,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1512058812}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2047,7 +2048,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -3687}
+  m_AnchoredPosition: {x: 0, y: -4405.744}
   m_SizeDelta: {x: 845, y: 389}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1512058814
@@ -2122,7 +2123,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 960, y: -3210}
+  m_AnchoredPosition: {x: 960, y: -3809.204}
   m_SizeDelta: {x: 1920, y: 595.7355}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1582016531
@@ -2343,7 +2344,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 960, y: 1797}
+  m_AnchoredPosition: {x: 960, y: -479.74316}
   m_SizeDelta: {x: 1920, y: 595.7355}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1632271692
@@ -2909,7 +2910,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -385, y: 4717.395}
+  m_AnchoredPosition: {x: -385, y: 2440.6514}
   m_SizeDelta: {x: 509, y: 496.9657}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1758751071
@@ -3120,13 +3121,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2031735405}
+  m_Children: []
   m_Father: {fileID: 1032994655}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 960, y: 1283}
+  m_AnchoredPosition: {x: 960, y: -993.74316}
   m_SizeDelta: {x: 1920, y: 595.7355}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1838478576
@@ -3403,11 +3403,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1838478575}
+  m_Father: {fileID: 1032994655}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 960, y: -53}
+  m_AnchoredPosition: {x: 1547, y: -1046.7432}
   m_SizeDelta: {x: 1920, y: 612.5591}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2031735406
@@ -3430,72 +3430,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '
-
-
-
-
-    Alice Eve Carasenti
-
-    Alona Naor
-
-    Aviv Ostrovsky
-
-    Avraham
-    Beja
-
-    Beny Wong
-
-    Ethel Roizman
-
-    Gilad Naor
-
-    Guy Bar Haim
-
-    Hava
-    Beja
-
-    Holly Beja (Sister)
-
-    Holly Yael Azulay
-
-    Idan Pingaley
-
-    Lyddar
-    Shafrir
-
-    Lydia Dover
-
-    Meged Beja (Sister)
-
-    Nadav Azulay
-
-    Netanel
-    & Dani Azulay
-
-    Noa Azulay
-
-    Omri Naor
-
-    Player1
-
-    Raven Netanel
-
-    Roei
-    Hahn
-
-    Shay Beja
-
-    Shay Cohen
-
-    Shiraz Lohmuller
-
-    Shmuel McConen
-
-    Yaki
-    Beja (Dad)
-
-    Zach Beja (Twin)'
+  m_text: "\n\n\n\nYaki Beja (Dad)              Zach Beja (Twin)\nHolly Beja (Sister)        
+    Meged Beja (Sister)\nAlice Eve Carasenti          Alona Naor\nAviv Ostrovsky              
+    Beny Wong\nEthel Roizman                 Gilad Naor\nHolly Yael Azulay            
+    Idan Pingaley\nLyddar Shafrir               Lydia Dover\nNadav Azulay                
+    Noa Azulay\nOmri Naor                      Player1\nRaven Netanel               
+    Roei Hahn\nShay Cohen                    Shiraz Lohmuller\nShmuel McConen           
+    Shay Beja \n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 132d399120177f24ba74d3f0c0101360, type: 2}
   m_sharedMaterial: {fileID: 492560868721517761, guid: 132d399120177f24ba74d3f0c0101360, type: 2}
@@ -3529,10 +3470,10 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: -1
   m_wordSpacing: 0
   m_lineSpacing: 100
   m_lineSpacingMax: 0
@@ -3608,7 +3549,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 960, y: -2416}
+  m_AnchoredPosition: {x: 960, y: -2879.204}
   m_SizeDelta: {x: 1920, y: 595.7355}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2047993377
