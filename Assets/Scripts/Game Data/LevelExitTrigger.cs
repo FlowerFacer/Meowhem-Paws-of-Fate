@@ -5,7 +5,7 @@ using System.Collections;
 
 public class LevelExitTrigger : MonoBehaviour
 {
-    public string loadingSceneName = "LoadingScene"; // Name of the loding scene
+    public string loadingSceneName = "Credits"; // Name of the loding scene
     public Image fadeImage; // Assign a UI Image (Black Panel) in Canvas
     public float fadeDuration = 1.5f; // Adjust fade speed
 

@@ -22,16 +22,16 @@ public class PlayerInventory : MonoBehaviour
         if (GameData.instance != null)
         {
             fishpoleCount = GameData.instance.fishpoleCount; // ✅ Load Attack Power
-            Debug.Log("📥 Loaded Attack Power: " + fishpoleCount);
+            Debug.Log("📥 Loaded Fishpole Count: " + fishpoleCount);
 
-            fishpoleCount = GameData.instance.fishpoleCount; // ✅ Load Attack Power
-            Debug.Log("📥 Loaded Attack Power: " + fishpoleCount);
+            yarnCount = GameData.instance.yarnCount; // ✅ Load Attack Power
+            Debug.Log("📥 Loaded Yarn Count: " + yarnCount);
 
             magicShroomCount = GameData.instance.magicShroomCount; // ✅ Load Attack Power
-            Debug.Log("📥 Loaded Attack Power: " + magicShroomCount);
+            Debug.Log("📥 Loaded Mushroom Count: " + magicShroomCount);
 
             tutuPlushieCount = GameData.instance.tutuPlushieCount; // ✅ Load Attack Power
-            Debug.Log("📥 Loaded Attack Power: " + tutuPlushieCount);
+            Debug.Log("📥 Loaded Plush Count: " + tutuPlushieCount);
         }
 
         if (HpIncreaseText != null)

@@ -119,56 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &133943385
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 133943387}
-  - component: {fileID: 133943386}
-  m_Layer: 0
-  m_Name: LoadingSceneManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &133943386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 133943385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e2301f1767aba5468f824663a3f30c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealthText: {fileID: 1318942053}
-  regularAttackText: {fileID: 1024901227}
-  specialAttackText: {fileID: 1061805791}
-  secretsText: {fileID: 1360401315}
-  loadDelay: 10
-  typeSpeed: 0.05
---- !u!4 &133943387
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 133943385}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1257.652, y: 708.2354, z: -5.7826567}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &335214027
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,7 +201,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 335214030}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1345519794}
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+        m_MethodName: QuitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &335214030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,6 +287,74 @@ Transform:
   - {fileID: 1360401314}
   - {fileID: 1944126091}
   m_Father: {fileID: 796392459}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &470859141
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 470859143}
+  - component: {fileID: 470859142}
+  m_Layer: 0
+  m_Name: Background Music Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &470859142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470859141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6ee8964c1a153c43ac837fc935ef605, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultMusic: {fileID: 0}
+  defaultVolume: 0.5
+  sceneMusicList:
+  - sceneName: Level1
+    musicClip: {fileID: 8300000, guid: d2f2c4fef7d106643a52c5e91981f28b, type: 3}
+    volume: 0.5
+  - sceneName: Level2
+    musicClip: {fileID: 8300000, guid: 143938632eb4b984e9c78d63adccadf0, type: 3}
+    volume: 0.5
+  - sceneName: LoadingScene2
+    musicClip: {fileID: 8300000, guid: 55d2f9b51a0271c4f9f9ec58ff8d6b8e, type: 3}
+    volume: 0.5
+  - sceneName: LoadingScene
+    musicClip: {fileID: 8300000, guid: 55d2f9b51a0271c4f9f9ec58ff8d6b8e, type: 3}
+    volume: 0.5
+  - sceneName: LoadingScene3
+    musicClip: {fileID: 8300000, guid: 55d2f9b51a0271c4f9f9ec58ff8d6b8e, type: 3}
+    volume: 0.5
+  - sceneName: Level4
+    musicClip: {fileID: 8300000, guid: f21371b253331b44b8477997579889e1, type: 3}
+    volume: 0.658
+  - sceneName: MenuScene
+    musicClip: {fileID: 8300000, guid: 55d2f9b51a0271c4f9f9ec58ff8d6b8e, type: 3}
+    volume: 0.658
+--- !u!4 &470859143
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470859141}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.0708816, y: -0.102506146, z: -0.068990596}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &473467363
 GameObject:
@@ -1136,7 +1166,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1244321393}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1345519794}
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1244321393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1311,6 +1353,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1318942051}
   m_CullTransparentMesh: 1
+--- !u!1 &1345519792
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1345519793}
+  - component: {fileID: 1345519794}
+  m_Layer: 0
+  m_Name: SceneManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1345519793
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345519792}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1036.6814, y: 508.19153, z: -5.9001274}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1345519794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345519792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7642dd8f7fdab7a41bdca1c9eee9e83f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonClickSound: {fileID: 8300000, guid: 55d2f9b51a0271c4f9f9ec58ff8d6b8e, type: 3}
+  volume: 0.5
+  sceneName: Level1
 --- !u!1 &1360401313
 GameObject:
   m_ObjectHideFlags: 0
@@ -1896,5 +1985,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 1589207058}
   - {fileID: 1003064795}
+  - {fileID: 470859143}
   - {fileID: 766237286}
-  - {fileID: 133943387}
+  - {fileID: 1345519793}
