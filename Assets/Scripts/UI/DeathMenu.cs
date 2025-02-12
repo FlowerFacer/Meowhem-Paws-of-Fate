@@ -3,7 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class DeathMenu : MonoBehaviour
 {
-    public static DeathMenu instance; // Singleton instance
     public GameObject deathMenuUI;    // Assign the UI Panel in Inspector
     private bool isDieMenu = false;
 
@@ -11,21 +10,25 @@ public class DeathMenu : MonoBehaviour
 
     void Awake()
     {
-        if (instance == null)
+        if (deathMenuUI == null) // ✅ Ensure it's always found
         {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
+            deathMenuUI = GameObject.Find("DeathMenuUI");
         }
     }
 
     public void ShowDeathMenu()
     {
         if (IsSceneRestricted()) return; // Prevent in restricted scenes
+
+        if (deathMenuUI == null)
+        {
+            deathMenuUI = GameObject.Find("DeathMenuUI");
+        }
+
+        if (deathMenuUI != null)
+        {
+            deathMenuUI.SetActive(true);
+        }
 
         deathMenuUI.SetActive(true);
         Time.timeScale = 0f; // ✅ Freeze game

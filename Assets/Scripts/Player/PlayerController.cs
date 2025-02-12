@@ -248,19 +248,18 @@ public class PlayerController : MonoBehaviour
 
     void HandleAttacking()
     {
+        // ✅ Get PauseMenu reference dynamically
+        PauseMenu pauseMenu = FindFirstObjectByType<PauseMenu>();
+        if (pauseMenu != null && pauseMenu.isPaused) return;
+
         if (Input.GetMouseButtonDown(0) && !isAttacking)
         {
-            if (PauseMenu.instance != null && PauseMenu.instance.isPaused)
-                return; // ✅ Prevent flipping while paused
-
             StartCoroutine(PerformAttack());
         }
 
         // Placeholder for right mouse click special attack
         if (Input.GetMouseButtonDown(1) && !isSpecialAttacking)
         {
-            if (PauseMenu.instance != null && PauseMenu.instance.isPaused)
-                return; // ✅ Prevent flipping while paused
 
             StartCoroutine(PerformSpecialAttack());
         }
@@ -371,8 +370,8 @@ public class PlayerController : MonoBehaviour
 
     void FlipSprite(float direction)
     {
-        if (PauseMenu.instance != null && PauseMenu.instance.isPaused)
-            return; // ✅ Prevent flipping while paused
+        PauseMenu pauseMenu = FindFirstObjectByType<PauseMenu>();
+        if (pauseMenu != null && pauseMenu.isPaused) return; // ✅ Prevent flipping while paused
 
         Vector3 currentPosition = transform.position;
         float flipScale = 0.23f; // Adjust as needed

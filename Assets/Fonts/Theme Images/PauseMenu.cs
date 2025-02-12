@@ -3,7 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    public static PauseMenu instance; // Singleton instance
     public GameObject pauseMenuUI;    // Assign the UI Panel in Inspector
     public bool isPaused = false;
 
@@ -12,15 +11,9 @@ public class PauseMenu : MonoBehaviour
 
     void Awake()
     {
-        if (instance == null)
+        if (pauseMenuUI == null) // ✅ Ensure it's always found
         {
-            instance = this;
-            DontDestroyOnLoad(gameObject); // Keep this object across scenes
-        }
-        else
-        {
-            Destroy(gameObject); // Prevent duplicates
-            return;
+            pauseMenuUI = GameObject.Find("PauseMenuUI");
         }
     }
 
@@ -42,6 +35,16 @@ public class PauseMenu : MonoBehaviour
     {
         if (IsSceneRestricted()) return; // ⛔️ Prevent pausing in disabled scenes
 
+        if (pauseMenuUI == null)
+        {
+            pauseMenuUI = GameObject.Find("pauseMenuUI"); // Find the UI in the new scene
+        }
+
+        if (pauseMenuUI != null)
+        {
+            pauseMenuUI.SetActive(true);
+        }
+
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f; // Freeze game
         isPaused = true;
@@ -53,7 +56,11 @@ public class PauseMenu : MonoBehaviour
 
     public void ResumeGame()
     {
-        pauseMenuUI.SetActive(false);
+        if (pauseMenuUI != null)
+        {
+            pauseMenuUI.SetActive(false);
+        }
+
         Time.timeScale = 1f; // ✅ Resume game
         isPaused = false;
 
