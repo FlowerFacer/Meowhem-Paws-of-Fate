@@ -1349,7 +1349,6 @@ RectTransform:
   - {fileID: 576498062}
   - {fileID: 1632271691}
   - {fileID: 1838478575}
-  - {fileID: 2031735405}
   - {fileID: 2047993376}
   - {fileID: 281217878}
   - {fileID: 1507436546}
@@ -3121,7 +3120,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2031735405}
   m_Father: {fileID: 1032994655}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
@@ -3403,11 +3403,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1032994655}
+  m_Father: {fileID: 1838478575}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 1547, y: -1046.7432}
+  m_AnchoredPosition: {x: 1547, y: -53}
   m_SizeDelta: {x: 1920, y: 612.5591}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2031735406
@@ -3431,12 +3431,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "\n\n\n\nYaki Beja (Dad)              Zach Beja (Twin)\nHolly Beja (Sister)        
-    Meged Beja (Sister)\nAlice Eve Carasenti          Alona Naor\nAviv Ostrovsky              
-    Beny Wong\nEthel Roizman                 Gilad Naor\nHolly Yael Azulay            
-    Idan Pingaley\nLyddar Shafrir               Lydia Dover\nNadav Azulay                
-    Noa Azulay\nOmri Naor                      Player1\nRaven Netanel               
-    Roei Hahn\nShay Cohen                    Shiraz Lohmuller\nShmuel McConen           
-    Shay Beja \n"
+    Meged Beja (Sister)\nHava Beja (Savta)        Avraham Beja (Saba)\nAlice Eve
+    Carasenti          Alona Naor\nAviv Ostrovsky               Beny Wong\nEthel
+    Roizman                 Gilad Naor\nHolly Yael Azulay             Idan Pingaley\nLyddar
+    Shafrir               Lydia Dover\nNadav Azulay                 Noa Azulay\nOmri
+    Naor                      Player1\nRaven Netanel                Roei Hahn\nShay
+    Cohen                    Shiraz Lohmuller\nShmuel McConen            Shay Beja
+    \n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 132d399120177f24ba74d3f0c0101360, type: 2}
   m_sharedMaterial: {fileID: 492560868721517761, guid: 132d399120177f24ba74d3f0c0101360, type: 2}
