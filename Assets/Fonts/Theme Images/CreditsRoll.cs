@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
@@ -11,6 +11,7 @@ public class CreditsRoll : MonoBehaviour
 
     void Start()
     {
+        Cursor.visible = false; // ✅ Show cursor for UI navigation
         rectTransform = GetComponent<RectTransform>();
         startY = rectTransform.anchoredPosition.y;
         endY = startY + rectTransform.rect.height; // End point
@@ -28,7 +29,7 @@ public class CreditsRoll : MonoBehaviour
         // Optionally restart or load a new scene
         yield return new WaitForSeconds(1f);
 
-
+        Cursor.visible = true; // ✅ Show cursor for UI navigation
 
         SceneManager.LoadScene("MenuScene");
     }
