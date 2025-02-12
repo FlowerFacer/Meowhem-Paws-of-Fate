@@ -26,7 +26,7 @@ public class LoadingScene3UI : MonoBehaviour
             yield return StartCoroutine(TypeText(maxHealthText, $"Max HP : {GameData.instance.maxHealth}"));
             yield return StartCoroutine(TypeText(regularAttackText, $"ATK Power : {GameData.instance.regularAttackPower}"));
             yield return StartCoroutine(TypeText(specialAttackText, $"SP ATK Power : {GameData.instance.specialAttackPower}"));
-            yield return StartCoroutine(TypeText(secretsText, $"Secrets Found :\n" +
+            yield return StartCoroutine(TypeText(secretsText, $"- Secrets Found -\n" +
                 $"{GameData.instance.yarnCount} / 3 Yarn Balls\n" +
                 $"{GameData.instance.fishpoleCount} / 3 Fishpoles\n" +
                 $"{GameData.instance.magicShroomCount} / 2 Magic Mushrooms\n" +

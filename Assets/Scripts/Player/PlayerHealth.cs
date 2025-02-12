@@ -90,7 +90,7 @@ public class PlayerHealth : MonoBehaviour
 
     IEnumerator HandleDeath()
     {
-        yield return new WaitForSeconds(5f); // Adjust timing as needed
+        yield return new WaitForSeconds(4f); // Adjust timing as needed
         Debug.Log("Respawning or Restarting Level...");
 
         // ✅ Find DeathMenu dynamically
