@@ -20413,7 +20413,7 @@ MonoBehaviour:
     volume: 0.388
   - name: Bonk
     clip: {fileID: 8300000, guid: c8d34d73a3d46d34d92eafa5d0736562, type: 3}
-    volume: 0.351
+    volume: 0.55
   - name: Gibbersh
     clip: {fileID: 8300000, guid: d76a748dbf47633439fc35e1e6370b97, type: 3}
     volume: 0.375
