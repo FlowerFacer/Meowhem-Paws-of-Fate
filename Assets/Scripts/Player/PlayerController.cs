@@ -278,6 +278,12 @@ public class PlayerController : MonoBehaviour
         animator.SetTrigger("isAttack");
         GameObject slash = Instantiate(slashEffectPrefab, attackPoint.position, attackPoint.rotation);
 
+        // ✅ Flip the slash effect based on player's direction
+        if (transform.localScale.x < 0) // Facing left
+        {
+            slash.transform.localScale = new Vector3(-2, 2, 2); // Flip horizontally
+        }
+
         // ✅ Assign the reference AFTER instantiating it
         SlashEffect slashEffect = slash.GetComponent<SlashEffect>();
 
