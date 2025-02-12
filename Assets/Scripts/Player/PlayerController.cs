@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public float moveSpeed = 3.5f;
     [SerializeField] public float jumpForce = 10f;
     [SerializeField] public float attackCooldown = 0.6f;
-    [SerializeField] public float specialAttackCooldown = 2.4f;
+    [SerializeField] public float specialAttackCooldown = 30f;
     [SerializeField] public float climbJumpForceX = 2f; // Small jump to the right
     [SerializeField] public float climbJumpForceY = 2f; // Slight upward force
 
@@ -360,7 +360,7 @@ public class PlayerController : MonoBehaviour
         // Wait for attack animation to finish
         // yield return new WaitForSeconds(specialAttackCooldown);
 
-        yield return new WaitForSeconds(1.9f); // Wait for animation to finish
+        yield return new WaitForSeconds(2f); // Wait for animation to finish
 
         // Spawn purple fire slightly higher to match the enemy's body
         if (idleTransformPrefab != null)
@@ -369,6 +369,8 @@ public class PlayerController : MonoBehaviour
             GameObject PurpleFire = Instantiate(idleTransformPrefab, explosionPosition, Quaternion.identity);
             Destroy(PurpleFire, 0.8f); // Destroy after animation finishes
         }
+
+        yield return new WaitForSeconds(8f); // sp atk cooldown
 
         // Reset attacking state
         isSpecialAttacking = false;

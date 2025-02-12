@@ -165,7 +165,7 @@ public class Part2TutorialMouse : MonoBehaviour
             "Press the Left Mouse Button\n to attack!",
             "Press the Right Mouse Button\n to perform Special Attack!",
             "Use Special Attack wisely,",
-            "There is a 60 second\n cooldown period.",
+            "There is a 15 second\n cooldown period.",
             "DON'T DIE!"
         };
 
