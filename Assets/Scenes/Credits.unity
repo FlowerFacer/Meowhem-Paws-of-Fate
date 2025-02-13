@@ -618,7 +618,7 @@ MonoBehaviour:
   m_text: '
 
 
-    Developer:
+    Artist:
 
 '
   m_isRightToLeft: 0
@@ -3294,7 +3294,7 @@ MonoBehaviour:
   m_text: '
 
 
-    Level Designer:'
+    Developer:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 132d399120177f24ba74d3f0c0101360, type: 2}
   m_sharedMaterial: {fileID: 492560868721517761, guid: 132d399120177f24ba74d3f0c0101360, type: 2}
