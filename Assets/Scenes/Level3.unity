@@ -4664,6 +4664,7 @@ MonoBehaviour:
   attackDamage: 3
   attackCooldown: 3
   isBigMouse: 0
+  tutuHealthBar: {fileID: 1330291200}
   playerSkipped: 0
   Gibbersh: {fileID: 0}
 --- !u!4 &779650734 stripped
@@ -11439,7 +11440,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 1
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 1
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
