@@ -21895,7 +21895,7 @@ MonoBehaviour:
   animator: {fileID: 1406315815}
   TutusText: {fileID: 62437467}
   idleTime: 2
-  talkDuration: 20
+  talkDuration: 22
   tutuAudioSource: {fileID: 1406315824}
   gibberishClips:
   - {fileID: 8300000, guid: d5fca31af3a61c04c98ec424e0b90534, type: 3}
@@ -30610,6 +30610,14 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.9989393
       objectReference: {fileID: 0}
+    - target: {fileID: 1774376061259055433, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
+      propertyPath: m_labelHash
+      value: 1.3640739e-22
+      objectReference: {fileID: 0}
+    - target: {fileID: 1862178670972992597, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1862178670972992597, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.000000009796501
@@ -30754,6 +30762,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 9015748196357052682, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -5062332785526653551, guid: d838a0838ea24e348b3d6ce81578d2ff, type: 3}
     - target: {fileID: 9015748196357052682, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
       propertyPath: m_SortingOrder
       value: 10

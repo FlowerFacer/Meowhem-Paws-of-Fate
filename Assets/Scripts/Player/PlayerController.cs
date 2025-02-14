@@ -159,7 +159,7 @@ public class PlayerController : MonoBehaviour
 
     void HandleCrouching()
     {
-        if (Input.GetKey(KeyCode.LeftControl))
+        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.LeftControl))
         {
             animator.SetBool("isCrouching", true);
 
@@ -254,7 +254,14 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && !isAttacking)
         {
-            StartCoroutine(PerformAttack());
+            if (!isGrounded)
+            {
+                StartCoroutine(PerformJumpAttack()); // ✅ Perform Jump Attack if airborne
+            }
+            else
+            {
+                StartCoroutine(PerformAttack()); // ✅ Regular Attack on ground
+            }
         }
 
         // Placeholder for right mouse click special attack
@@ -302,6 +309,39 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(attackCooldown);
 
         // Reset attacking state
+        isAttacking = false;
+    }
+
+    IEnumerator PerformJumpAttack()
+    {
+        isAttacking = true;
+
+        if (SlashSound != null)
+        {
+            AudioManager.instance.PlaySound(SlashSound);
+        }
+
+        // ✅ Trigger JumpAttack Animation
+        animator.SetTrigger("JumpAttack");
+
+        yield return new WaitForSeconds(0.2f); // Adjust timing for animation delay
+
+        // ✅ Instantiate the slash effect (if needed)
+        if (slashEffectPrefab != null && attackPoint != null)
+        {
+            GameObject slash = Instantiate(slashEffectPrefab, attackPoint.position, attackPoint.rotation);
+
+            // ✅ Flip the slash effect based on player's direction
+            if (transform.localScale.x < 0) // Facing left
+            {
+                slash.transform.localScale = new Vector3(-2, 2, 2); // Flip horizontally
+            }
+
+            Destroy(slash, attackDuration); // Remove after duration
+        }
+
+        yield return new WaitForSeconds(attackCooldown);
+
         isAttacking = false;
     }
 

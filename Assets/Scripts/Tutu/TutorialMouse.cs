@@ -110,7 +110,7 @@ public class TutorialMouse : MonoBehaviour
             "*wink*",
             "Press A / D to move!",
             "Press Spacebar / W to jump!",
-            "Press Ctrl to crouch!",
+            "Press Left Shift \n/ Ctrl to crouch!",
             "...Good luck!"
         };
 
