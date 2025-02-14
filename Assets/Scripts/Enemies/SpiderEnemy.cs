@@ -29,6 +29,7 @@ public class SpiderEnemy : MonoBehaviour
     private bool canAttack = true; // Prevent spamming attacks
     public bool playerIsDead;
     public PlayerHealth playerHealth;
+    public AudioClip WebEffect;
 
     void Start()
     {
@@ -117,6 +118,11 @@ public class SpiderEnemy : MonoBehaviour
     IEnumerator PerformAttack()
     {
         canAttack = false; // Disable attacks temporarily
+
+        if (WebEffect != null)
+        {
+            AudioManager.instance.PlaySound(WebEffect);
+        }
 
         // **Spawn the Spider Web Attack Effect**
         if (spiderAttackPrefab != null && attackSpawnPoint != null)
