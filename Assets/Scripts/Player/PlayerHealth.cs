@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class PlayerHealth : MonoBehaviour
     public AudioClip PlayerDeath;
     public bool isDead = false;
 
+    // 🎨 **Health Bar UI**
+    public Slider healthBarUI;
+
     void Start()
     {
         if (GameData.instance != null)
@@ -21,6 +25,13 @@ public class PlayerHealth : MonoBehaviour
         }
 
         playerController = GetComponent<PlayerController>(); // Get the PlayerController script
+
+        // 🩸 **Set UI Health Bar**
+        if (healthBarUI != null)
+        {
+            healthBarUI.maxValue = maxHealth;
+            healthBarUI.value = currentHealth;
+        }
     }
 
     public void TakeDamage(int amount)
@@ -41,6 +52,12 @@ public class PlayerHealth : MonoBehaviour
         currentHealth -= amount;
         Debug.Log("Player took damage! Health: " + currentHealth);
         animator.SetTrigger("HurtTrigger");
+
+        // 🩸 **Update UI Health Bar**
+        if (healthBarUI != null)
+        {
+            healthBarUI.value = currentHealth;
+        }
 
         if (currentHealth <= 0)
         {
@@ -67,6 +84,12 @@ public class PlayerHealth : MonoBehaviour
         if (PlayerDeath != null)
         {
             AudioManager.instance.PlaySound(PlayerDeath);
+        }
+
+        // 🩸 **Hide UI Health Bar when dead**
+        if (healthBarUI != null)
+        {
+            healthBarUI.gameObject.SetActive(false);
         }
 
         // ❌ Disable PlayerController so movement is disabled
