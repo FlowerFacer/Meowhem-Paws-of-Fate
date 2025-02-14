@@ -52,6 +52,15 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        if (HpIncreaseText != null)
+        {
+            // **Force Text to Stay in Place**
+            HpIncreaseText.transform.rotation = Quaternion.Euler(1, 1, 1);
+        }
+    }
+
     public void AddYarn(int amount)
     {
         yarnCount += amount;
@@ -121,7 +130,6 @@ public class PlayerInventory : MonoBehaviour
     {
         if (HpIncreaseText != null)
         {
-            // **Get the child text**
             TMP_Text childText = HpIncreaseText.transform.GetChild(0).GetComponent<TMP_Text>();
 
             Debug.Log("✅ HP Texts Found! Starting fade-in...");
@@ -129,8 +137,15 @@ public class PlayerInventory : MonoBehaviour
             Color mainTextColor = HpIncreaseText.color;
             Color childTextColor = childText != null ? childText.color : mainTextColor;
 
+            // **Store Initial Position**
+            Vector3 initialPosition = HpIncreaseText.transform.position;
+            Quaternion initialRotation = HpIncreaseText.transform.rotation;
+
+            // **Detach from Player (Prevents Flipping)**
+            HpIncreaseText.transform.SetParent(null);
+
             // **Fade In Effect**
-            float fadeDuration = 0.5f; // Speed of fade-in
+            float fadeDuration = 0.5f;
             float timer = 0f;
 
             if (increase != null)
@@ -149,6 +164,10 @@ public class PlayerInventory : MonoBehaviour
                     childText.color = childTextColor;
                 }
 
+                // **Keep Text Fixed in Place**
+                HpIncreaseText.transform.position = initialPosition;
+                HpIncreaseText.transform.rotation = initialRotation;
+
                 timer += Time.deltaTime;
                 yield return null;
             }
@@ -162,7 +181,7 @@ public class PlayerInventory : MonoBehaviour
                 childText.color = childTextColor;
             }
 
-            yield return new WaitForSeconds(3f); // Keep visible for 2 seconds
+            yield return new WaitForSeconds(3f); // Keep visible for 3 seconds
 
             Debug.Log("⏳ Starting fade-out...");
 
@@ -178,6 +197,10 @@ public class PlayerInventory : MonoBehaviour
                     childTextColor.a = Mathf.Lerp(1f, 0f, timer / fadeDuration);
                     childText.color = childTextColor;
                 }
+
+                // **Keep Text Fixed in Place**
+                HpIncreaseText.transform.position = initialPosition;
+                HpIncreaseText.transform.rotation = initialRotation;
 
                 timer += Time.deltaTime;
                 yield return null;

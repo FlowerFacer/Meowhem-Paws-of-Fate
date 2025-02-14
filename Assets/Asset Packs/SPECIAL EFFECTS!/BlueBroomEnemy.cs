@@ -16,6 +16,7 @@ public class BlueBroomEnemy : MonoBehaviour
     private Vector3 initialPosition;
     private bool movingRight = false; // Now starts moving LEFT first
     private bool playerDetected = false;
+    public AudioClip BroomAttack;
 
     public GameObject spiderAttackPrefab; // The prefab of the attack effect (web)
     public Transform attackSpawnPoint; // Empty GameObject where the attack spawns
@@ -95,25 +96,42 @@ public class BlueBroomEnemy : MonoBehaviour
         // Move only on the X-axis
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
 
-        // Perform attack if within range
-        if (Vector2.Distance(transform.position, player.position) < 1f && canAttack)
+        if (canAttack) // ✅ Start attack immediately
         {
             StartCoroutine(PerformAttack());
         }
+
     }
 
     IEnumerator PerformAttack()
     {
+        Debug.Log("🔥 Performing attack! Attempting to spawn attack prefab...");
+
         canAttack = false; // Disable attacks temporarily
 
-        // **Spawn the Spider Web Attack Effect** at the correct X position
+        if (BroomAttack != null)
+        {
+            AudioManager.instance.PlaySound(BroomAttack);
+        }
+
         if (spiderAttackPrefab != null && attackSpawnPoint != null)
         {
-            // Keep the prefab's original Y position
-            Vector3 spawnPosition = new Vector3(attackSpawnPoint.position.x, spiderAttackPrefab.transform.position.y, attackSpawnPoint.position.z);
+            Debug.Log("✅ Attack prefab and spawn point exist!");
 
-            // Instantiate at adjusted position
-            Instantiate(spiderAttackPrefab, spawnPosition, Quaternion.identity);
+            Vector3 spawnPosition = new Vector3(attackSpawnPoint.position.x, attackSpawnPoint.position.y, attackSpawnPoint.position.z);
+            GameObject attackInstance = Instantiate(spiderAttackPrefab, spawnPosition, Quaternion.identity);
+
+            // ✅ Flip the slash effect based on player's direction
+            if (transform.localScale.x > 0) // Facing left
+            {
+                attackInstance.transform.localScale = new Vector3(-1, 1, 1); // Flip horizontally
+            }
+
+            Debug.Log("🎯 Attack instantiated at position: " + spawnPosition);
+        }
+        else
+        {
+            Debug.LogError("❌ Attack prefab or spawn point is missing!");
         }
 
         yield return new WaitForSeconds(attackCooldown); // Wait before attacking again

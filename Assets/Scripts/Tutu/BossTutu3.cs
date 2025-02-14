@@ -29,6 +29,10 @@ public class BossTutu3 : MonoBehaviour
     private bool canAttack = true;
     public bool isBigMouse = false; // Track if Tutu has transformed
 
+    private bool isTalking = false; // Track if Tutu is talking
+    public bool playerSkipped = false; // detect player skipping
+    public AudioClip Gibbersh;
+    private Coroutine talkCoroutine; // Store running talk coroutine
 
     void Start()
     {
@@ -40,6 +44,14 @@ public class BossTutu3 : MonoBehaviour
 
         // Starts the appear sequence
         StartCoroutine(AppearSequence());
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Return) && isTalking)
+        {
+            StopTutuDialogue(); // Immediately stop and trigger "RUDE!"
+        }
     }
 
     IEnumerator AppearSequence()
@@ -67,13 +79,14 @@ public class BossTutu3 : MonoBehaviour
 
         if (!hasTalked)
         {
-            StartCoroutine(TalkSequence());
+            talkCoroutine = StartCoroutine(TalkSequence()); // ✅ Store the coroutin
         }
     }
 
     IEnumerator TalkSequence()
     {
         hasTalked = true; // Ensure it doesn't repeat
+        isTalking = true;
 
         // Play talking animation
         animator.SetBool("IsTalking", true);
@@ -127,6 +140,51 @@ public class BossTutu3 : MonoBehaviour
         animator.SetBool("IsTalking", false);
 
         yield return new WaitForSeconds(3f);
+
+        animator.SetTrigger("isBig");
+
+        yield return new WaitForSeconds(3f);
+
+        animator.SetBool("BigMouse", true);
+        isBigMouse = true; // ✅ Now the attack loop can start
+
+        // **Start the attack loop!**
+        StartCoroutine(AttackLoop());
+    }
+
+    void StopTutuDialogue()
+    {
+        playerSkipped = true;
+        isTalking = false;
+
+        animator.SetTrigger("isYelling");
+
+        if (talkCoroutine != null)
+        {
+            StopCoroutine(talkCoroutine); // ✅ Stop the main dialogue coroutine
+        }
+
+        // Immediately clear text
+        HideAllText();
+
+        // Jump straight into the attack phase
+        StartCoroutine(HandlePlayerSkip());
+    }
+
+    IEnumerator HandlePlayerSkip()
+    {
+        HideAllText(); // ✅ Clear any remaining text immediately
+        yield return ShowText(UnstableText2, "That's It!!", 1.5f);
+        yield return ShowText(UnstableText, "Let’s see how\n you handle this,\n little kitten...", 1f);
+
+        yield return new WaitForSeconds(0.5f);
+
+        // **Disappear effect**
+        HideAllText();
+
+        animator.SetBool("IsTalking", false);
+
+        yield return new WaitForSeconds(2f);
 
         animator.SetTrigger("isBig");
 

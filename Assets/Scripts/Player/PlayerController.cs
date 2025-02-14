@@ -447,6 +447,14 @@ public class PlayerController : MonoBehaviour
     {
         rb.constraints = RigidbodyConstraints2D.FreezeRotation; // Restore normal movement
     }
+
+    public void KeepTextUpright(Transform textTransform)
+    {
+        if (textTransform != null)
+        {
+            textTransform.rotation = Quaternion.Euler(0, 0, 0); // Reset rotation
+        }
+    }
 }
 
 

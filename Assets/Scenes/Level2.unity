@@ -2029,10 +2029,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5a27b9de63ff9240a23002dda977553, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1.2
+  moveSpeed: 1.5
   patrolDistance: 2
   detectionRange: 5
-  damage: 1
+  damage: 3
   player: {fileID: 1980221601}
   animator: {fileID: 161270158}
   groundCheck: {fileID: 306743090}
@@ -7115,6 +7115,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2481016448862512741, guid: 146b1c0da46c0fd43aa553279fea5862, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 2481016448862512741, guid: 146b1c0da46c0fd43aa553279fea5862, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 19.57
+      objectReference: {fileID: 0}
     - target: {fileID: 2715718360331694123, guid: 146b1c0da46c0fd43aa553279fea5862, type: 3}
       propertyPath: m_LocalPosition.x
       value: 51.369663
@@ -7163,6 +7171,14 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1980221601}
+    - target: {fileID: 7401520894694311540, guid: 146b1c0da46c0fd43aa553279fea5862, type: 3}
+      propertyPath: moveSpeed
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7401520894694311540, guid: 146b1c0da46c0fd43aa553279fea5862, type: 3}
+      propertyPath: BroomAttack
+      value: 
+      objectReference: {fileID: 8300000, guid: 94e2dd6ae341bf841a7aa84ee42bd537, type: 3}
     - target: {fileID: 7401520894694311540, guid: 146b1c0da46c0fd43aa553279fea5862, type: 3}
       propertyPath: playerHealth
       value: 
@@ -18783,10 +18799,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5a27b9de63ff9240a23002dda977553, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1.2
+  moveSpeed: 1.5
   patrolDistance: 2
   detectionRange: 5
-  damage: 1
+  damage: 3
   player: {fileID: 1980221601}
   animator: {fileID: 1392505118}
   groundCheck: {fileID: 1392505117}
@@ -19770,9 +19786,9 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -2020106515
+  m_SortingLayer: 1
+  m_SortingOrder: 20
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1470200020
 GameObject:
@@ -21063,6 +21079,9 @@ MonoBehaviour:
   - name: PlayerDeath
     clip: {fileID: 8300000, guid: 846354e164166da48868514f3103b359, type: 3}
     volume: 0.257
+  - name: BroomAttack
+    clip: {fileID: 8300000, guid: 94e2dd6ae341bf841a7aa84ee42bd537, type: 3}
+    volume: 0.642
 --- !u!4 &1615879007
 Transform:
   m_ObjectHideFlags: 0
@@ -27466,7 +27485,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2020106515
   m_SortingLayer: 1
-  m_SortingOrder: 20
+  m_SortingOrder: 25
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1001 &2069527306
 PrefabInstance:

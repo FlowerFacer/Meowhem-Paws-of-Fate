@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using TMPro;
 
 public class TutuPlush : MonoBehaviour
 {
@@ -43,10 +44,20 @@ public class TutuPlush : MonoBehaviour
         {
             GameObject thrownPlush = Instantiate(TutuCollectible, plushThrowPoint.position, Quaternion.identity);
 
+            // ✅ Ensure plush does NOT flip when instantiated
+            thrownPlush.transform.rotation = Quaternion.identity; // ✅ Reset rotation
+
             Rigidbody2D plushRB = thrownPlush.GetComponent<Rigidbody2D>();
             if (plushRB != null)
             {
-                plushRB.linearVelocity = new Vector2(throwForce, 3.5f); // Apply force to "throw" it
+                plushRB.linearVelocity = new Vector2(-throwForce, 3.5f); // Apply force to "throw" it
+            }
+
+            // ✅ Fix the text flipping by setting its local scale
+            Transform textTransform = thrownPlush.transform.GetComponentInChildren<TMP_Text>().transform;
+            if (textTransform != null)
+            {
+                textTransform.localScale = new Vector3(1, 1, 1); // Reset scale to normal
             }
 
             Debug.Log("🍄 Tutu plush has been dropped to the player!");
