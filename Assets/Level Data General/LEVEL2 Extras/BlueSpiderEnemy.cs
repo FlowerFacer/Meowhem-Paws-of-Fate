@@ -17,6 +17,7 @@ public class BlueSpiderEnemy : MonoBehaviour
     private Vector3 initialPosition;
     private bool movingRight = false; // Now starts moving LEFT first
     private bool playerDetected = false;
+    public AudioClip WebEffect;
 
     public GameObject spiderAttackPrefab; // The prefab of the attack effect (web)
     public Transform attackSpawnPoint; // Empty GameObject where the attack spawns
@@ -92,7 +93,7 @@ public class BlueSpiderEnemy : MonoBehaviour
 
         transform.position = Vector3.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
 
-        if (Vector2.Distance(transform.position, player.position) < 1f && canAttack)
+        if (Vector2.Distance(transform.position, player.position) < 2f && canAttack)
         {
             StartCoroutine(PerformAttack());
         }
@@ -101,6 +102,11 @@ public class BlueSpiderEnemy : MonoBehaviour
     IEnumerator PerformAttack()
     {
         canAttack = false; // Disable attacks temporarily
+
+        if (WebEffect != null)
+        {
+            AudioManager.instance.PlaySound(WebEffect);
+        }
 
         // **Spawn the Spider Web Attack Effect**
         if (spiderAttackPrefab != null && attackSpawnPoint != null)

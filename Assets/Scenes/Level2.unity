@@ -2040,6 +2040,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   spiderDialogue: {fileID: 0}
+  WebEffect: {fileID: 8300000, guid: 159ceb1a90e6afa4e9096b2d089dac18, type: 3}
   spiderAttackPrefab: {fileID: 5679719829784366030, guid: 0c039194b81732c449f1a15058389f0f, type: 3}
   attackSpawnPoint: {fileID: 698206816}
   attackCooldown: 3
@@ -18810,6 +18811,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   spiderDialogue: {fileID: 0}
+  WebEffect: {fileID: 8300000, guid: 159ceb1a90e6afa4e9096b2d089dac18, type: 3}
   spiderAttackPrefab: {fileID: 5679719829784366030, guid: 0c039194b81732c449f1a15058389f0f, type: 3}
   attackSpawnPoint: {fileID: 1392505116}
   attackCooldown: 3
@@ -21081,6 +21083,9 @@ MonoBehaviour:
     volume: 0.257
   - name: BroomAttack
     clip: {fileID: 8300000, guid: 94e2dd6ae341bf841a7aa84ee42bd537, type: 3}
+    volume: 0.642
+  - name: WebEffect
+    clip: {fileID: 8300000, guid: 159ceb1a90e6afa4e9096b2d089dac18, type: 3}
     volume: 0.642
 --- !u!4 &1615879007
 Transform:
