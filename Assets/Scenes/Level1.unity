@@ -5797,6 +5797,9 @@ MonoBehaviour:
   - name: PlayerDeath
     clip: {fileID: 8300000, guid: 846354e164166da48868514f3103b359, type: 3}
     volume: 0.257
+  - name: WebEffect
+    clip: {fileID: 8300000, guid: 159ceb1a90e6afa4e9096b2d089dac18, type: 3}
+    volume: 0.642
 --- !u!4 &463324663
 Transform:
   m_ObjectHideFlags: 0
