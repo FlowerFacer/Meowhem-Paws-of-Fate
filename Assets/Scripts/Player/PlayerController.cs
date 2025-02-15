@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     public float attackDuration = 0.3f;   // Time before slash disappears
     public Transform attackPoint;         // Empty object where slash appears
     public GameObject LightningEffectPrefab; // Ref to lightning prefab
-    public float LightningDuration = 0.8f; // Time before lightning disappears
+    public float LightningDuration = 1f; // Time before lightning disappears
     public Transform LightningPoint; // Empty object where lightning appears
 
     public AudioClip LightningSound;
@@ -373,14 +373,12 @@ public class PlayerController : MonoBehaviour
 
         animator.SetTrigger("isSpecialAttack");
 
-        yield return new WaitForSeconds(0.5f); // Wait for animation to finish
-
         if (LightningSound != null)
         {
             AudioManager.instance.PlaySound(LightningSound);
         }
 
-        yield return new WaitForSeconds(1.5f); // Wait for animation to progress
+        yield return new WaitForSeconds(1.1f); // Wait for animation to progress
         GameObject Lightning = Instantiate(LightningEffectPrefab, LightningPoint.position, LightningPoint.rotation);
 
         // ✅ Assign the reference AFTER instantiating it
@@ -400,7 +398,7 @@ public class PlayerController : MonoBehaviour
         // Wait for attack animation to finish
         // yield return new WaitForSeconds(specialAttackCooldown);
 
-        yield return new WaitForSeconds(2f); // Wait for animation to finish
+        yield return new WaitForSeconds(1.2f); // Wait for animation to finish
 
         // Spawn purple fire slightly higher to match the enemy's body
         if (idleTransformPrefab != null)

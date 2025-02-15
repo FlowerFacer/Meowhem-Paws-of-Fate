@@ -71,6 +71,12 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth; // Fully heal when gaining max health
         Debug.Log("Max Health Increased! New Max Health: " + maxHealth);
         UpdateGameData(); // ✅ **Force GameData Update**
+
+        // 🩸 **Update UI Health Bar**
+        if (healthBarUI != null)
+        {
+            healthBarUI.value = currentHealth;
+        }
     }
 
     void Die()
