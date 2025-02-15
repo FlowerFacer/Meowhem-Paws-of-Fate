@@ -53,13 +53,6 @@ public class TutuPlush : MonoBehaviour
                 plushRB.linearVelocity = new Vector2(-throwForce, 3.5f); // Apply force to "throw" it
             }
 
-            // ✅ Fix the text flipping by setting its local scale
-            Transform textTransform = thrownPlush.transform.GetComponentInChildren<TMP_Text>().transform;
-            if (textTransform != null)
-            {
-                textTransform.localScale = new Vector3(1, 1, 1); // Reset scale to normal
-            }
-
             Debug.Log("🍄 Tutu plush has been dropped to the player!");
         }
         else

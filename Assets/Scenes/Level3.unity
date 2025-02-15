@@ -4847,6 +4847,7 @@ MonoBehaviour:
   attackCooldown: 3
   isBigMouse: 0
   tutuHealthBar: {fileID: 1330291200}
+  playerHealthBar: {fileID: 1605013788}
   playerSkipped: 0
   Gibbersh: {fileID: 0}
 --- !u!4 &779650734 stripped
@@ -6803,7 +6804,7 @@ MonoBehaviour:
     volume: 0.257
   - name: SpecialSound
     clip: {fileID: 8300000, guid: c850b706432925944aa834d53b3fb7f9, type: 3}
-    volume: 0.4
+    volume: 0.5
 --- !u!4 &955741171
 Transform:
   m_ObjectHideFlags: 0

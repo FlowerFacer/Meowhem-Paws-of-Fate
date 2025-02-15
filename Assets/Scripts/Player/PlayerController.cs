@@ -432,11 +432,6 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(5f); // sp atk when game starts
 
-        if (SpecialSound != null)
-        {
-            AudioManager.instance.PlaySound(SpecialSound);
-        }
-
         heartAnim.SetBool("SpecialReady", true);
     }
 

@@ -29,6 +29,7 @@ public class BossTutu3 : MonoBehaviour
     private bool canAttack = true;
     public bool isBigMouse = false; // Track if Tutu has transformed
     public GameObject tutuHealthBar; // 🎯 Assign this in the Inspector
+    public GameObject playerHealthBar; // 🎯 Assign this in the Inspector
 
     private bool isTalking = false; // Track if Tutu is talking
     public bool playerSkipped = false; // detect player skipping
@@ -46,6 +47,11 @@ public class BossTutu3 : MonoBehaviour
         if (tutuHealthBar != null)
         {
             tutuHealthBar.SetActive(false); // 🛑 Hide health bar initially
+        }
+
+        if (playerHealthBar != null)
+        {
+            playerHealthBar.SetActive(false); // 🛑 Hide health bar initially
         }
 
         // Starts the appear sequence
@@ -154,6 +160,16 @@ public class BossTutu3 : MonoBehaviour
         animator.SetBool("BigMouse", true);
         isBigMouse = true; // ✅ Now the attack loop can start
 
+        if (tutuHealthBar != null)
+        {
+            tutuHealthBar.SetActive(true); // 🎯 SHOW the health bar when Tutu transforms
+        }
+
+        if (playerHealthBar != null)
+        {
+            playerHealthBar.SetActive(true); // 🎯 SHOW the health bar when Tutu transforms
+        }
+
         // **Start the attack loop!**
         StartCoroutine(AttackLoop());
     }
@@ -202,6 +218,11 @@ public class BossTutu3 : MonoBehaviour
         if (tutuHealthBar != null)
         {
             tutuHealthBar.SetActive(true); // 🎯 SHOW the health bar when Tutu transforms
+        }
+
+        if (playerHealthBar != null)
+        {
+            playerHealthBar.SetActive(true); // 🎯 SHOW the health bar when Tutu transforms
         }
 
         // **Start the attack loop!**

@@ -31,6 +31,9 @@ public class SpiderEnemy : MonoBehaviour
     public PlayerHealth playerHealth;
     public AudioClip WebEffect;
 
+    public AudioSource spiderAudioSource;
+    public AudioClip[] gibberishClips; // Array for different gibberish sounds (Optional)
+
     void Start()
     {
         initialPosition = transform.position;
@@ -208,6 +211,7 @@ public class SpiderEnemy : MonoBehaviour
         foreach (string line in ViviLines)
         {
             spiderDialogue.text = "";
+            PlayRandomGibberish(); // Plays gibberish at start of each line!
 
             foreach (char letter in line.ToCharArray())
             {
@@ -280,6 +284,16 @@ public class SpiderEnemy : MonoBehaviour
             }
 
             yield return null; // Wait for next frame
+        }
+    }
+
+    void PlayRandomGibberish()
+    {
+        if (spiderAudioSource != null)
+        {
+            spiderAudioSource.pitch = Random.Range(0.9f, 1.2f); // Random pitch variation
+            spiderAudioSource.clip = gibberishClips[Random.Range(0, gibberishClips.Length)]; // Pick a random clip
+            spiderAudioSource.Play();
         }
     }
 }

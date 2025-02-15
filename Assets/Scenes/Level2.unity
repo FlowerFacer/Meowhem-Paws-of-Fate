@@ -14311,7 +14311,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: WHO PUT
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 891a2a29b908175449738332eff52eff, type: 2}
   m_sharedMaterial: {fileID: -1504425852263659868, guid: 891a2a29b908175449738332eff52eff, type: 2}
@@ -18120,7 +18120,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 2444223334111189079, guid: 86e56d494d07d134ea295e1ed8f49f54, type: 3}
-  m_Color: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 1}
+  m_Color: {r: 0.6226415, g: 0.6226415, b: 0.6226415, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
