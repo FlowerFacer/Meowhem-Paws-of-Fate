@@ -25,6 +25,9 @@ public class PlayerController : MonoBehaviour
     public AnimatorOverrideController flippedAnimator; // Assign in Inspector
     private RuntimeAnimatorController defaultAnimator;
 
+    public Animator heartAnim;
+    public AudioClip SpecialSound;
+
     public GameObject magicTransformPrefab; // Ref to Magic Transformation prefab
     public GameObject idleTransformPrefab; // Ref to Idle Transformation prefab
     public GameObject slashEffectPrefab; // Ref to slash prefab
@@ -66,6 +69,8 @@ public class PlayerController : MonoBehaviour
         playerCollider = GetComponent<BoxCollider2D>();  // Get the player's collider
         originalSize = playerCollider.size;  // Store original collider size
         originalOffset = playerCollider.offset;  // Store original collider offset
+
+        StartCoroutine(WaitforSpecial());
     }
 
     void FixedUpdate()
@@ -354,6 +359,8 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator PerformSpecialAttack()
     {
+        heartAnim.SetBool("SpecialReady", false);
+
         if (fireEffectSound != null)
         {
             AudioManager.instance.PlaySound(fireEffectSound);
@@ -408,10 +415,29 @@ public class PlayerController : MonoBehaviour
             Destroy(PurpleFire, 0.8f); // Destroy after animation finishes
         }
 
-        yield return new WaitForSeconds(8f); // sp atk cooldown
+        yield return new WaitForSeconds(14f); // sp atk cooldown
 
         // Reset attacking state
         isSpecialAttacking = false;
+
+        if (SpecialSound != null)
+        {
+            AudioManager.instance.PlaySound(SpecialSound);
+        }
+
+        heartAnim.SetBool("SpecialReady", true);
+    }
+
+    IEnumerator WaitforSpecial()
+    {
+        yield return new WaitForSeconds(5f); // sp atk when game starts
+
+        if (SpecialSound != null)
+        {
+            AudioManager.instance.PlaySound(SpecialSound);
+        }
+
+        heartAnim.SetBool("SpecialReady", true);
     }
 
     void FlipSprite(float direction)

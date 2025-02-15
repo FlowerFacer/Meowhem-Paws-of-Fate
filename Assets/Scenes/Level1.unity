@@ -5890,6 +5890,9 @@ MonoBehaviour:
   - name: WebEffect
     clip: {fileID: 8300000, guid: 159ceb1a90e6afa4e9096b2d089dac18, type: 3}
     volume: 0.642
+  - name: SpecialSound
+    clip: {fileID: 8300000, guid: c850b706432925944aa834d53b3fb7f9, type: 3}
+    volume: 0.4
 --- !u!4 &463324663
 Transform:
   m_ObjectHideFlags: 0
@@ -8759,6 +8762,10 @@ PrefabInstance:
     - target: {fileID: 7439735422906447942, guid: 27a7809fd55c3a4418449af64b5c289f, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0.07464959
+      objectReference: {fileID: 0}
+    - target: {fileID: 8217747793498021933, guid: 27a7809fd55c3a4418449af64b5c289f, type: 3}
+      propertyPath: healthBar
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8217747793498021933, guid: 27a7809fd55c3a4418449af64b5c289f, type: 3}
       propertyPath: maxHealth
@@ -12037,8 +12044,9 @@ GameObject:
   - component: {fileID: 1107110986}
   - component: {fileID: 1107110988}
   - component: {fileID: 1107110987}
+  - component: {fileID: 1107110989}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Heart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12102,6 +12110,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1107110985}
   m_CullTransparentMesh: 1
+--- !u!95 &1107110989
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107110985}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d791469f1122ef544922a2862f90664d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1110958179
 GameObject:
   m_ObjectHideFlags: 0
@@ -31288,9 +31318,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1104530490184262818, guid: d838a0838ea24e348b3d6ce81578d2ff, type: 3}
     - target: {fileID: 6587491938826552074, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
+      propertyPath: heartAnim
+      value: 
+      objectReference: {fileID: 1107110989}
+    - target: {fileID: 6587491938826552074, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
+      propertyPath: jumpForce
+      value: 10.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6587491938826552074, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
       propertyPath: groundCheck
       value: 
       objectReference: {fileID: 1237952659}
+    - target: {fileID: 6587491938826552074, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
+      propertyPath: SpecialSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c850b706432925944aa834d53b3fb7f9, type: 3}
     - target: {fileID: 6696491491338684701, guid: fb101b63d293ecc4a956808c37a0169b, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.8015058
